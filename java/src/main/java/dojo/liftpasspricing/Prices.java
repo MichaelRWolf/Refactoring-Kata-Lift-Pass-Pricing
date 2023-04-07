@@ -119,9 +119,9 @@ public class Prices {
         return connection;
     }
 
-    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat, ResultSet holidays) throws SQLException, ParseException {
-        while (holidays.next()) {
-            Date holiday = holidays.getDate("holiday");
+    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat, ResultSet holidayResultSet) throws SQLException, ParseException {
+        while (holidayResultSet.next()) {
+            Date holiday = holidayResultSet.getDate("holiday");
             if (formDateAsIsoFormat != null) {
                 Date form_date = isoFormat.parse(formDateAsIsoFormat);
                 if (isSpecificHoliday(holiday, form_date)) {
