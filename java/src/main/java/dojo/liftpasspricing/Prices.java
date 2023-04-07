@@ -72,12 +72,13 @@ public class Prices {
                             }
 
                             if (formDateAsIsoFormat != null) {
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(isoFormat.parse(formDateAsIsoFormat));
-                                if (!isHoliday)
+                                if (!isHoliday) {
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTime(isoFormat.parse(formDateAsIsoFormat));
                                     if (calendar.get(Calendar.DAY_OF_WEEK) == 2) {
                                         reduction = 35;
                                     }
+                                }
                             }
 
                             // TODO apply reduction for others
