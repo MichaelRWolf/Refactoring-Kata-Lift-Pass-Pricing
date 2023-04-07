@@ -73,9 +73,7 @@ public class Prices {
 
                             if (formDateAsIsoFormat != null) {
                                 if (!isHoliday) {
-                                    Calendar calendar = Calendar.getInstance();
-                                    calendar.setTime(isoFormat.parse(formDateAsIsoFormat));
-                                    if (calendar.get(Calendar.DAY_OF_WEEK) == 2) {
+                                    if (isLowerCostDay(isoFormat, formDateAsIsoFormat)) {
                                         reduction = 35;
                                     }
                                 }
@@ -119,6 +117,12 @@ public class Prices {
         });
 
         return connection;
+    }
+
+    private static boolean isLowerCostDay(DateFormat isoFormat, String formDateAsIsoFormat) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(isoFormat.parse(formDateAsIsoFormat));
+        return calendar.get(Calendar.DAY_OF_WEEK) == 2;
     }
 
     private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat, ResultSet holidayResultSet) throws SQLException, ParseException {
