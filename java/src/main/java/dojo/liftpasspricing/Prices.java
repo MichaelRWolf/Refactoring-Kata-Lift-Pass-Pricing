@@ -1,7 +1,5 @@
 package dojo.liftpasspricing;
 
-import spark.Route;
-
 import static spark.Spark.after;
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -13,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -67,15 +66,7 @@ public class Prices {
                                     "SELECT * FROM holidays")) {
                                 try (ResultSet holidays = holidayStmt.executeQuery()) {
 
-                                    while (holidays.next()) {
-                                        Date holiday = holidays.getDate("holiday");
-                                        if (formDateAsIsoFormat != null) {
-                                            Date form_date = isoFormat.parse(formDateAsIsoFormat);
-                                            if (isHoliday(holiday, form_date)) {
-                                                isHoliday = true;
-                                            }
-                                        }
-                                    }
+                                    isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
 
                                 }
                             }
@@ -128,7 +119,20 @@ public class Prices {
         return connection;
     }
 
-    private static boolean isHoliday(Date holiday, Date d) {
+    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat, ResultSet holidays) throws SQLException, ParseException {
+        while (holidays.next()) {
+            Date holiday = holidays.getDate("holiday");
+            if (formDateAsIsoFormat != null) {
+                Date form_date = isoFormat.parse(formDateAsIsoFormat);
+                if (isSpecificHoliday(holiday, form_date)) {
+                                                                isHoliday = true;
+                                                            }
+            }
+        }
+        return isHoliday;
+    }
+
+    private static boolean isSpecificHoliday(Date holiday, Date d) {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
                 d.getDate() == holiday.getDate();
