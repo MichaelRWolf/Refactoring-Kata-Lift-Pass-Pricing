@@ -150,21 +150,22 @@ public class Prices {
     }
 
     private static Object banana(Integer age, ResultSet result, int reduction) throws SQLException {
+        int costFromResultSet = getCost(result);
         if (age == null) {
             double cost;
-            cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
             return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
         }
         if (age < 15) {
-            return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .7) + "}";
+            return "{ \"cost\": " + (int) Math.ceil(costFromResultSet * .7) + "}";
         }
         if (age > 64) {
             double cost;
-            cost = getCost(result) * .75 * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * .75 * intReductionToFloatReducedFraction(reduction);
             return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
         } else {
             double cost;
-            cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
             return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
         }
     }
