@@ -68,7 +68,8 @@ public class Prices {
 
             int reduction;
             if (age == null) {
-                reduction = setReduction(0);
+                int reduction2;
+                reduction2 = 0;
 
                 if (isNight(req)) {
                     return "{ \"cost\": 0}";
@@ -88,7 +89,8 @@ public class Prices {
                 if (formDateAsIsoFormat == null) {
                 } else {
                     if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                        setReduction(35);
+                        int reduction1;
+                        reduction1 = 35;
                     }
                 }
 
@@ -129,12 +131,6 @@ public class Prices {
 
             // TODO apply reduction for others
         }
-    }
-
-    private static int setReduction(int zero) {
-        int reduction;
-        reduction = zero;
-        return reduction;
     }
 
     private static boolean isNight(Request req) {
