@@ -49,74 +49,7 @@ public class Prices {
                     "SELECT cost FROM base_price " + //
                     "WHERE type = ?")) {
                 costStmt.setString(1, req.queryParams("type"));
-                try (ResultSet result = costStmt.executeQuery()) {
-                    result.next();
-
-                    boolean isHoliday = false;
-
-                    int reduction;
-                    if (age == null) {
-                        reduction = setReduction(0);
-
-                        if (isNight(req)) {
-                            return "{ \"cost\": 0}";
-                        }
-                        DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                        String formDateAsIsoFormat = req.queryParams("date");
-                        try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                                "SELECT * FROM holidays")) {
-                            try (ResultSet holidays = holidayStmt.executeQuery()) {
-
-                                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-
-                            }
-                        }
-
-                        if (formDateAsIsoFormat == null) {
-                        } else {
-                            if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                                setReduction(35);
-                            }
-                        }
-
-                        double cost;
-                        cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
-                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                    }
-                    if (age < 6) {
-                        return "{ \"cost\": 0}";
-                    }
-                    reduction = 0;
-
-                    if (isNight(req)) {
-                        if (age > 64) {
-                            return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .4) + "}";
-                        } else {
-                            return "{ \"cost\": " + getCost(result) + "}";
-                        }
-                    }
-                    DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                    String formDateAsIsoFormat = req.queryParams("date");
-                    try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                            "SELECT * FROM holidays")) {
-                        try (ResultSet holidays = holidayStmt.executeQuery()) {
-                            isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-                        }
-                    }
-
-                    if (formDateAsIsoFormat == null) {
-                        return banana(age, result, reduction);
-                    } else {
-                        if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                            reduction = 35;
-                        }
-                        return banana(age, result, reduction);
-                    }
-
-                    // TODO apply reduction for others
-                }
+                return banana_getObject(connection, req, age, costStmt);
             }
         });
 
@@ -125,6 +58,77 @@ public class Prices {
         });
 
         return connection;
+    }
+
+    private static Object banana_getObject(Connection connection, Request req, Integer age, PreparedStatement costStmt) throws SQLException, ParseException {
+        try (ResultSet result = costStmt.executeQuery()) {
+            result.next();
+
+            boolean isHoliday = false;
+
+            int reduction;
+            if (age == null) {
+                reduction = setReduction(0);
+
+                if (isNight(req)) {
+                    return "{ \"cost\": 0}";
+                }
+                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                String formDateAsIsoFormat = req.queryParams("date");
+                try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                        "SELECT * FROM holidays")) {
+                    try (ResultSet holidays = holidayStmt.executeQuery()) {
+
+                        isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+
+                    }
+                }
+
+                if (formDateAsIsoFormat == null) {
+                } else {
+                    if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                        setReduction(35);
+                    }
+                }
+
+                double cost;
+                cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+                return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+            }
+            if (age < 6) {
+                return "{ \"cost\": 0}";
+            }
+            reduction = 0;
+
+            if (isNight(req)) {
+                if (age > 64) {
+                    return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .4) + "}";
+                } else {
+                    return "{ \"cost\": " + getCost(result) + "}";
+                }
+            }
+            DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            String formDateAsIsoFormat = req.queryParams("date");
+            try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                    "SELECT * FROM holidays")) {
+                try (ResultSet holidays = holidayStmt.executeQuery()) {
+                    isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+                }
+            }
+
+            if (formDateAsIsoFormat == null) {
+                return banana(age, result, reduction);
+            } else {
+                if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                    reduction = 35;
+                }
+                return banana(age, result, reduction);
+            }
+
+            // TODO apply reduction for others
+        }
     }
 
     private static int setReduction(int zero) {
