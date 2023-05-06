@@ -1,5 +1,7 @@
 package dojo.liftpasspricing;
 
+import spark.Request;
+
 import static spark.Spark.after;
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -50,64 +52,70 @@ public class Prices {
                 try (ResultSet result = costStmt.executeQuery()) {
                     result.next();
 
-                    int reduction;
                     boolean isHoliday = false;
 
-                    if (age != null && age < 6) {
-                        return "{ \"cost\": 0}";
-                    } else {
-                        reduction = 0;
+                    int reduction;
+                    if (age == null) {
+                        reduction = setReduction(0);
 
-                        if (!req.queryParams("type").equals("night")) {
-                            DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        if (isNight(req)) {
+                            return "{ \"cost\": 0}";
+                        }
+                        DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                            String formDateAsIsoFormat = req.queryParams("date");
-                            try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                                    "SELECT * FROM holidays")) {
-                                try (ResultSet holidays = holidayStmt.executeQuery()) {
+                        String formDateAsIsoFormat = req.queryParams("date");
+                        try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                                "SELECT * FROM holidays")) {
+                            try (ResultSet holidays = holidayStmt.executeQuery()) {
 
-                                    isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+                                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
 
-                                }
-                            }
-
-                            if (formDateAsIsoFormat != null) {
-                                if (!isHoliday) {
-                                    if (isLowerCostDay(isoFormat, formDateAsIsoFormat)) {
-                                        reduction = 35;
-                                    }
-                                }
-                            }
-
-                            // TODO apply reduction for others
-                            if (age != null && age < 15) {
-                                return "{ \"cost\": " + (int) Math.ceil(result.getInt("cost") * .7) + "}";
-                            } else {
-                                if (age == null) {
-                                    double cost = result.getInt("cost") * (1 - reduction / 100.0);
-                                    return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                } else {
-                                    if (age > 64) {
-                                        double cost = result.getInt("cost") * .75 * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                    } else {
-                                        double cost = result.getInt("cost") * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                    }
-                                }
-                            }
-                        } else {
-                            if (age != null && age >= 6) {
-                                if (age > 64) {
-                                    return "{ \"cost\": " + (int) Math.ceil(result.getInt("cost") * .4) + "}";
-                                } else {
-                                    return "{ \"cost\": " + result.getInt("cost") + "}";
-                                }
-                            } else {
-                                return "{ \"cost\": 0}";
                             }
                         }
+
+                        if (formDateAsIsoFormat == null) {
+                        } else {
+                            if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                                setReduction(35);
+                            }
+                        }
+
+                        double cost;
+                        cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     }
+                    if (age < 6) {
+                        return "{ \"cost\": 0}";
+                    }
+                    reduction = 0;
+
+                    if (isNight(req)) {
+                        if (age > 64) {
+                            return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .4) + "}";
+                        } else {
+                            return "{ \"cost\": " + getCost(result) + "}";
+                        }
+                    }
+                    DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                    String formDateAsIsoFormat = req.queryParams("date");
+                    try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                            "SELECT * FROM holidays")) {
+                        try (ResultSet holidays = holidayStmt.executeQuery()) {
+                            isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+                        }
+                    }
+
+                    if (formDateAsIsoFormat == null) {
+                        return banana(age, result, reduction);
+                    } else {
+                        if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                            reduction = 35;
+                        }
+                        return banana(age, result, reduction);
+                    }
+
+                    // TODO apply reduction for others
                 }
             }
         });
@@ -117,6 +125,48 @@ public class Prices {
         });
 
         return connection;
+    }
+
+    private static int setReduction(int zero) {
+        int reduction;
+        reduction = zero;
+        return reduction;
+    }
+
+    private static boolean isNight(Request req) {
+        return req.queryParams("type").equals("night");
+    }
+
+    private static double intReductionToFloatReducedFraction(int reduction) {
+        return 1 - reduction / 100.0;
+    }
+
+    private static int getCost(ResultSet result) throws SQLException {
+        return result.getInt("cost");
+    }
+
+    private static Object banana(Integer age, ResultSet result, int reduction) throws SQLException {
+        if (age == null) {
+            double cost;
+            cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+        }
+        if (age < 15) {
+            return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .7) + "}";
+        }
+        if (age > 64) {
+            double cost;
+            cost = getCost(result) * .75 * intReductionToFloatReducedFraction(reduction);
+            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+        } else {
+            double cost;
+            cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+        }
+    }
+
+    private static boolean isNonHolidayAndIsLowerCostDay(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws ParseException {
+        return !isHoliday && isLowerCostDay(isoFormat, formDateAsIsoFormat);
     }
 
     private static boolean isLowerCostDay(DateFormat isoFormat, String formDateAsIsoFormat) throws ParseException {
