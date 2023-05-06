@@ -150,7 +150,7 @@ public class Prices {
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
         if (age == null) {
-            bananaCost = (int) Math.ceil(costFromResultSet * (1 - reduction / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
@@ -163,7 +163,7 @@ public class Prices {
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         } else {
-            bananaCost = (int) Math.ceil(costFromResultSet * (1 - reduction / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         }
     }
