@@ -93,7 +93,7 @@ public class Prices {
                 }
 
                 double cost;
-                cost = getCost(result) * intReductionToFloatReducedFraction(reduction);
+                cost = getCost(result) * (1 - reduction / 100.0);
                 return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
             }
             if (age < 6) {
@@ -141,10 +141,6 @@ public class Prices {
         return req.queryParams("type").equals("night");
     }
 
-    private static double intReductionToFloatReducedFraction(int reduction) {
-        return 1 - reduction / 100.0;
-    }
-
     private static int getCost(ResultSet result) throws SQLException {
         return result.getInt("cost");
     }
@@ -154,7 +150,7 @@ public class Prices {
         int costFromResultSet = getCost(result);
         if (age == null) {
             double cost;
-            cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * (1 - reduction / 100.0);
             bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         }
@@ -165,12 +161,12 @@ public class Prices {
         if (age > 64) {
             double cost;
             double magicNumber = .75;
-            cost = costFromResultSet * magicNumber * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * magicNumber * (1 - reduction / 100.0);
             bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         } else {
             double cost;
-            cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
+            cost = costFromResultSet * (1 - reduction / 100.0);
             bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         }
