@@ -156,7 +156,8 @@ public class Prices {
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
-            bananaCost = (int) Math.ceil(costFromResultSet * .7);
+            ageFactor = .7;
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor);
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age > 64) {
