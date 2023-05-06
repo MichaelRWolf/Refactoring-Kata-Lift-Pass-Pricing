@@ -154,23 +154,27 @@ public class Prices {
         if (age == null) {
             double cost;
             cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
-            int bananaCost = (int) Math.ceil(cost);
+            int bananaCost;
+            bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
-            int bananaCost = (int) Math.ceil(costFromResultSet * .7);
+            int bananaCost;
+            bananaCost = (int) Math.ceil(costFromResultSet * .7);
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age > 64) {
             double cost;
             cost = costFromResultSet * .75 * intReductionToFloatReducedFraction(reduction);
-            int bananaCost = (int) Math.ceil(cost);
+            int bananaCost;
+            bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         } else {
             double cost;
             cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
-            int banananCost = (int) Math.ceil(cost);
-            return "{ \"cost\": " + banananCost + "}";
+            int bananaCost;
+            bananaCost = (int) Math.ceil(cost);
+            return "{ \"cost\": " + bananaCost + "}";
         }
     }
 
