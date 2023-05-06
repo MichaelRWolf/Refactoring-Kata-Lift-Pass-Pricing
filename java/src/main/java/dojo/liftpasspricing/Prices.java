@@ -148,6 +148,7 @@ public class Prices {
     private static Object banana(Integer age, ResultSet result, int reduction) throws SQLException {
         int bananaCost;
         int costFromResultSet = getCost(result);
+        double ageFactor = 1;
         if (age == null) {
             double cost;
             cost = costFromResultSet * (1 - reduction / 100.0);
@@ -160,7 +161,7 @@ public class Prices {
         }
         if (age > 64) {
             double cost;
-            double ageFactor = .75;
+            ageFactor = .75;
             cost = costFromResultSet * ageFactor * (1 - reduction / 100.0);
             bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
