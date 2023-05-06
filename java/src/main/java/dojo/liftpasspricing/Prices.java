@@ -32,7 +32,7 @@ public class Prices {
 
             try (PreparedStatement stmt = connection.prepareStatement( //
                     "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
-                    "ON DUPLICATE KEY UPDATE cost = ?")) {
+                            "ON DUPLICATE KEY UPDATE cost = ?")) {
                 stmt.setString(1, liftPassType);
                 stmt.setInt(2, liftPassCost);
                 stmt.setInt(3, liftPassCost);
@@ -47,7 +47,7 @@ public class Prices {
 
             try (PreparedStatement costStmt = connection.prepareStatement( //
                     "SELECT cost FROM base_price " + //
-                    "WHERE type = ?")) {
+                            "WHERE type = ?")) {
                 costStmt.setString(1, req.queryParams("type"));
                 return banana_getObject(connection, req, age, costStmt);
             }
@@ -154,7 +154,7 @@ public class Prices {
         if (age == null) {
             double cost;
             cost = costFromResultSet * intReductionToFloatReducedFraction(reduction);
-                int bananaCost = (int) Math.ceil(cost);
+            int bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
@@ -190,8 +190,8 @@ public class Prices {
             if (formDateAsIsoFormat != null) {
                 Date form_date = isoFormat.parse(formDateAsIsoFormat);
                 if (isSpecificHoliday(holiday, form_date)) {
-                                                                isHoliday = true;
-                                                            }
+                    isHoliday = true;
+                }
             }
         }
         return isHoliday;
