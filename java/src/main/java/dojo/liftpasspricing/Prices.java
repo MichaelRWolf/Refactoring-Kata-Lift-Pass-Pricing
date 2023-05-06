@@ -91,6 +91,7 @@ public class Prices {
                     if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
                         int reduction1;
                         reduction1 = 35;
+                        reduction = reduction1;
                     }
                 }
 
