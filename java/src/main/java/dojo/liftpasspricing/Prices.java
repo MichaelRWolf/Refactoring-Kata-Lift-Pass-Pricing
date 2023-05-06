@@ -160,8 +160,8 @@ public class Prices {
         }
         if (age > 64) {
             double cost;
-            double magicNumber = .75;
-            cost = costFromResultSet * magicNumber * (1 - reduction / 100.0);
+            double ageFactor = .75;
+            cost = costFromResultSet * ageFactor * (1 - reduction / 100.0);
             bananaCost = (int) Math.ceil(cost);
             return "{ \"cost\": " + bananaCost + "}";
         } else {
