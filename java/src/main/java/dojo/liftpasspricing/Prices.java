@@ -144,23 +144,27 @@ public class Prices {
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
         if (age == null) {
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
             ageFactor = .7;
             reductionPercentageAsInt = 0;
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age > 64) {
             ageFactor = .75;
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
             return "{ \"cost\": " + bananaCost + "}";
         } else {
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
             return "{ \"cost\": " + bananaCost + "}";
         }
+    }
+
+    private static double reductionAsIntToFactorAsFloat(int reductionPercentageAsInt) {
+        return 1 - reductionPercentageAsInt / 100.0;
     }
 
     private static boolean isNonHolidayAndIsLowerCostDay(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws ParseException {
