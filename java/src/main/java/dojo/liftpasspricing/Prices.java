@@ -70,6 +70,7 @@ public class Prices {
             if (age == null) {
                 int reduction2;
                 reduction2 = 0;
+                reduction = reduction2;
 
                 if (isNight(req)) {
                     return "{ \"cost\": 0}";
