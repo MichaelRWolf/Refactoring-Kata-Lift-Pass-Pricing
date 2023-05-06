@@ -139,26 +139,26 @@ public class Prices {
         return result.getInt("cost");
     }
 
-    private static Object banana(Integer age, ResultSet result, int reduction) throws SQLException {
+    private static Object banana(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
         int bananaCost;
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
         if (age == null) {
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age < 15) {
             ageFactor = .7;
-            reduction = 0;
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
+            reductionPercentageAsInt = 0;
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         }
         if (age > 64) {
             ageFactor = .75;
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         } else {
-            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reduction / 100.0));
+            bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * (1 - reductionPercentageAsInt / 100.0));
             return "{ \"cost\": " + bananaCost + "}";
         }
     }
