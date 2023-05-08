@@ -68,11 +68,12 @@ public class Prices {
 
             int reduction = 0;
             int costBase = getCost(result);
+            int elderberryCost = 0;
+
             if (age == null) {
 
                 if (isNight(req)) {
-                    int bananaCost = 0;
-                    return dewberry_fn(bananaCost)
+                    return dewberry_fn(elderberryCost)
                 }
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -87,12 +88,12 @@ public class Prices {
 
                 double cost;
                 cost = costBase * reductionAsIntToFactorAsFloat(reduction);
-                int bananaCost = getCeil(cost);
-                return dewberry_fn(bananaCost);
+                elderberryCost = getCeil(cost);
+                return dewberry_fn(elderberryCost);
             }
             if (age < 6) {
-                int bananaCost = 0;
-                return dewberry_fn(bananaCost)
+                elderberryCost = 0;
+                return dewberry_fn(elderberryCost)
             }
 
             if (isNight(req)) {
@@ -100,8 +101,8 @@ public class Prices {
                     int bananaCost = getCeil(costBase * .4);
                     return dewberry_fn(bananaCost);
                 } else {
-                    int bananaCost = costBase;
-                    return dewberry_fn(bananaCost);
+                    elderberryCost = costBase;
+                    return dewberry_fn(elderberryCost);
                 }
             }
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
