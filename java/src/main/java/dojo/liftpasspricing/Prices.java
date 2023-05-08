@@ -71,7 +71,6 @@ public class Prices {
             int elderberryCost = 0;
 
             if (age == null) {
-
                 if (isNight(req)) {
                     return dewberry_fn(elderberryCost)
                 } else {
@@ -106,6 +105,8 @@ public class Prices {
                     return dewberry_fn(elderberryCost);
                 }
             }
+            
+            
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             String formDateAsIsoFormat = req.queryParams("date");
