@@ -104,14 +104,12 @@ public class Prices {
             String formDateAsIsoFormat = req.queryParams("date");
             isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
 
-            if (formDateAsIsoFormat == null) {
-                return banana_fn(age, result, reduction);
-            } else {
+            if (formDateAsIsoFormat != null) {
                 if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
                     reduction = 35;
                 }
-                return banana_fn(age, result, reduction);
             }
+            return banana_fn(age, result, reduction);
 
             // TODO apply reduction for others
         }
