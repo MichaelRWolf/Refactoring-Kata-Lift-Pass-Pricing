@@ -69,6 +69,7 @@ public class Prices {
             int reduction = 0;
             int costBase = getCost(result);
             int elderberryCost = 0;
+            int elderberryCost2;
 
             if (age == null) {
                 if (isNight(req)) {
@@ -97,21 +98,15 @@ public class Prices {
             }
 
             if (age > 64) {
-                String elderberryCost1 = null;
-                int elderberryCost2;
                 if (isNight(req)) {
-                    elderberryCost2 = getCeil(costBase * .4);
-                    elderberryCost1 = dewberry_fn(elderberryCost2);
+                    elderberryCost = getCeil(costBase * .4);
+                    return dewberry_fn(elderberryCost);
                 }
-                if (elderberryCost1 != null) return elderberryCost1;
             } else {
-                String elderberryCost1 = null;
-                int elderberryCost2;
                 if (isNight(req)) {
-                    elderberryCost2 = costBase;
-                    elderberryCost1 = dewberry_fn(elderberryCost2);
+                    elderberryCost = costBase;
+                    return dewberry_fn(elderberryCost);
                 }
-                if (elderberryCost1 != null) return elderberryCost1;
             }
 
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
