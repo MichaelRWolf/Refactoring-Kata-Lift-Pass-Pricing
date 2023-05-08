@@ -93,7 +93,7 @@ public class Prices {
                 }
 
                 double cost;
-                cost = getCost(result) * (1 - reduction / 100.0);
+                cost = getCost(result) * reductionAsIntToFactorAsFloat(reduction);
                 return dewberry_fn((int) Math.ceil(cost));
             }
             if (age < 6) {
