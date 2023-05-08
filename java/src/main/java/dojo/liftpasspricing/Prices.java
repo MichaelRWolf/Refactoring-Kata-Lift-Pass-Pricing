@@ -98,15 +98,14 @@ public class Prices {
 
             if (isNight(req)) {
                 if (age > 64) {
-                    int bananaCost = getCeil(costBase * .4);
-                    return dewberry_fn(bananaCost);
+                    elderberryCost = getCeil(costBase * .4);
                 } else {
                     elderberryCost = costBase;
-                    return dewberry_fn(elderberryCost);
                 }
+                return dewberry_fn(elderberryCost);
             }
-            
-            
+
+
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             String formDateAsIsoFormat = req.queryParams("date");
