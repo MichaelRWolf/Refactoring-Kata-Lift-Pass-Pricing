@@ -87,7 +87,7 @@ public class Prices {
 
                 double cost;
                 cost = costBase * reductionAsIntToFactorAsFloat(reduction);
-                return dewberry_fn((int) Math.ceil(cost));
+                return dewberry_fn(getCeil(cost));
             }
             if (age < 6) {
                 return dewberry_fn(0)
@@ -95,7 +95,7 @@ public class Prices {
 
             if (isNight(req)) {
                 if (age > 64) {
-                    return dewberry_fn((int) Math.ceil(costBase * .4));
+                    return dewberry_fn(getCeil(costBase * .4));
                 } else {
                     return dewberry_fn(costBase);
                 }
@@ -114,6 +114,10 @@ public class Prices {
 
             // TODO apply reduction for others
         }
+    }
+
+    private static int getCeil(double cost) {
+        return (int) Math.ceil(cost);
     }
 
     private static boolean isHolidayFromConnection_and_other_params(Connection connection, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
@@ -150,7 +154,7 @@ public class Prices {
             }
         }
 
-        bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
+        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
         return dewberry_fn(bananaCost);
     }
 
