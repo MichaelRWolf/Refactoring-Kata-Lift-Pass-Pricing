@@ -66,9 +66,8 @@ public class Prices {
 
             boolean isHoliday = false;
 
-            int reduction;
+            int reduction = 0;
             if (age == null) {
-                reduction = 0;
 
                 if (isNight(req)) {
                     return dewberry_fn(0)
@@ -92,7 +91,6 @@ public class Prices {
             if (age < 6) {
                 return dewberry_fn(0)
             }
-            reduction = 0;
 
             if (isNight(req)) {
                 if (age > 64) {
