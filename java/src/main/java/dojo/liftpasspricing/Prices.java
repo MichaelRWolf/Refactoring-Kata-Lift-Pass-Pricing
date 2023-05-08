@@ -146,13 +146,11 @@ public class Prices {
 
         if (age == null) {
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-        }
-        if (age < 15) {
+        } else if (age < 15) {
             ageFactor = .7;
             reductionPercentageAsInt = 0;
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-        }
-        if (age > 64) {
+        } else if (age > 64) {
             ageFactor = .75;
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
         } else {
