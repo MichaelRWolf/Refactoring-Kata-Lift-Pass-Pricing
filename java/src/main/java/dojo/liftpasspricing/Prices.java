@@ -96,15 +96,23 @@ public class Prices {
                 return dewberry_fn(elderberryCost)
             }
 
-            if (isNight(req)) {
-                if (age > 64) {
-                    elderberryCost = getCeil(costBase * .4);
-                } else {
-                    elderberryCost = costBase;
+            if (age > 64) {
+                String elderberryCost1 = null;
+                int elderberryCost2;
+                if (isNight(req)) {
+                    elderberryCost2 = getCeil(costBase * .4);
+                    elderberryCost1 = dewberry_fn(elderberryCost2);
                 }
-                return dewberry_fn(elderberryCost);
+                if (elderberryCost1 != null) return elderberryCost1;
+            } else {
+                String elderberryCost1 = null;
+                int elderberryCost2;
+                if (isNight(req)) {
+                    elderberryCost2 = costBase;
+                    elderberryCost1 = dewberry_fn(elderberryCost2);
+                }
+                if (elderberryCost1 != null) return elderberryCost1;
             }
-
 
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -126,7 +134,8 @@ public class Prices {
         return (int) Math.ceil(cost);
     }
 
-    private static boolean isHolidayFromConnection_and_other_params(Connection connection, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+    private static boolean isHolidayFromConnection_and_other_params(Connection connection,
+                                                                    boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
         try (PreparedStatement holidayStmt = connection.prepareStatement( //
                 "SELECT * FROM holidays")) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
@@ -172,7 +181,8 @@ public class Prices {
         return 1 - reductionPercentageAsInt / 100.0;
     }
 
-    private static boolean isNonHolidayAndIsLowerCostDay(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws ParseException {
+    private static boolean isNonHolidayAndIsLowerCostDay(boolean isHoliday, DateFormat isoFormat, String
+            formDateAsIsoFormat) throws ParseException {
         return !isHoliday && isLowerCostDay(isoFormat, formDateAsIsoFormat);
     }
 
@@ -182,7 +192,8 @@ public class Prices {
         return calendar.get(Calendar.DAY_OF_WEEK) == 2;
     }
 
-    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat, ResultSet holidayResultSet) throws SQLException, ParseException {
+    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String
+            formDateAsIsoFormat, ResultSet holidayResultSet) throws SQLException, ParseException {
         while (holidayResultSet.next()) {
             Date holiday = holidayResultSet.getDate("holiday");
             if (formDateAsIsoFormat != null) {
