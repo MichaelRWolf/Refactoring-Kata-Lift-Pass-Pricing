@@ -144,13 +144,15 @@ public class Prices {
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
 
-        if (age == null) {
-        } else if (age < 15) {
-            ageFactor = .7;
-            reductionPercentageAsInt = 0;
-        } else if (age > 64) {
-            ageFactor = .75;
+        if (age != null) {
+            if (age < 15) {
+                ageFactor = .7;
+                reductionPercentageAsInt = 0;
+            } else if (age > 64) {
+                ageFactor = .75;
+            }
         }
+
         bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
         return dewberry_fn(bananaCost);
     }
