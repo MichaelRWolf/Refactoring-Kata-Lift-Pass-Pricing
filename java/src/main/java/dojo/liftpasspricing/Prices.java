@@ -74,22 +74,23 @@ public class Prices {
 
                 if (isNight(req)) {
                     return dewberry_fn(elderberryCost)
-                }
-                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+                } else {
+                    DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                String formDateAsIsoFormat = req.queryParams("date");
-                isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
+                    String formDateAsIsoFormat = req.queryParams("date");
+                    isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
 
-                if (formDateAsIsoFormat != null) {
-                    if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                        reduction = 35;
+                    if (formDateAsIsoFormat != null) {
+                        if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                            reduction = 35;
+                        }
                     }
-                }
 
-                double cost;
-                cost = costBase * reductionAsIntToFactorAsFloat(reduction);
-                elderberryCost = getCeil(cost);
-                return dewberry_fn(elderberryCost);
+                    double cost;
+                    cost = costBase * reductionAsIntToFactorAsFloat(reduction);
+                    elderberryCost = getCeil(cost);
+                    return dewberry_fn(elderberryCost);
+                }
             }
             if (age < 6) {
                 elderberryCost = 0;
