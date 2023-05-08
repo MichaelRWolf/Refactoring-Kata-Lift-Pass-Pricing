@@ -71,7 +71,7 @@ public class Prices {
                 reduction = 0;
 
                 if (isNight(req)) {
-                    return "{ \"cost\": 0}";
+                    return dewberry_fn(0)
                 }
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -97,7 +97,7 @@ public class Prices {
                 return dewberry_fn((int) Math.ceil(cost));
             }
             if (age < 6) {
-                return "{ \"cost\": 0}";
+                return dewberry_fn(0)
             }
             reduction = 0;
 
