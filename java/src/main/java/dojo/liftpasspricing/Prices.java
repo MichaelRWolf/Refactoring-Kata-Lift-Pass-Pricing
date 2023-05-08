@@ -94,7 +94,7 @@ public class Prices {
 
                 double cost;
                 cost = getCost(result) * (1 - reduction / 100.0);
-                return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                return dewberry_fn((int) Math.ceil(cost));
             }
             if (age < 6) {
                 return "{ \"cost\": 0}";
@@ -103,9 +103,9 @@ public class Prices {
 
             if (isNight(req)) {
                 if (age > 64) {
-                    return "{ \"cost\": " + (int) Math.ceil(getCost(result) * .4) + "}";
+                    return dewberry_fn((int) Math.ceil(getCost(result) * .4));
                 } else {
-                    return "{ \"cost\": " + getCost(result) + "}";
+                    return dewberry_fn(getCost(result));
                 }
             }
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -145,22 +145,26 @@ public class Prices {
         double ageFactor = 1;
         if (age == null) {
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-            return "{ \"cost\": " + bananaCost + "}";
+            return dewberry_fn(bananaCost);
         }
         if (age < 15) {
             ageFactor = .7;
             reductionPercentageAsInt = 0;
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-            return "{ \"cost\": " + bananaCost + "}";
+            return dewberry_fn(bananaCost);
         }
         if (age > 64) {
             ageFactor = .75;
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-            return "{ \"cost\": " + bananaCost + "}";
+            return dewberry_fn(bananaCost);
         } else {
             bananaCost = (int) Math.ceil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-            return "{ \"cost\": " + bananaCost + "}";
+            return dewberry_fn(bananaCost);
         }
+    }
+
+    private static String dewberry_fn(int bananaCost) {
+        return "{ \"cost\": " + bananaCost + "}";
     }
 
     private static double reductionAsIntToFactorAsFloat(int reductionPercentageAsInt) {
