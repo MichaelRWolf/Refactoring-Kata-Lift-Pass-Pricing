@@ -76,14 +76,7 @@ public class Prices {
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 String formDateAsIsoFormat = req.queryParams("date");
-                try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                        "SELECT * FROM holidays")) {
-                    try (ResultSet holidays = holidayStmt.executeQuery()) {
-
-                        isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-
-                    }
-                }
+                isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
 
                 if (formDateAsIsoFormat == null) {
                 } else {
@@ -111,12 +104,7 @@ public class Prices {
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             String formDateAsIsoFormat = req.queryParams("date");
-            try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                    "SELECT * FROM holidays")) {
-                try (ResultSet holidays = holidayStmt.executeQuery()) {
-                    isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-                }
-            }
+            isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
 
             if (formDateAsIsoFormat == null) {
                 return banana_fn(age, result, reduction);
@@ -129,6 +117,18 @@ public class Prices {
 
             // TODO apply reduction for others
         }
+    }
+
+    private static boolean isHolidayFromConnection_and_other_params(Connection connection, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+        try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                "SELECT * FROM holidays")) {
+            try (ResultSet holidays = holidayStmt.executeQuery()) {
+
+                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+
+            }
+        }
+        return isHolidaºy;
     }
 
     private static boolean isNight(Request req) {
