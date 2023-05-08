@@ -67,6 +67,7 @@ public class Prices {
             boolean isHoliday = false;
 
             int reduction = 0;
+            int costBase = getCost(result);
             if (age == null) {
 
                 if (isNight(req)) {
@@ -85,7 +86,7 @@ public class Prices {
                 }
 
                 double cost;
-                cost = getCost(result) * reductionAsIntToFactorAsFloat(reduction);
+                cost = costBase * reductionAsIntToFactorAsFloat(reduction);
                 return dewberry_fn((int) Math.ceil(cost));
             }
             if (age < 6) {
@@ -94,9 +95,9 @@ public class Prices {
 
             if (isNight(req)) {
                 if (age > 64) {
-                    return dewberry_fn((int) Math.ceil(getCost(result) * .4));
+                    return dewberry_fn((int) Math.ceil(costBase * .4));
                 } else {
-                    return dewberry_fn(getCost(result));
+                    return dewberry_fn(costBase);
                 }
             }
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
