@@ -119,12 +119,12 @@ public class Prices {
             }
 
             if (formDateAsIsoFormat == null) {
-                return banana(age, result, reduction);
+                return banana_fn(age, result, reduction);
             } else {
                 if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
                     reduction = 35;
                 }
-                return banana(age, result, reduction);
+                return banana_fn(age, result, reduction);
             }
 
             // TODO apply reduction for others
@@ -139,7 +139,7 @@ public class Prices {
         return result.getInt("cost");
     }
 
-    private static Object banana(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
+    private static Object banana_fn(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
         int bananaCost;
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
