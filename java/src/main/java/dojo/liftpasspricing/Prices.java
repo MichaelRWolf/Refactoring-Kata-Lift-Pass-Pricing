@@ -22,7 +22,12 @@ public class Prices {
 
     public static Connection createApp() throws SQLException {
 
-        final Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lift_pass", "root", "mysql");
+        final Connection connection =
+                DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/lift_pass",
+                        "root",
+                        "mysql"
+                );
 
         port(4567);
 
