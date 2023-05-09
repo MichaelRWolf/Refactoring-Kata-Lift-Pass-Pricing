@@ -78,11 +78,12 @@ public class Prices {
 
             int reduction = 0;
             int costBase = getCost(result);
-            int elderberryCost = 0;
+            int elderberryCost;
             int elderberryCost2;
 
             if (age == null) {
                 if (isNight(req)) {
+                    elderberryCost = 0;
                     return stringyObjectWithCostMember(elderberryCost)
                 } else {
                     DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -156,7 +157,7 @@ public class Prices {
                 isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
             }
         }
-        return isHolidaºy;
+        return isHoliday;
     }
 
     private static boolean isNight(Request req) {
