@@ -96,7 +96,8 @@ public class Prices {
                 return dewberry_fn(elderberryCost)
             } else if (age > 64) {
                 if (isNight(req)) {
-                    elderberryCost = getCeil(costBase * .4);
+                     double magicNumber = .4;
+                    elderberryCost = getCeil(costBase * magicNumber);
                     return dewberry_fn(elderberryCost);
                 }
             } else {
