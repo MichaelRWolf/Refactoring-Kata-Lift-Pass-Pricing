@@ -96,7 +96,7 @@ public class Prices {
                 return stringyObjectWithCostMember(elderberryCost)
             } else if (age > 64) {
                 if (isNight(req)) {
-                     double magicNumber = .4;
+                    double magicNumber = .4;
                     elderberryCost = getCeil(costBase * magicNumber);
                     return stringyObjectWithCostMember(elderberryCost);
                 }
@@ -128,7 +128,10 @@ public class Prices {
     }
 
     private static boolean isHolidayFromConnection_and_other_params(Connection connection,
-                                                                    boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+                                                                    boolean isHoliday,
+                                                                    DateFormat isoFormat,
+                                                                    String formDateAsIsoFormat)
+            throws SQLException, ParseException {
         try (PreparedStatement holidayStmt = connection.prepareStatement( //
                 "SELECT * FROM holidays")) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
