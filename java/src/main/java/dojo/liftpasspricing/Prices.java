@@ -211,7 +211,7 @@ public class Prices {
             Date holiday = holidayResultSet.getDate("holiday");
             if (formDateAsIsoFormat != null) {
                 Date form_date = isoFormat.parse(formDateAsIsoFormat);
-                if (isSpecificHoliday(holiday, form_date)) {
+                if (areDatesEqual(holiday, form_date)) {
                     isHoliday = true;
                 }
             }
@@ -219,7 +219,7 @@ public class Prices {
         return isHoliday;
     }
 
-    private static boolean isSpecificHoliday(Date holiday, Date d) {
+    private static boolean areDatesEqual(Date holiday, Date d) {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
                 d.getDate() == holiday.getDate();
