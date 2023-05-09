@@ -97,7 +97,8 @@ public class Prices {
             } else if (age > 64) {
                 if (isNight(req)) {
                     double magicNumber = .4;
-                    elderberryCost = getCeil(costBase * magicNumber);
+                    double elderNightCost = costBase * magicNumber;
+                    elderberryCost = getCeil(elderNightCost);
                     return stringyObjectWithCostMember(elderberryCost);
                 }
             } else {
