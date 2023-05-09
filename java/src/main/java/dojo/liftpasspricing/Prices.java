@@ -73,7 +73,7 @@ public class Prices {
 
             if (age == null) {
                 if (isNight(req)) {
-                    return dewberry_fn(elderberryCost)
+                    return stringyObjectWithCostMember(elderberryCost)
                 } else {
                     DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -89,21 +89,21 @@ public class Prices {
                     double cost;
                     cost = costBase * reductionAsIntToFactorAsFloat(reduction);
                     elderberryCost = getCeil(cost);
-                    return dewberry_fn(elderberryCost);
+                    return stringyObjectWithCostMember(elderberryCost);
                 }
             } else if (age < 6) {
                 elderberryCost = 0;
-                return dewberry_fn(elderberryCost)
+                return stringyObjectWithCostMember(elderberryCost)
             } else if (age > 64) {
                 if (isNight(req)) {
                      double magicNumber = .4;
                     elderberryCost = getCeil(costBase * magicNumber);
-                    return dewberry_fn(elderberryCost);
+                    return stringyObjectWithCostMember(elderberryCost);
                 }
             } else {
                 if (isNight(req)) {
                     elderberryCost = costBase;
-                    return dewberry_fn(elderberryCost);
+                    return stringyObjectWithCostMember(elderberryCost);
                 }
             }
 
@@ -163,10 +163,10 @@ public class Prices {
         }
 
         bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-        return dewberry_fn(bananaCost);
+        return stringyObjectWithCostMember(bananaCost);
     }
 
-    private static String dewberry_fn(int bananaCost) {
+    private static String stringyObjectWithCostMember(int bananaCost) {
         return "{ \"cost\": " + bananaCost + "}";
     }
 
