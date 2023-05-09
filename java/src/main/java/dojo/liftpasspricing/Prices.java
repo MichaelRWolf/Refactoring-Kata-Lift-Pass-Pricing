@@ -20,6 +20,15 @@ import java.util.Date;
 
 public class Prices {
 
+    public static final String SQL_INSERT_type_cost =
+            "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
+                    "ON DUPLICATE KEY UPDATE cost = ?";
+    public static final String SQL_SELECT_cost =
+            "SELECT cost FROM base_price " + //
+                    "WHERE type = ?";
+    public static final String SELECT_ALL_FROM_HOLIDAYS =
+            "SELECT * FROM holidays";
+
     public static Connection createApp() throws SQLException {
 
         final Connection connection =
@@ -35,9 +44,7 @@ public class Prices {
             int liftPassCost = Integer.parseInt(req.queryParams("cost"));
             String liftPassType = req.queryParams("type");
 
-            try (PreparedStatement stmt = connection.prepareStatement( //
-                    "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
-                            "ON DUPLICATE KEY UPDATE cost = ?")) {
+            try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT_type_cost)) {
                 stmt.setString(1, liftPassType);
                 stmt.setInt(2, liftPassCost);
                 stmt.setInt(3, liftPassCost);
@@ -50,9 +57,7 @@ public class Prices {
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
 
-            try (PreparedStatement costStmt = connection.prepareStatement( //
-                    "SELECT cost FROM base_price " + //
-                            "WHERE type = ?")) {
+            try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
                 costStmt.setString(1, req.queryParams("type"));
                 return banana_getObject(connection, req, age, costStmt);
             }
@@ -83,7 +88,12 @@ public class Prices {
                     DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                     String formDateAsIsoFormat = req.queryParams("date");
-                    isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
+                    isHoliday = isHolidayFromConnection_and_other_params(
+                            connection,
+                            isHoliday,
+                            isoFormat,
+                            formDateAsIsoFormat
+                    );
 
                     if (formDateAsIsoFormat != null) {
                         if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
@@ -116,7 +126,10 @@ public class Prices {
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             String formDateAsIsoFormat = req.queryParams("date");
-            isHoliday = isHolidayFromConnection_and_other_params(connection, isHoliday, isoFormat, formDateAsIsoFormat);
+            isHoliday = isHolidayFromConnection_and_other_params(connection,
+                    isHoliday,
+                    isoFormat,
+                    formDateAsIsoFormat);
 
             if (formDateAsIsoFormat != null) {
                 if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
@@ -138,12 +151,9 @@ public class Prices {
                                                                     DateFormat isoFormat,
                                                                     String formDateAsIsoFormat)
             throws SQLException, ParseException {
-        try (PreparedStatement holidayStmt = connection.prepareStatement( //
-                "SELECT * FROM holidays")) {
+        try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
-
                 isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-
             }
         }
         return isHolidaºy;
