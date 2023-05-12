@@ -1,3 +1,11 @@
+# Need custom Dockerfile to install some basic tooling:
+# apt install mariadb-client
+# apt install maven
+# apt install vim
+
+# Enter the container using:
+#     docker exec -it lift-kata-gitpod-1 /bin/bash
+
 version: "3"
 networks:
   development_network:
