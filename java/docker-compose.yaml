@@ -24,5 +24,4 @@ services:
       - development_network
     depends_on:
       - mariadb
-
-# missing an entry point so that the ubuntu image stays running
+    tty: true
