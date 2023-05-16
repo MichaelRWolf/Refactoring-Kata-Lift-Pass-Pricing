@@ -17,6 +17,54 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
+/*
+* TODO
+*
+* factor     ::== [0 ..   1]
+* percentage ::== [0 .. 100]
+*
+* percentage = 100 * factor
+* factor = percentage / 100
+*
+* priceAdjusted = priceBsse + priceAdjustment        # priceBase.adjustByAmount(priceAdjustment)
+* priceAdjusted = priceBase - priceDecrease          # priceBase.reduceByAmount(priceDecrease)
+* priceAdjusted = priceBase + priceIncrease          # priceBase.increaseByAmount(priceIncrease)
+*
+*
+* priceFactor       = priceAdjusted       / priceBase  * ??? priceBase.priceFactor(priceAdjusted) ???
+* priceFactorForAge = priceAdjustedForAge / priceBase
+* 0.75              =                 150 / 200
+*
+* priceAdjusted       = priceBase * priceFactor
+* priceAdjustedForAge = priceBase * priceFactorForAge  # priceBase.adjustByFactor(priceFactorForAge)
+* 150                 =       200 * 0.75               # priceBase.adjustByFactor(0.75)
+*
+* priceAdjustmentPercent = priceFactor * 100 - 100
+* -25                     =       0.75 * 100 - 100
+*
+* priceAdjustmentPercent = 100 * (priceFactor - 1)
+* -25                    = 100 * (       0.75 - 1)
+*
+* priceAdjustmentPercent = 100 *  (priceAdjusted / priceBase - 1)
+* -25                    = 100 *  (          150 / 200       - 1)
+*
+* priceAdjustmentPercent = 100 * priceAdjected / priceBase - 100
+* -25                    = 100 *           150 / 200       - 100
+*
+*
+* priceAdjusted = priceBase * (priceAdjustmentPercent + 100) / 100
+* 150                   200 * (                   -25 + 100) / 100   # basePrice.adjustByPercent(-25)
+*                                                                    # basePrice.decreaseByPercent(25)
+*
+*
+* priceIncreasePercent = - priceAdjustmentPercent
+*                   25 = - -25
+*
+* priceDecreasePercent = + priceAdjustmentPercent
+*                  -25 = + -25
+*
+*/
 public class Prices {
 
     public static Connection createApp() throws SQLException {
