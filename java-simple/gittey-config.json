@@ -23,7 +23,7 @@
             "***": "Does not compile -- intermediate step"
         }
     },
-    "verboseMode": false,
+    "verboseMode": true,
     "aliases": [],
     "collaborators": []
 }
