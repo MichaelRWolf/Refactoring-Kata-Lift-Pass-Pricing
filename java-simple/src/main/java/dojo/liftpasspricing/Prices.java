@@ -121,7 +121,7 @@ public class Prices {
                         }
                     }
 
-                    int reduction = 0;
+                    int priceReductionPercent = 0;
                     boolean isHoliday = false;
                     for (Date holiday : holidaysDates) {
                         if (req.queryParams("date") != null) {
@@ -138,7 +138,7 @@ public class Prices {
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(isoFormat.parse(req.queryParams("date")));
                         if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
-                            reduction = 35;
+                            priceReductionPercent = 35;
                         }
                     }
 
@@ -147,14 +147,14 @@ public class Prices {
                         return "{ \"cost\": " + (int) Math.ceil(basePrice * .7) + "}";
                     } else {
                         if (age == null) {
-                            double cost = basePrice * (1 - reduction / 100.0);
+                            double cost = basePrice * (1 - priceReductionPercent / 100.0);
                             return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                         } else {
                             if (age > 64) {
-                                double cost = basePrice * .75 * (1 - reduction / 100.0);
+                                double cost = basePrice * .75 * (1 - priceReductionPercent / 100.0);
                                 return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                             } else {
-                                double cost = basePrice * (1 - reduction / 100.0);
+                                double cost = basePrice * (1 - priceReductionPercent / 100.0);
                                 return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                             }
                         }
