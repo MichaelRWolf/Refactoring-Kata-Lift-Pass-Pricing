@@ -1,14 +1,15 @@
 package dojo.liftpasspricing;
 
+
 public class RateCalculator {
-    private Rates rates;
+    private Prices prices;
 
     public RateCalculator() {
-        rates = new Rates();
+        prices = new Prices();
     }
 
     public float getBaseRate() {
-        String baseRateJson = rates.getBaseRateJSON();
+        String baseRateJson = prices.getBaseRateJSON();
         float baseRate = parseBaseRateFromJson(baseRateJson);
         return baseRate;
     }
