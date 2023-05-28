@@ -1,15 +1,6 @@
 package dojo.liftpasspricing;
 
-import static spark.Spark.after;
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.put;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,7 +41,7 @@ import static spark.Spark.*;
  * priceAdjustmentPercent = 100 *  (priceAdjusted / priceBase - 1)
  * -25                    = 100 *  (          150 / 200       - 1)
  *
- * priceAdjustmentPercent = 100 * priceAdjected / priceBase - 100
+ * priceAdjustmentPercent = 100 * priceAdjusted / priceBase - 100
  * -25                    = 100 *           150 / 200       - 100
  *
  *
@@ -211,20 +202,3 @@ public class Prices {
 }
 
 
-    public RateCalculator() {
-        rates = new Rates();
-    }
-
-    public float getBaseRate() {
-        String baseRateJson = rates.getBaseRateJSON();
-        float baseRate = parseBaseRateFromJson(baseRateJson);
-        return baseRate;
-    }
-
-    private float parseBaseRateFromJson(String baseRateJson) {
-        JsonParser parser = new JsonParser();
-        JsonObject jsonObject = parser.parse(baseRateJson).getAsJsonObject();
-        float cost = jsonObject.get("cost").getAsFloat();
-        return cost;
-    }
-}
