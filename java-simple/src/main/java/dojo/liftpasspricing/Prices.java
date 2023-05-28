@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static spark.Spark.*;
 
 /*
  * TODO
@@ -27,7 +28,7 @@ import java.util.List;
  * percentage = 100 * factor
  * factor = percentage / 100
  *
- * priceAdjusted = priceBsse + priceAdjustment        # priceBase.adjustByAmount(priceAdjustment)
+ * priceAdjusted = priceBase + priceAdjustment        # priceBase.adjustByAmount(priceAdjustment)
  * priceAdjusted = priceBase - priceDecrease          # priceBase.reduceByAmount(priceDecrease)
  * priceAdjusted = priceBase + priceIncrease          # priceBase.increaseByAmount(priceIncrease)
  *
@@ -209,11 +210,6 @@ public class Prices {
 
 }
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-public class RateCalculator {
-    private Rates rates;
 
     public RateCalculator() {
         rates = new Rates();
