@@ -199,6 +199,9 @@ public class Prices {
         return connection;
     }
 
+    public String getBaseRateJSON() {
+        return "{ \"cost\": 999}";
+    }
 }
 
 
