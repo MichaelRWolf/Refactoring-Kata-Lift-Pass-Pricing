@@ -19,52 +19,79 @@ import java.util.List;
 
 
 /*
-* TODO
-*
-* factor     ::== [0 ..   1]
-* percentage ::== [0 .. 100]
-*
-* percentage = 100 * factor
-* factor = percentage / 100
-*
-* priceAdjusted = priceBsse + priceAdjustment        # priceBase.adjustByAmount(priceAdjustment)
-* priceAdjusted = priceBase - priceDecrease          # priceBase.reduceByAmount(priceDecrease)
-* priceAdjusted = priceBase + priceIncrease          # priceBase.increaseByAmount(priceIncrease)
-*
-*
-* priceFactor       = priceAdjusted       / priceBase  * ??? priceBase.priceFactor(priceAdjusted) ???
-* priceFactorForAge = priceAdjustedForAge / priceBase
-* 0.75              =                 150 / 200
-*
-* priceAdjusted       = priceBase * priceFactor
-* priceAdjustedForAge = priceBase * priceFactorForAge  # priceBase.adjustByFactor(priceFactorForAge)
-* 150                 =       200 * 0.75               # priceBase.adjustByFactor(0.75)
-*
-* priceAdjustmentPercent = priceFactor * 100 - 100
-* -25                     =       0.75 * 100 - 100
-*
-* priceAdjustmentPercent = 100 * (priceFactor - 1)
-* -25                    = 100 * (       0.75 - 1)
-*
-* priceAdjustmentPercent = 100 *  (priceAdjusted / priceBase - 1)
-* -25                    = 100 *  (          150 / 200       - 1)
-*
-* priceAdjustmentPercent = 100 * priceAdjected / priceBase - 100
-* -25                    = 100 *           150 / 200       - 100
-*
-*
-* priceAdjusted = priceBase * (priceAdjustmentPercent + 100) / 100
-* 150                   200 * (                   -25 + 100) / 100   # basePrice.adjustByPercent(-25)
-*                                                                    # basePrice.decreaseByPercent(25)
-*
-*
-* priceIncreasePercent = - priceAdjustmentPercent
-*                   25 = - -25
-*
-* priceDecreasePercent = + priceAdjustmentPercent
-*                  -25 = + -25
-*
-*/
+ * TODO
+ *
+ * factor     ::== [0 ..   1]
+ * percentage ::== [0 .. 100]
+ *
+ * percentage = 100 * factor
+ * factor = percentage / 100
+ *
+ * priceAdjusted = priceBsse + priceAdjustment        # priceBase.adjustByAmount(priceAdjustment)
+ * priceAdjusted = priceBase - priceDecrease          # priceBase.reduceByAmount(priceDecrease)
+ * priceAdjusted = priceBase + priceIncrease          # priceBase.increaseByAmount(priceIncrease)
+ *
+ *
+ * priceFactor       = priceAdjusted       / priceBase  * ??? priceBase.priceFactor(priceAdjusted) ???
+ * priceFactorForAge = priceAdjustedForAge / priceBase
+ * 0.75              =                 150 / 200
+ *
+ * priceAdjusted       = priceBase * priceFactor
+ * priceAdjustedForAge = priceBase * priceFactorForAge  # priceBase.adjustByFactor(priceFactorForAge)
+ * 150                 =       200 * 0.75               # priceBase.adjustByFactor(0.75)
+ *
+ * priceAdjustmentPercent = priceFactor * 100 - 100
+ * -25                     =       0.75 * 100 - 100
+ *
+ * priceAdjustmentPercent = 100 * (priceFactor - 1)
+ * -25                    = 100 * (       0.75 - 1)
+ *
+ * priceAdjustmentPercent = 100 *  (priceAdjusted / priceBase - 1)
+ * -25                    = 100 *  (          150 / 200       - 1)
+ *
+ * priceAdjustmentPercent = 100 * priceAdjected / priceBase - 100
+ * -25                    = 100 *           150 / 200       - 100
+ *
+ *
+ * priceAdjusted = priceBase * (priceAdjustmentPercent + 100) / 100
+ * 150                   200 * (                   -25 + 100) / 100   # basePrice.adjustByPercent(-25)
+ *                                                                    # basePrice.decreaseByPercent(25)
+ *
+ *
+ * priceIncreasePercent = - priceAdjustmentPercent
+ *                   25 = - -25
+ *
+ * priceDecreasePercent = + priceAdjustmentPercent
+ *                  -25 = + -25
+ *
+ */
+
+/*
+ * 0.  Continually... `rename variable` to nudge in direction of naming conventions
+ *
+ * Database
+ *   can make connection
+ *   can query `lift_pass` table
+ *   can query `holidays` table
+ *
+ * http connection
+ *   can get some response from command-line tool
+ *   can get some response from test/* file
+ *   can fail->pass from test/* file
+ *   can use preferred test framework -- Acceptance Tests, Given/When/Then (Cucumber?)
+ */
+
+/*
+ * With running DB, start creating a seam (interface)
+ *   can get SQL data from existing queries
+ *   can get list of TicketTypes
+ *   can get costBase for each TicketType
+ *   can get list of ageMax (min?) for each age bracket
+ *   can get priceDiscountPercent for each representative age
+ *   can calculate priceCalculated as fn of TicketType and age
+ *   can get priceDiscountPercent for a holiday (and non-holiday)
+ *   can calculate priceCalculated as fn of TicketType and age
+ * */
 public class Prices {
 
     public static Connection createApp() throws SQLException {
@@ -180,4 +207,28 @@ public class Prices {
         return connection;
     }
 
+}
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+public class RateCalculator {
+    private Rates rates;
+
+    public RateCalculator() {
+        rates = new Rates();
+    }
+
+    public float getBaseRate() {
+        String baseRateJson = rates.getBaseRateJSON();
+        float baseRate = parseBaseRateFromJson(baseRateJson);
+        return baseRate;
+    }
+
+    private float parseBaseRateFromJson(String baseRateJson) {
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObject = parser.parse(baseRateJson).getAsJsonObject();
+        float cost = jsonObject.get("cost").getAsFloat();
+        return cost;
+    }
 }
