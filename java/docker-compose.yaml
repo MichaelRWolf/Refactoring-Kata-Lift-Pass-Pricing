@@ -1,0 +1,35 @@
+# Need custom Dockerfile to install some basic tooling:
+# apt install mariadb-client
+# apt install maven
+# apt install vim
+
+# Enter the container using:
+#     docker exec -it lift-kata-gitpod-1 /bin/bash
+
+version: "3"
+networks:
+  development_network:
+    external: false
+
+services:
+  mariadb:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+    networks:
+      - development_network
+    ports:
+      - "3310:3306"
+    volumes:
+      - $PWD/database:/docker-entrypoint-initdb.d
+
+  gitpod:
+    image: ubuntu:latest
+    volumes:
+      - $PWD:/home/default_user
+    networks:
+      - development_network
+    depends_on:
+      - mariadb
+    tty: true
