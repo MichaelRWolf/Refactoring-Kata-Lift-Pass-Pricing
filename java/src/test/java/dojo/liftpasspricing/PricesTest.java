@@ -27,6 +27,11 @@ public class PricesTest {
     }
 
     @Test
+    public void doesSomethingWithoutDbUsingRepositoryPattern() {
+
+    }
+
+    @Test
     public void doesSomething() {
         JsonPath response = RestAssured.
             given().

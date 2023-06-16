@@ -59,7 +59,7 @@ public class Prices {
 
             try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
                 costStmt.setString(1, req.queryParams("type"));
-                return banana_getObject(connection, req, age, costStmt);
+                return cherry_temp(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
             }
         });
 
@@ -70,7 +70,12 @@ public class Prices {
         return connection;
     }
 
-    private static Object banana_getObject(Connection connection, Request req, Integer age, PreparedStatement costStmt) throws SQLException, ParseException {
+    private static String cherry_temp(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
+                                      Request req,
+                                      Integer age)
+            throws SQLException, ParseException {
+        Connection connection = databaseArtifact_maybe_CRUD.getConnection();
+        PreparedStatement costStmt = databaseArtifact_maybe_CRUD.getCostStmt();
         try (ResultSet result = costStmt.executeQuery()) {
             result.next();
 
@@ -84,7 +89,7 @@ public class Prices {
             if (age == null) {
                 if (isNight(req)) {
                     elderberryCost = 0;
-                    return stringyObjectWithCostMember(elderberryCost)
+                    return stringyObjectWithCostMember(elderberryCost);
                 } else {
                     DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -109,7 +114,7 @@ public class Prices {
                 }
             } else if (age < 6) {
                 elderberryCost = 0;
-                return stringyObjectWithCostMember(elderberryCost)
+                return stringyObjectWithCostMember(elderberryCost);
             } else if (age > 64) {
                 if (isNight(req)) {
                     double magicNumber = .4;
@@ -143,6 +148,9 @@ public class Prices {
         }
     }
 
+    // Currentl6y pasing 2 DB params.... connection and preparedstatement
+    // Want.... 1 DB artifact, probably Dataase Repositor
+
     private static int getCeil(double cost) {
         return (int) Math.ceil(cost);
     }
@@ -168,7 +176,7 @@ public class Prices {
         return result.getInt("cost");
     }
 
-    private static Object banana_fn(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
+    private static String banana_fn(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
         int bananaCost;
         int costFromResultSet = getCost(result);
         double ageFactor = 1;
