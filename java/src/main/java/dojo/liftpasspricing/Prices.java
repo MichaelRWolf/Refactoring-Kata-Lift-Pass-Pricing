@@ -57,10 +57,8 @@ public class Prices {
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
 
-            try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
-                costStmt.setString(1, req.queryParams("type"));
-                return DbSelectCostByType_eventually_inlined(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
-            }
+
+            return new Prices().figtree(connection, req, age);
         });
 
         after((req, res) -> {
@@ -92,7 +90,9 @@ public class Prices {
         boolean isHoliday = false;
 
         int reduction = 0;
-        int costBase = getCost(dbArtifactCostByType);
+        ResultSet result = dbArtifactCostByType.getResult();
+        int costBase1 = result.getInt("cost");
+        int costBase = costBase1;
         int elderberryCost;
         int elderberryCost2;
 
@@ -153,12 +153,6 @@ public class Prices {
             }
         }
         return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
-    }
-
-    private static int getCost(DbArtifactCostByType dbArtifactCostByType) throws SQLException {
-        ResultSet result = dbArtifactCostByType.getResult();
-        int costBase = result.getInt("cost");
-        return costBase;
     }
 
     // Currentl6y pasing 2 DB params.... connection and preparedstatement
@@ -242,4 +236,10 @@ public class Prices {
                 d.getDate() == holiday.getDate();
     }
 
+    private String figtree(Connection connection, Request req, Integer age) throws SQLException, ParseException {
+        try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
+            costStmt.setString(1, req.queryParams("type"));
+            return DbSelectCostByType_eventually_inlined(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
+        }
+    }
 }
