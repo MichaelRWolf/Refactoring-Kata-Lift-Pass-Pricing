@@ -187,13 +187,21 @@ public class Prices {
         boolean isHoliday1 = isHoliday;
         Connection connection = dbArtifactCostByType.getConnection();
         try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
-            try (ResultSet holidays = holidayStmt.executeQuery()) {
-                // TODO: Separate getting holiday list (biz sense - Date) from holidays (DB sense - ResultSet)
+            try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
+                // TODO: Separate getting holidaysListOfDate (biz sense - Date) from holidaysResultSet (DB sense - ResultSet)
                 // Accumulate holidays into a list
                 // Then pass that list to the loop that
                 // TODO: Find provable refactoring to separate parts of a body of a while loop
-                while (holidays.next()) {
-                    Date holiday = holidays.getDate("holiday");
+
+/* Option 1: Get single holiday as part of while control.  Use the single date in the body
+                while (Date holiday = holidaysResultSet.next().getDate("holiday") {
+                    // do isHolidggaygAcconting
+                }
+*/
+                // Option 2:  Collect holidayAsDate in one loop
+                // Then use the list in the body of the while loop
+                while (holidaysResultSet.next()) {
+                    Date holiday = holidaysResultSet.getDate("holiday");
                     isHoliday1 = isHolidayAccontingForUnformattableDates(
                             isoFormat,
                             formDateAsIsoFormat,
