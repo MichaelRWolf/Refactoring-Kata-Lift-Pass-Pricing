@@ -117,27 +117,6 @@ public class Prices {
                 d.getDate() == holiday.getDate();
     }
 
-    private String banana_fn(Integer age,
-                             ResultSet result,
-                             int reductionPercentageAsInt)
-            throws SQLException {
-        int bananaCost;
-        int costFromResultSet = result.getInt("cost");
-        double ageFactor = 1;
-
-        if (age != null) {
-            if (age < 15) {
-                ageFactor = .7;
-                reductionPercentageAsInt = 0;
-            } else if (age > 64) {
-                ageFactor = .75;
-            }
-        }
-
-        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-        return stringyObjectWithCostMember(bananaCost);
-    }
-
     private String businessLogicWithConnection_and_stuff(Request req,
                                                          Integer age,
                                                          DbArtifactCostByType dbArtifactCostByType)
@@ -197,7 +176,26 @@ public class Prices {
                 reduction = 35;
             }
         }
-        return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
+        return banana_fn(age, dbArtifactCostByType, reduction);
+    }
+
+    private String banana_fn(Integer age, DbArtifactCostByType dbArtifactCostByType, int reduction) throws SQLException {
+        ResultSet result = dbArtifactCostByType.getResult();
+        int bananaCost;
+        int costFromResultSet = result.getInt("cost");
+        double ageFactor = 1;
+
+        if (age != null) {
+            if (age < 15) {
+                ageFactor = .7;
+                reduction = 0;
+            } else if (age > 64) {
+                ageFactor = .75;
+            }
+        }
+
+        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reduction));
+        return stringyObjectWithCostMember(bananaCost);
     }
 
     private boolean isHoliday(DbArtifactCostByType dbArtifactCostByType, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
