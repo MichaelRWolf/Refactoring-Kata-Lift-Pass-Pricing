@@ -74,19 +74,6 @@ public class Prices {
         return (int) Math.ceil(cost);
     }
 
-    private static boolean isHolidayFromConnection_and_other_params(Connection connection,
-                                                                    boolean isHoliday,
-                                                                    DateFormat isoFormat,
-                                                                    String formDateAsIsoFormat)
-            throws SQLException, ParseException {
-        try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
-            try (ResultSet holidays = holidayStmt.executeQuery()) {
-                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
-            }
-        }
-        return isHoliday;
-    }
-
     private static boolean isNight(Request req) {
         return req.queryParams("type").equals("night");
     }
@@ -167,12 +154,7 @@ public class Prices {
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 String formDateAsIsoFormat = req.queryParams("date");
-                isHoliday = isHolidayFromConnection_and_other_params(
-                        dbArtifactCostByType.getConnection(),
-                        isHoliday,
-                        isoFormat,
-                        formDateAsIsoFormat
-                );
+                isHoliday = isHoliday(dbArtifactCostByType, isHoliday, isoFormat, formDateAsIsoFormat);
 
                 if (formDateAsIsoFormat != null) {
                     if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
@@ -205,10 +187,7 @@ public class Prices {
         DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         String formDateAsIsoFormat = req.queryParams("date");
-        isHoliday = isHolidayFromConnection_and_other_params(dbArtifactCostByType.getConnection(),
-                isHoliday,
-                isoFormat,
-                formDateAsIsoFormat);
+        isHoliday = isHoliday(dbArtifactCostByType, isHoliday, isoFormat, formDateAsIsoFormat);
 
         if (formDateAsIsoFormat != null) {
             if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
@@ -216,6 +195,16 @@ public class Prices {
             }
         }
         return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
+    }
+
+    private boolean isHoliday(DbArtifactCostByType dbArtifactCostByType, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+        Connection connection = dbArtifactCostByType.getConnection();
+        try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
+            try (ResultSet holidays = holidayStmt.executeQuery()) {
+                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+            }
+        }
+        return isHoliday;
     }
 
     private String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
