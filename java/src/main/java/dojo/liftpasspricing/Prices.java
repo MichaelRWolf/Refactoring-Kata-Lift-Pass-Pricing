@@ -167,7 +167,6 @@ public class Prices {
 
     private String banana_fn(Integer age, DbArtifactCostByType dbArtifactCostByType, int reduction) throws SQLException {
         ResultSet result = dbArtifactCostByType.getResult();
-        int bananaCost;
         int costFromResultSet = result.getInt("cost");
         double ageFactor = 1;
 
@@ -180,6 +179,7 @@ public class Prices {
             }
         }
 
+        int bananaCost;
         bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reduction));
         return stringyObjectWithCostMember(bananaCost);
     }
