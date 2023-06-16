@@ -78,24 +78,6 @@ public class Prices {
         return req.queryParams("type").equals("night");
     }
 
-    private static String banana_fn(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
-        int bananaCost;
-        int costFromResultSet = result.getInt("cost");
-        double ageFactor = 1;
-
-        if (age != null) {
-            if (age < 15) {
-                ageFactor = .7;
-                reductionPercentageAsInt = 0;
-            } else if (age > 64) {
-                ageFactor = .75;
-            }
-        }
-
-        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
-        return stringyObjectWithCostMember(bananaCost);
-    }
-
     private static String stringyObjectWithCostMember(int bananaCost) {
         return "{ \"cost\": " + bananaCost + "}";
     }
@@ -133,6 +115,27 @@ public class Prices {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
                 d.getDate() == holiday.getDate();
+    }
+
+    private String banana_fn(Integer age,
+                             ResultSet result,
+                             int reductionPercentageAsInt)
+            throws SQLException {
+        int bananaCost;
+        int costFromResultSet = result.getInt("cost");
+        double ageFactor = 1;
+
+        if (age != null) {
+            if (age < 15) {
+                ageFactor = .7;
+                reductionPercentageAsInt = 0;
+            } else if (age > 64) {
+                ageFactor = .75;
+            }
+        }
+
+        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reductionPercentageAsInt));
+        return stringyObjectWithCostMember(bananaCost);
     }
 
     private String businessLogicWithConnection_and_stuff(Request req,
