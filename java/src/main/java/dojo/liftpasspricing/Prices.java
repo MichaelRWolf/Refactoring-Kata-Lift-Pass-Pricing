@@ -155,9 +155,7 @@ public class Prices {
         boolean isHoliday = false;
 
         int reduction = 0;
-        ResultSet result = dbArtifactCostByType.getResult();
-        int costBase1 = result.getInt("cost");
-        int costBase = costBase1;
+        int costBase = getCost(dbArtifactCostByType);
         int elderberryCost;
         int elderberryCost2;
 
@@ -218,6 +216,13 @@ public class Prices {
             }
         }
         return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
+    }
+
+    private int getCost(DbArtifactCostByType dbArtifactCostByType) throws SQLException {
+        ResultSet result = dbArtifactCostByType.getResult();
+        int costBase1 = result.getInt("cost");
+        int costBase = costBase1;
+        return costBase;
     }
 
     private String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
