@@ -193,7 +193,8 @@ public class Prices {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
                 while (holidays.next()) {
                     Date holiday = holidays.getDate("holiday");
-                    isHoliday1 = isHolidayAccontingForUnformattableDates(isoFormat,
+                    isHoliday1 = isHolidayAccontingForUnformattableDates(
+                            isoFormat,
                             formDateAsIsoFormat,
                             isHoliday1,
                             holiday);
