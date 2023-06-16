@@ -184,7 +184,11 @@ public class Prices {
         return stringyObjectWithCostMember(bananaCost);
     }
 
-    private boolean isHoliday(DbArtifactCostByType dbArtifactCostByType, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+    private boolean isHoliday(DbArtifactCostByType dbArtifactCostByType,
+                              boolean isHoliday,
+                              DateFormat isoFormat,
+                              String formDateAsIsoFormat)
+            throws SQLException, ParseException {
         boolean isHoliday1 = isHoliday;
         Connection connection = dbArtifactCostByType.getConnection();
         try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
