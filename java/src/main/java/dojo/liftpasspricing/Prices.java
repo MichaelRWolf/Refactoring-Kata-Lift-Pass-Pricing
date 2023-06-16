@@ -185,23 +185,31 @@ public class Prices {
     }
 
     private boolean isHoliday(DbArtifactCostByType dbArtifactCostByType, boolean isHoliday, DateFormat isoFormat, String formDateAsIsoFormat) throws SQLException, ParseException {
+        boolean isHoliday1 = isHoliday;
         Connection connection = dbArtifactCostByType.getConnection();
         try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
-                boolean isHoliday1 = isHoliday;
                 while (holidays.next()) {
                     Date holiday = holidays.getDate("holiday");
-                    if (formDateAsIsoFormat != null) {
-                        Date form_date = isoFormat.parse(formDateAsIsoFormat);
-                        if (areDatesEqual(holiday, form_date)) {
-                            isHoliday1 = true;
-                        }
-                    }
+                    isHoliday1 = isHolidayAccontingForUnformattableDates(isoFormat,
+                            formDateAsIsoFormat,
+                            isHoliday1,
+                            holiday);
                 }
                 isHoliday = isHoliday1;
             }
         }
         return isHoliday;
+    }
+
+    private boolean isHolidayAccontingForUnformattableDates(DateFormat isoFormat, String formDateAsIsoFormat, boolean isHoliday1, Date holiday) throws ParseException {
+        if (formDateAsIsoFormat != null) {
+            Date form_date = isoFormat.parse(formDateAsIsoFormat);
+            if (areDatesEqual(holiday, form_date)) {
+                isHoliday1 = true;
+            }
+        }
+        return isHoliday1;
     }
 
     private String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
