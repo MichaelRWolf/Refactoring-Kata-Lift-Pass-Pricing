@@ -57,7 +57,6 @@ public class Prices {
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
 
-
             return new Prices().figtree(connection, req, age);
         });
 
@@ -66,93 +65,6 @@ public class Prices {
         });
 
         return connection;
-    }
-
-    private static String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
-                                                                Request req,
-                                                                Integer age)
-            throws SQLException, ParseException {
-        Connection connection = databaseArtifact_maybe_CRUD.getConnection();
-        PreparedStatement costStmt = databaseArtifact_maybe_CRUD.getCostStmt();
-        try (ResultSet result = costStmt.executeQuery()) {
-            result.next();
-
-            return businessLogicWithConnection_and_stuff(req, age, new DbArtifactCostByType(connection, result));
-
-            // TODO apply reduction for others
-        }
-    }
-
-    private static String businessLogicWithConnection_and_stuff(Request req,
-                                                                Integer age,
-                                                                DbArtifactCostByType dbArtifactCostByType)
-            throws SQLException, ParseException {
-        boolean isHoliday = false;
-
-        int reduction = 0;
-        ResultSet result = dbArtifactCostByType.getResult();
-        int costBase1 = result.getInt("cost");
-        int costBase = costBase1;
-        int elderberryCost;
-        int elderberryCost2;
-
-        if (age == null) {
-            if (isNight(req)) {
-                elderberryCost = 0;
-                return stringyObjectWithCostMember(elderberryCost);
-            } else {
-                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                String formDateAsIsoFormat = req.queryParams("date");
-                isHoliday = isHolidayFromConnection_and_other_params(
-                        dbArtifactCostByType.getConnection(),
-                        isHoliday,
-                        isoFormat,
-                        formDateAsIsoFormat
-                );
-
-                if (formDateAsIsoFormat != null) {
-                    if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                        reduction = 35;
-                    }
-                }
-
-                double cost;
-                cost = costBase * reductionAsIntToFactorAsFloat(reduction);
-                elderberryCost = getCeil(cost);
-                return stringyObjectWithCostMember(elderberryCost);
-            }
-        } else if (age < 6) {
-            elderberryCost = 0;
-            return stringyObjectWithCostMember(elderberryCost);
-        } else if (age > 64) {
-            if (isNight(req)) {
-                double magicNumber = .4;
-                double elderNightCost = costBase * magicNumber;
-                elderberryCost = getCeil(elderNightCost);
-                return stringyObjectWithCostMember(elderberryCost);
-            }
-        } else {
-            if (isNight(req)) {
-                elderberryCost = costBase;
-                return stringyObjectWithCostMember(elderberryCost);
-            }
-        }
-
-        DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-        String formDateAsIsoFormat = req.queryParams("date");
-        isHoliday = isHolidayFromConnection_and_other_params(dbArtifactCostByType.getConnection(),
-                isHoliday,
-                isoFormat,
-                formDateAsIsoFormat);
-
-        if (formDateAsIsoFormat != null) {
-            if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
-                reduction = 35;
-            }
-        }
-        return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
     }
 
     // Currentl6y pasing 2 DB params.... connection and preparedstatement
@@ -234,6 +146,93 @@ public class Prices {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
                 d.getDate() == holiday.getDate();
+    }
+
+    private String businessLogicWithConnection_and_stuff(Request req,
+                                                         Integer age,
+                                                         DbArtifactCostByType dbArtifactCostByType)
+            throws SQLException, ParseException {
+        boolean isHoliday = false;
+
+        int reduction = 0;
+        ResultSet result = dbArtifactCostByType.getResult();
+        int costBase1 = result.getInt("cost");
+        int costBase = costBase1;
+        int elderberryCost;
+        int elderberryCost2;
+
+        if (age == null) {
+            if (isNight(req)) {
+                elderberryCost = 0;
+                return stringyObjectWithCostMember(elderberryCost);
+            } else {
+                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                String formDateAsIsoFormat = req.queryParams("date");
+                isHoliday = isHolidayFromConnection_and_other_params(
+                        dbArtifactCostByType.getConnection(),
+                        isHoliday,
+                        isoFormat,
+                        formDateAsIsoFormat
+                );
+
+                if (formDateAsIsoFormat != null) {
+                    if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                        reduction = 35;
+                    }
+                }
+
+                double cost;
+                cost = costBase * reductionAsIntToFactorAsFloat(reduction);
+                elderberryCost = getCeil(cost);
+                return stringyObjectWithCostMember(elderberryCost);
+            }
+        } else if (age < 6) {
+            elderberryCost = 0;
+            return stringyObjectWithCostMember(elderberryCost);
+        } else if (age > 64) {
+            if (isNight(req)) {
+                double magicNumber = .4;
+                double elderNightCost = costBase * magicNumber;
+                elderberryCost = getCeil(elderNightCost);
+                return stringyObjectWithCostMember(elderberryCost);
+            }
+        } else {
+            if (isNight(req)) {
+                elderberryCost = costBase;
+                return stringyObjectWithCostMember(elderberryCost);
+            }
+        }
+
+        DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        String formDateAsIsoFormat = req.queryParams("date");
+        isHoliday = isHolidayFromConnection_and_other_params(dbArtifactCostByType.getConnection(),
+                isHoliday,
+                isoFormat,
+                formDateAsIsoFormat);
+
+        if (formDateAsIsoFormat != null) {
+            if (isNonHolidayAndIsLowerCostDay(isHoliday, isoFormat, formDateAsIsoFormat)) {
+                reduction = 35;
+            }
+        }
+        return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
+    }
+
+    private String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
+                                                         Request req,
+                                                         Integer age)
+            throws SQLException, ParseException {
+        Connection connection = databaseArtifact_maybe_CRUD.getConnection();
+        PreparedStatement costStmt = databaseArtifact_maybe_CRUD.getCostStmt();
+        try (ResultSet result = costStmt.executeQuery()) {
+            result.next();
+
+            return businessLogicWithConnection_and_stuff(req, age, new DbArtifactCostByType(connection, result));
+
+            // TODO apply reduction for others
+        }
     }
 
     private String figtree(Connection connection, Request req, Integer age) throws SQLException, ParseException {
