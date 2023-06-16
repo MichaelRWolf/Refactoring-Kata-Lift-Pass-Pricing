@@ -179,8 +179,7 @@ public class Prices {
             }
         }
 
-        int bananaCost;
-        bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reduction));
+        int bananaCost = getCeil(costFromResultSet * ageFactor * reductionAsIntToFactorAsFloat(reduction));
         return stringyObjectWithCostMember(bananaCost);
     }
 
