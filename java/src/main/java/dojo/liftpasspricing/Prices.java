@@ -67,9 +67,6 @@ public class Prices {
         return connection;
     }
 
-    // Currentl6y pasing 2 DB params.... connection and preparedstatement
-    // Want.... 1 DB artifact, probably Dataase Repositor
-
     private static int getCeil(double cost) {
         return (int) Math.ceil(cost);
     }
@@ -191,6 +188,10 @@ public class Prices {
         Connection connection = dbArtifactCostByType.getConnection();
         try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
+                // TODO: Separate getting holiday list (biz sense - Date) from holidays (DB sense - ResultSet)
+                // Accumulate holidays into a list
+                // Then pass that list to the loop that
+                // TODO: Find provable refactoring to separate parts of a body of a while loop
                 while (holidays.next()) {
                     Date holiday = holidays.getDate("holiday");
                     isHoliday1 = isHolidayAccontingForUnformattableDates(
@@ -215,6 +216,7 @@ public class Prices {
         return isHoliday1;
     }
 
+    // TODO: Move to DB artifact
     private String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
                                                          Request req,
                                                          Integer age)
@@ -230,7 +232,9 @@ public class Prices {
         }
     }
 
-    private String figtree(Connection connection, Request req, Integer age) throws SQLException, ParseException {
+    // TODO: Move to DB artifact
+    private String figtree(Connection connection, Request req, Integer age)
+            throws SQLException, ParseException {
         try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
             costStmt.setString(1, req.queryParams("type"));
             return DbSelectCostByType_eventually_inlined(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
