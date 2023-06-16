@@ -2,6 +2,7 @@ package dojo.liftpasspricing;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DbArtifactCostByType {
     private final Connection connection;
@@ -18,5 +19,10 @@ public class DbArtifactCostByType {
 
     public ResultSet getResult() {
         return result;
+    }
+
+    int getCost() throws SQLException {
+        ResultSet result = getResult();
+        return result.getInt("cost");
     }
 }
