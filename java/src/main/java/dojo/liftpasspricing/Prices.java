@@ -59,7 +59,7 @@ public class Prices {
 
             try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
                 costStmt.setString(1, req.queryParams("type"));
-                return cherry_temp(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
+                return DbSelectCostByType_eventually_inlined(new DatabaseArtifact_maybe_CRUD(connection, costStmt), req, age);
             }
         });
 
@@ -70,26 +70,29 @@ public class Prices {
         return connection;
     }
 
-    private static String cherry_temp(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
-                                      Request req,
-                                      Integer age)
+    private static String DbSelectCostByType_eventually_inlined(DatabaseArtifact_maybe_CRUD databaseArtifact_maybe_CRUD,
+                                                                Request req,
+                                                                Integer age)
             throws SQLException, ParseException {
         Connection connection = databaseArtifact_maybe_CRUD.getConnection();
         PreparedStatement costStmt = databaseArtifact_maybe_CRUD.getCostStmt();
         try (ResultSet result = costStmt.executeQuery()) {
             result.next();
 
-            return businessLogicWithConnection_and_stuff(req, age, connection, result);
+            return businessLogicWithConnection_and_stuff(req, age, new DbArtifactCostByType(connection, result));
 
             // TODO apply reduction for others
         }
     }
 
-    private static String businessLogicWithConnection_and_stuff(Request req, Integer age, Connection connection, ResultSet result) throws SQLException, ParseException {
+    private static String businessLogicWithConnection_and_stuff(Request req,
+                                                                Integer age,
+                                                                DbArtifactCostByType dbArtifactCostByType)
+            throws SQLException, ParseException {
         boolean isHoliday = false;
 
         int reduction = 0;
-        int costBase = getCost(result);
+        int costBase = getCost(dbArtifactCostByType);
         int elderberryCost;
         int elderberryCost2;
 
@@ -102,7 +105,7 @@ public class Prices {
 
                 String formDateAsIsoFormat = req.queryParams("date");
                 isHoliday = isHolidayFromConnection_and_other_params(
-                        connection,
+                        dbArtifactCostByType.getConnection(),
                         isHoliday,
                         isoFormat,
                         formDateAsIsoFormat
@@ -139,7 +142,7 @@ public class Prices {
         DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         String formDateAsIsoFormat = req.queryParams("date");
-        isHoliday = isHolidayFromConnection_and_other_params(connection,
+        isHoliday = isHolidayFromConnection_and_other_params(dbArtifactCostByType.getConnection(),
                 isHoliday,
                 isoFormat,
                 formDateAsIsoFormat);
@@ -149,7 +152,13 @@ public class Prices {
                 reduction = 35;
             }
         }
-        return banana_fn(age, result, reduction);
+        return banana_fn(age, dbArtifactCostByType.getResult(), reduction);
+    }
+
+    private static int getCost(DbArtifactCostByType dbArtifactCostByType) throws SQLException {
+        ResultSet result = dbArtifactCostByType.getResult();
+        int costBase = result.getInt("cost");
+        return costBase;
     }
 
     // Currentl6y pasing 2 DB params.... connection and preparedstatement
@@ -176,13 +185,9 @@ public class Prices {
         return req.queryParams("type").equals("night");
     }
 
-    private static int getCost(ResultSet result) throws SQLException {
-        return result.getInt("cost");
-    }
-
     private static String banana_fn(Integer age, ResultSet result, int reductionPercentageAsInt) throws SQLException {
         int bananaCost;
-        int costFromResultSet = getCost(result);
+        int costFromResultSet = result.getInt("cost");
         double ageFactor = 1;
 
         if (age != null) {
