@@ -25,4 +25,10 @@ public class DbArtifactCostByType {
         ResultSet result = getResult();
         return result.getInt("cost");
     }
+
+    int getCostFromResultSet() throws SQLException {
+        ResultSet result = getResult();
+        int costFromResultSet = result.getInt("cost");
+        return costFromResultSet;
+    }
 }
