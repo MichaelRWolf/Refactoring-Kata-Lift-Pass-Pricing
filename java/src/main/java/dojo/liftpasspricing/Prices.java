@@ -97,20 +97,6 @@ public class Prices {
         return calendar.get(Calendar.DAY_OF_WEEK) == 2;
     }
 
-    private static boolean isAnyHoliday(boolean isHoliday, DateFormat isoFormat, String
-            formDateAsIsoFormat, ResultSet holidayResultSet) throws SQLException, ParseException {
-        while (holidayResultSet.next()) {
-            Date holiday = holidayResultSet.getDate("holiday");
-            if (formDateAsIsoFormat != null) {
-                Date form_date = isoFormat.parse(formDateAsIsoFormat);
-                if (areDatesEqual(holiday, form_date)) {
-                    isHoliday = true;
-                }
-            }
-        }
-        return isHoliday;
-    }
-
     private static boolean areDatesEqual(Date holiday, Date d) {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
@@ -202,7 +188,17 @@ public class Prices {
         Connection connection = dbArtifactCostByType.getConnection();
         try (PreparedStatement holidayStmt = connection.prepareStatement(SELECT_ALL_FROM_HOLIDAYS)) {
             try (ResultSet holidays = holidayStmt.executeQuery()) {
-                isHoliday = isAnyHoliday(isHoliday, isoFormat, formDateAsIsoFormat, holidays);
+                boolean isHoliday1 = isHoliday;
+                while (holidays.next()) {
+                    Date holiday = holidays.getDate("holiday");
+                    if (formDateAsIsoFormat != null) {
+                        Date form_date = isoFormat.parse(formDateAsIsoFormat);
+                        if (areDatesEqual(holiday, form_date)) {
+                            isHoliday1 = true;
+                        }
+                    }
+                }
+                isHoliday = isHoliday1;
             }
         }
         return isHoliday;
