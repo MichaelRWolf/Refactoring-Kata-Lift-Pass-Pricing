@@ -57,7 +57,7 @@ public class Prices {
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
 
-            return new Prices().figtree(connection, req, age);
+            return new Prices().figTree(connection, req, age);
         });
 
         after((req, res) -> {
@@ -195,14 +195,14 @@ public class Prices {
 
 /* Option 1: Get single holiday as part of while control.  Use the single date in the body
                 while (Date holiday = holidaysResultSet.next().getDate("holiday") {
-                    // do isHolidggaygAcconting
+                    // do isHoliday
                 }
 */
                 // Option 2:  Collect holidayAsDate in one loop
                 // Then use the list in the body of the while loop
                 while (holidaysResultSet.next()) {
                     Date holiday = holidaysResultSet.getDate("holiday");
-                    isHoliday1 = isHolidayAccontingForUnformattableDates(
+                    isHoliday1 = isHolidayAccountingForUnFormatableDates(
                             isoFormat,
                             formDateAsIsoFormat,
                             isHoliday1,
@@ -214,7 +214,7 @@ public class Prices {
         return isHoliday;
     }
 
-    private boolean isHolidayAccontingForUnformattableDates(DateFormat isoFormat, String formDateAsIsoFormat, boolean isHoliday1, Date holiday) throws ParseException {
+    private boolean isHolidayAccountingForUnFormatableDates(DateFormat isoFormat, String formDateAsIsoFormat, boolean isHoliday1, Date holiday) throws ParseException {
         if (formDateAsIsoFormat != null) {
             Date form_date = isoFormat.parse(formDateAsIsoFormat);
             if (areDatesEqual(holiday, form_date)) {
@@ -241,7 +241,7 @@ public class Prices {
     }
 
     // TODO: Move to DB artifact
-    private String figtree(Connection connection, Request req, Integer age)
+    private String figTree(Connection connection, Request req, Integer age)
             throws SQLException, ParseException {
         try (PreparedStatement costStmt = connection.prepareStatement(SQL_SELECT_cost)) {
             costStmt.setString(1, req.queryParams("type"));
