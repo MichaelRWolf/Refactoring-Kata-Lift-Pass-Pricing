@@ -46,6 +46,7 @@ public class Prices {
                         reduction = 0;
 
                         if (!req.queryParams("type").equals("night")) {
+                            String dateFromRequest = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                             boolean isHoliday = false;
@@ -55,8 +56,8 @@ public class Prices {
 
                                     while (holidaysResultSet.next()) {
                                         Date holiday = holidaysResultSet.getDate("holiday");
-                                        if (req.queryParams("date") != null) {
-                                            Date d = isoFormat.parse(req.queryParams("date"));
+                                        if (dateFromRequest != null) {
+                                            Date d = isoFormat.parse(dateFromRequest);
                                             if (d.getYear() == holiday.getYear() && //
                                                 d.getMonth() == holiday.getMonth() && //
                                                 d.getDate() == holiday.getDate()) {
@@ -68,9 +69,9 @@ public class Prices {
                                 }
                             }
 
-                            if (req.queryParams("date") != null) {
+                            if (dateFromRequest != null) {
                                 Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(isoFormat.parse(req.queryParams("date")));
+                                calendar.setTime(isoFormat.parse(dateFromRequest));
                                 if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
                                     reduction = 35;
                                 }
