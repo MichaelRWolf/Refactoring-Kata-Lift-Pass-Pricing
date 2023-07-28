@@ -63,30 +63,34 @@ public class Prices {
 
                             // TODO apply reduction for others
                             if (age != null && age < 15) {
-                                return "{ \"cost\": " + (int) Math.ceil(costFromResult * .7) + "}";
+                                int costAfterAdjustments = (int) Math.ceil(costFromResult * .7);
+                                return "{ \"cost\": " + costAfterAdjustments + "}";
                             } else {
                                 if (age == null) {
-                                    double cost = costFromResult * (1 - reduction / 100.0);
-                                    return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
+                                    return "{ \"cost\": " + costAfterAdjustments + "}";
                                 } else {
                                     if (age > 64) {
-                                        double cost = costFromResult * .75 * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                                        int costAfterAdjustments = (int) Math.ceil(costFromResult * .75 * (1 - reduction / 100.0));
+                                        return "{ \"cost\": " + costAfterAdjustments + "}";
                                     } else {
-                                        double cost = costFromResult * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                                        int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
+                                        return "{ \"cost\": " + costAfterAdjustments + "}";
                                     }
                                 }
                             }
                         } else {
                             if (age != null && age >= 6) {
                                 if (age > 64) {
-                                    return "{ \"cost\": " + (int) Math.ceil(costFromResult * .4) + "}";
+                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * .4);
+                                    return "{ \"cost\": " + costAfterAdjustments + "}";
                                 } else {
-                                    return "{ \"cost\": " + costFromResult + "}";
+                                    int costAfterAdjustments = costFromResult;
+                                    return "{ \"cost\": " + costAfterAdjustments + "}";
                                 }
                             } else {
-                                return "{ \"cost\": 0}";
+                                int costAfterAdjustments = (int) "0";
+                                return "{ \"cost\": " + costAfterAdjustments + "}";
                             }
                         }
                     }
