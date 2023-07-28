@@ -49,14 +49,14 @@ public class Prices {
 
                         int costFromResult = result.getInt("cost");
                         if (!liftPassTypeFromReq.equals("night")) {
-                            String dateFromRequest = req.queryParams("date");
+                            String dateFromReq = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                            boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromRequest, isoFormat);
+                            boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromReq, isoFormat);
 
-                            if (dateFromRequest != null) {
+                            if (dateFromReq != null) {
                                 Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(isoFormat.parse(dateFromRequest));
+                                calendar.setTime(isoFormat.parse(dateFromReq));
                                 if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
                                     reduction = 35;
                                 }
