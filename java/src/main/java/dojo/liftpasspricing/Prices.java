@@ -20,7 +20,7 @@ public class Prices {
     public Connection createApp() throws SQLException {
         DatabaseUtilities dbu = new DatabaseUtilities();
 
-        final Connection connection = getConnection();
+        final Connection connection = getConnection(dbu);
 
         port(4567);
 
@@ -128,7 +128,7 @@ public class Prices {
         return connection;
     }
 
-    private Connection getConnection() throws SQLException {
+    private Connection getConnection(DatabaseUtilities dbu) throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/lift_pass", "root", "mysql");
     }
 }
