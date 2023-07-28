@@ -1,18 +1,17 @@
 package dojo.liftpasspricing;
 
-import static spark.Spark.after;
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.put;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import static spark.Spark.*;
 
 public class Prices {
 
@@ -107,8 +106,12 @@ public class Prices {
 
                 // #1 - init
                 boolean isHoliday = false;
+                List<Date> holidays = new ArrayList<>();
+
+
                 while (holidaysResultSet.next()) {
                     Date holiday = holidaysResultSet.getDate("holiday");
+                    holidays.add(holiday);
                     if (dateFromRequest != null) { //
                         Date d = isoFormat.parse(dateFromRequest);
                         if (areDatesEqual(holiday, d)) {
