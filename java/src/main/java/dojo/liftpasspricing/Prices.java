@@ -20,10 +20,10 @@ public class Prices {
         port(4567);
 
         put("/prices", (req, res) -> {
-            int liftPassCost = Integer.parseInt(req.queryParams("cost"));
+            int liftPassCostFromReq = Integer.parseInt(req.queryParams("cost"));
             String liftPassTypeFromReq = req.queryParams("type");
 
-            dbu.setLiftPassCostForLiftPassType(liftPassCost, liftPassTypeFromReq);
+            dbu.setLiftPassCostForLiftPassType(liftPassCostFromReq, liftPassTypeFromReq);
 
             return "";
         });
