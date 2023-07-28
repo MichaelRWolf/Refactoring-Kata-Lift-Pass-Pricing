@@ -7,7 +7,6 @@ import static spark.Spark.put;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,7 +23,7 @@ public class Prices {
             int liftPassCost = Integer.parseInt(req.queryParams("cost"));
             String liftPassType = req.queryParams("type");
 
-            setLiftPassCostForLiftPassType(dbu, liftPassCost, liftPassType);
+            dbu.setLiftPassCostForLiftPassType(liftPassCost, liftPassType);
 
             return "";
         });
@@ -114,17 +113,6 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
-    }
-
-    public void setLiftPassCostForLiftPassType(DatabaseUtilities dbu, int liftPassCost, String liftPassType) throws SQLException {
-        try (PreparedStatement stmt = dbu.getConnection().prepareStatement( //
-                "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
-                "ON DUPLICATE KEY UPDATE cost = ?")) {
-            stmt.setString(1, liftPassType);
-            stmt.setInt(2, liftPassCost);
-            stmt.setInt(3, liftPassCost);
-            stmt.execute();
-        }
     }
 
 }
