@@ -33,77 +33,81 @@ public class Prices {
             String liftPassTypeFromReq = req.queryParams("type");
             String dateFromReq = req.queryParams("date");
 
-            // TODO: Refactor
-            try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
-                    "SELECT cost FROM base_price " + //
-                    "WHERE type = ?")) {
-                costStmt.setString(1, liftPassTypeFromReq);
-                try (ResultSet result = costStmt.executeQuery()) {
-                    result.next();
-
-                    int reduction;
-
-                    if (ageFromReq != null && ageFromReq < 6) {
-                        int costAfterAdjustments = 0;
-                        return costAsJsonString(costAfterAdjustments);
-                    } else {
-                        reduction = 0;
-
-                        int costFromResult = result.getInt("cost");
-                        if (!liftPassTypeFromReq.equals("night")) {
-                            DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                            boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromReq, isoFormat);
-
-                            if (dateFromReq != null) {
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(isoFormat.parse(dateFromReq));
-                                if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
-                                    reduction = 35;
-                                }
-                            }
-
-                            // TODO apply reduction for others
-                            if (ageFromReq != null && ageFromReq < 15) {
-                                int costAfterAdjustments = (int) Math.ceil(costFromResult * .7);
-                                return costAsJsonString(costAfterAdjustments);
-                            } else {
-                                if (ageFromReq == null) {
-                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
-                                    return costAsJsonString(costAfterAdjustments);
-                                } else {
-                                    if (ageFromReq > 64) {
-                                        int costAfterAdjustments = (int) Math.ceil(costFromResult * .75 * (1 - reduction / 100.0));
-                                        return costAsJsonString(costAfterAdjustments);
-                                    } else {
-                                        int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
-                                        return costAsJsonString(costAfterAdjustments);
-                                    }
-                                }
-                            }
-                        } else {
-                            if (ageFromReq != null && ageFromReq >= 6) {
-                                if (ageFromReq > 64) {
-                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * .4);
-                                    return costAsJsonString(costAfterAdjustments);
-                                } else {
-                                    int costAfterAdjustments = costFromResult;
-                                    return costAsJsonString(costAfterAdjustments);
-                                }
-                            } else {
-                                int costAfterAdjustments = 0;
-                                return costAsJsonString(costAfterAdjustments);
-                            }
-                        }
-                    }
-                }
-            }
+            return getCostAfterAdjustmentAsJsonString(dbu, ageFromReq, liftPassTypeFromReq, dateFromReq);
         });
 
         after((req, res) -> {
             res.type("application/json");
         });
         return dbu;
+    }
+
+    private String getCostAfterAdjustmentAsJsonString(DatabaseUtilities dbu, Integer ageFromReq, String liftPassTypeFromReq, String dateFromReq) throws SQLException, ParseException {
+        // TODO: Refactor
+        try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
+                "SELECT cost FROM base_price " + //
+                "WHERE type = ?")) {
+            costStmt.setString(1, liftPassTypeFromReq);
+            try (ResultSet result = costStmt.executeQuery()) {
+                result.next();
+
+                int reduction;
+
+                if (ageFromReq != null && ageFromReq < 6) {
+                    int costAfterAdjustments = 0;
+                    return costAsJsonString(costAfterAdjustments);
+                } else {
+                    reduction = 0;
+
+                    int costFromResult = result.getInt("cost");
+                    if (!liftPassTypeFromReq.equals("night")) {
+                        DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                        boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromReq, isoFormat);
+
+                        if (dateFromReq != null) {
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(isoFormat.parse(dateFromReq));
+                            if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
+                                reduction = 35;
+                            }
+                        }
+
+                        // TODO apply reduction for others
+                        if (ageFromReq != null && ageFromReq < 15) {
+                            int costAfterAdjustments = (int) Math.ceil(costFromResult * .7);
+                            return costAsJsonString(costAfterAdjustments);
+                        } else {
+                            if (ageFromReq == null) {
+                                int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
+                                return costAsJsonString(costAfterAdjustments);
+                            } else {
+                                if (ageFromReq > 64) {
+                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * .75 * (1 - reduction / 100.0));
+                                    return costAsJsonString(costAfterAdjustments);
+                                } else {
+                                    int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
+                                    return costAsJsonString(costAfterAdjustments);
+                                }
+                            }
+                        }
+                    } else {
+                        if (ageFromReq != null && ageFromReq >= 6) {
+                            if (ageFromReq > 64) {
+                                int costAfterAdjustments = (int) Math.ceil(costFromResult * .4);
+                                return costAsJsonString(costAfterAdjustments);
+                            } else {
+                                int costAfterAdjustments = costFromResult;
+                                return costAsJsonString(costAfterAdjustments);
+                            }
+                        } else {
+                            int costAfterAdjustments = 0;
+                            return costAsJsonString(costAfterAdjustments);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private String costAsJsonString(int costAfterAdjustments) {
