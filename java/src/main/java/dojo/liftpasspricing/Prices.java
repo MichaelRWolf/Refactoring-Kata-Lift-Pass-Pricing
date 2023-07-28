@@ -7,7 +7,9 @@ import static spark.Spark.put;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,25 +51,7 @@ public class Prices {
                             String dateFromRequest = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                            boolean isHoliday = false;
-                            try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( //
-                                    "SELECT * FROM holidays")) {
-                                try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
-
-                                    while (holidaysResultSet.next()) {
-                                        Date holiday = holidaysResultSet.getDate("holiday");
-                                        if (dateFromRequest != null) {
-                                            Date d = isoFormat.parse(dateFromRequest);
-                                            if (d.getYear() == holiday.getYear() && //
-                                                d.getMonth() == holiday.getMonth() && //
-                                                d.getDate() == holiday.getDate()) {
-                                                isHoliday = true;
-                                            }
-                                        }
-                                    }
-
-                                }
-                            }
+                            boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromRequest, isoFormat);
 
                             if (dateFromRequest != null) {
                                 Calendar calendar = Calendar.getInstance();
@@ -114,6 +98,29 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
+    }
+
+    private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
+        boolean isHoliday = false;
+        try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( //
+                "SELECT * FROM holidays")) {
+            try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
+
+                while (holidaysResultSet.next()) {
+                    Date holiday = holidaysResultSet.getDate("holiday");
+                    if (dateFromRequest != null) {
+                        Date d = isoFormat.parse(dateFromRequest);
+                        if (d.getYear() == holiday.getYear() && //
+                            d.getMonth() == holiday.getMonth() && //
+                            d.getDate() == holiday.getDate()) {
+                            isHoliday = true;
+                        }
+                    }
+                }
+
+            }
+        }
+        return isHoliday;
     }
 
 }
