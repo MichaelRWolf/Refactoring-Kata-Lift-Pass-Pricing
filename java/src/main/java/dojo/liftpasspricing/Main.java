@@ -10,8 +10,10 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
+        DatabaseUtilities dbu = new Prices().createApp();
+
         @SuppressWarnings("resource")
-        Connection connection = new Prices().createApp();
+        Connection connection = dbu.getConnection();
 
         System.out.println("LiftPassPricing Api started on 4567,\n"
                 + "you can open http://localhost:4567/prices?type=night&age=23&date=2019-02-18 in a navigator\n"

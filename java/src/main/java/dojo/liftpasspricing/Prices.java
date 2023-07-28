@@ -5,10 +5,8 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.put;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,13 +14,7 @@ import java.util.Date;
 
 public class Prices {
 
-    public Connection createApp() throws SQLException {
-        DatabaseUtilities dbu = applesauce();
-
-        return dbu.getConnection();
-    }
-
-    private DatabaseUtilities applesauce() {
+    public DatabaseUtilities createApp() {
         DatabaseUtilities dbu = new DatabaseUtilities();
 
         port(4567);
