@@ -18,6 +18,7 @@ import java.util.Date;
 public class Prices {
 
     public static Connection createApp() throws SQLException {
+        DatabaseUtilities dbu = new DatabaseUtilities();
 
         final Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lift_pass", "root", "mysql");
 
