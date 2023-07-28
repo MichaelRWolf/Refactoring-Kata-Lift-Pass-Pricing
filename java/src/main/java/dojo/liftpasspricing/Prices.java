@@ -51,10 +51,10 @@ public class Prices {
 
                             try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( //
                                     "SELECT * FROM holidays")) {
-                                try (ResultSet holidays = holidayStmt.executeQuery()) {
+                                try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
 
-                                    while (holidays.next()) {
-                                        Date holiday = holidays.getDate("holiday");
+                                    while (holidaysResultSet.next()) {
+                                        Date holiday = holidaysResultSet.getDate("holiday");
                                         if (req.queryParams("date") != null) {
                                             Date d = isoFormat.parse(req.queryParams("date"));
                                             if (d.getYear() == holiday.getYear() && //
