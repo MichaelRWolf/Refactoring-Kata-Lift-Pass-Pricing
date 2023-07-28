@@ -39,7 +39,6 @@ public class Prices {
                     result.next();
 
                     int reduction;
-                    boolean isHoliday = false;
 
                     if (age != null && age < 6) {
                         return "{ \"cost\": 0}";
@@ -49,6 +48,7 @@ public class Prices {
                         if (!req.queryParams("type").equals("night")) {
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+                            boolean isHoliday = false;
                             try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( //
                                     "SELECT * FROM holidays")) {
                                 try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
