@@ -89,7 +89,7 @@ public class Prices {
                                     return "{ \"cost\": " + costAfterAdjustments + "}";
                                 }
                             } else {
-                                int costAfterAdjustments = (int) "0";
+                                int costAfterAdjustments = 0;
                                 return "{ \"cost\": " + costAfterAdjustments + "}";
                             }
                         }
