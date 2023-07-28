@@ -108,6 +108,7 @@ public class Prices {
                 // #1 - init
                 boolean isHoliday = false;
                 while (holidaysResultSet.next()) {
+                    Date holiday = holidaysResultSet.getDate("holiday");
                     if (dateFromRequest != null) { //
                         Date d = isoFormat.parse(dateFromRequest);
                         if (areDatesEqual(holiday, d)) {
