@@ -108,10 +108,13 @@ public class Prices {
                 boolean isHoliday = false;
                 List<Date> holidays = new ArrayList<>();
 
-
+                //  Database logic
                 while (holidaysResultSet.next()) {
                     Date holiday = holidaysResultSet.getDate("holiday");
                     holidays.add(holiday);
+                }
+                // Business logic
+                for (Date holiday : holidays) {
                     if (dateFromRequest != null) { //
                         Date d = isoFormat.parse(dateFromRequest);
                         if (areDatesEqual(holiday, d)) {
