@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -100,7 +99,7 @@ public class Prices {
     }
 
     private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
-        List<Date> holidays = getHolidays(dbu);
+        List<Date> holidays = dbu.getHolidays();
         // Business logic
         boolean isHoliday = false;
         for (Date holiday : holidays) {
@@ -112,24 +111,6 @@ public class Prices {
             }
         }
         return isHoliday;
-    }
-
-    private List<Date> getHolidays(DatabaseUtilities dbu) throws SQLException {
-        List<Date> holidays = new ArrayList<>();
-        try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( // #2 - 110 -- DB stuff - isolate for testing
-                "SELECT * FROM holidays")) {
-            try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
-
-                // #1 - init
-
-                //  Database logic
-                while (holidaysResultSet.next()) {
-                    Date holiday = holidaysResultSet.getDate("holiday");
-                    holidays.add(holiday);
-                }
-            }
-        }
-        return holidays;
     }
 
     private boolean areDatesEqual(Date holiday, Date d) {

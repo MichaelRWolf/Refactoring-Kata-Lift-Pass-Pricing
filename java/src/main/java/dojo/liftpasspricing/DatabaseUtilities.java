@@ -1,9 +1,9 @@
 package dojo.liftpasspricing;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class DatabaseUtilities {
     Connection getConnection() throws SQLException {
@@ -19,5 +19,23 @@ public class DatabaseUtilities {
             stmt.setInt(3, liftPassCost);
             stmt.execute();
         }
+    }
+
+    List<Date> getHolidays() throws SQLException {
+        List<Date> holidays = new ArrayList<>();
+        try (PreparedStatement holidayStmt = getConnection().prepareStatement( // #2 - 110 -- DB stuff - isolate for testing
+                "SELECT * FROM holidays")) {
+            try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
+
+                // #1 - init
+
+                //  Database logic
+                while (holidaysResultSet.next()) {
+                    Date holiday = holidaysResultSet.getDate("holiday");
+                    holidays.add(holiday);
+                }
+            }
+        }
+        return holidays;
     }
 }
