@@ -35,7 +35,8 @@ public class Prices {
             try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
                     "SELECT cost FROM base_price " + //
                     "WHERE type = ?")) {
-                costStmt.setString(1, req.queryParams("type"));
+                String liftPassTypeFromReq = req.queryParams("type");
+                costStmt.setString(1, liftPassTypeFromReq);
                 try (ResultSet result = costStmt.executeQuery()) {
                     result.next();
 
@@ -47,7 +48,7 @@ public class Prices {
                         reduction = 0;
 
                         int costFromResult = result.getInt("cost");
-                        if (!req.queryParams("type").equals("night")) {
+                        if (!liftPassTypeFromReq.equals("night")) {
                             String dateFromRequest = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
