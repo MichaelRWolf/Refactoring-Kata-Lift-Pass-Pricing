@@ -19,15 +19,13 @@ public class Prices {
     public Connection createApp() throws SQLException {
         DatabaseUtilities dbu = new DatabaseUtilities();
 
-        final Connection connection = dbu.getConnection();
-
         port(4567);
 
         put("/prices", (req, res) -> {
             int liftPassCost = Integer.parseInt(req.queryParams("cost"));
             String liftPassType = req.queryParams("type");
 
-            try (PreparedStatement stmt = connection.prepareStatement( //
+            try (PreparedStatement stmt = dbu.getConnection().prepareStatement( //
                     "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
                     "ON DUPLICATE KEY UPDATE cost = ?")) {
                 stmt.setString(1, liftPassType);
@@ -42,7 +40,7 @@ public class Prices {
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
 
-            try (PreparedStatement costStmt = connection.prepareStatement( //
+            try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
                     "SELECT cost FROM base_price " + //
                     "WHERE type = ?")) {
                 costStmt.setString(1, req.queryParams("type"));
@@ -60,7 +58,7 @@ public class Prices {
                         if (!req.queryParams("type").equals("night")) {
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                            try (PreparedStatement holidayStmt = connection.prepareStatement( //
+                            try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( //
                                     "SELECT * FROM holidays")) {
                                 try (ResultSet holidays = holidayStmt.executeQuery()) {
 
@@ -124,7 +122,7 @@ public class Prices {
             res.type("application/json");
         });
 
-        return connection;
+        return dbu.getConnection();
     }
 
 }
