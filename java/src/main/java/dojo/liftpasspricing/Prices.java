@@ -100,31 +100,31 @@ public class Prices {
     }
 
     private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
+        List<Date> holidays = new ArrayList<>();
         try (PreparedStatement holidayStmt = dbu.getConnection().prepareStatement( // #2 - 110 -- DB stuff - isolate for testing
                 "SELECT * FROM holidays")) {
             try (ResultSet holidaysResultSet = holidayStmt.executeQuery()) {
 
                 // #1 - init
-                boolean isHoliday = false;
-                List<Date> holidays = new ArrayList<>();
 
                 //  Database logic
                 while (holidaysResultSet.next()) {
                     Date holiday = holidaysResultSet.getDate("holiday");
                     holidays.add(holiday);
                 }
-                // Business logic
-                for (Date holiday : holidays) {
-                    if (dateFromRequest != null) { //
-                        Date d = isoFormat.parse(dateFromRequest);
-                        if (areDatesEqual(holiday, d)) {
-                            isHoliday = true;
-                        }
-                    }
-                }
-                return isHoliday;
             }
         }
+        // Business logic
+        boolean isHoliday = false;
+        for (Date holiday : holidays) {
+            if (dateFromRequest != null) { //
+                Date d = isoFormat.parse(dateFromRequest);
+                if (areDatesEqual(holiday, d)) {
+                    isHoliday = true;
+                }
+            }
+        }
+        return isHoliday;
     }
 
     private boolean areDatesEqual(Date holiday, Date d) {
