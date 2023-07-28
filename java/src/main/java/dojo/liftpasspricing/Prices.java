@@ -6,7 +6,6 @@ import static spark.Spark.port;
 import static spark.Spark.put;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ public class Prices {
     public Connection createApp() throws SQLException {
         DatabaseUtilities dbu = new DatabaseUtilities();
 
-        final Connection connection = getConnection(dbu);
+        final Connection connection = dbu.getConnection();
 
         port(4567);
 
@@ -128,7 +127,4 @@ public class Prices {
         return connection;
     }
 
-    private Connection getConnection(DatabaseUtilities dbu) throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/lift_pass", "root", "mysql");
-    }
 }
