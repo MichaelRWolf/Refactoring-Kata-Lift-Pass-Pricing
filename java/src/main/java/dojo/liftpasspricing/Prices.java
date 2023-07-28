@@ -17,6 +17,12 @@ import java.util.Date;
 public class Prices {
 
     public Connection createApp() throws SQLException {
+        DatabaseUtilities dbu = applesauce();
+
+        return dbu.getConnection();
+    }
+
+    private DatabaseUtilities applesauce() {
         DatabaseUtilities dbu = new DatabaseUtilities();
 
         port(4567);
@@ -121,8 +127,7 @@ public class Prices {
         after((req, res) -> {
             res.type("application/json");
         });
-
-        return dbu.getConnection();
+        return dbu;
     }
 
 }
