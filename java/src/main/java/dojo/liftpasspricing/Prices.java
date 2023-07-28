@@ -43,7 +43,8 @@ public class Prices {
                     int reduction;
 
                     if (age != null && age < 6) {
-                        return "{ \"cost\": 0}";
+                        int costAfterAdjustments = 0;
+                        return costAsJsonString(costAfterAdjustments);
                     } else {
                         reduction = 0;
 
