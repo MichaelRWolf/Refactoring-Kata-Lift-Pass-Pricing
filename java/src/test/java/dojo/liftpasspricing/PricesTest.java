@@ -17,7 +17,7 @@ public class PricesTest {
 
     @BeforeAll
     public static void createPrices() throws SQLException {
-        connection = Prices.createApp();
+        connection = new Prices().createApp();
     }
 
     @AfterAll
