@@ -21,9 +21,9 @@ public class Prices {
 
         put("/prices", (req, res) -> {
             int liftPassCost = Integer.parseInt(req.queryParams("cost"));
-            String liftPassType = req.queryParams("type");
+            String liftPassTypeFromReq = req.queryParams("type");
 
-            dbu.setLiftPassCostForLiftPassType(liftPassCost, liftPassType);
+            dbu.setLiftPassCostForLiftPassType(liftPassCost, liftPassTypeFromReq);
 
             return "";
         });
