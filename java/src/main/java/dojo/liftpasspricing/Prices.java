@@ -64,18 +64,18 @@ public class Prices {
                             // TODO apply reduction for others
                             if (age != null && age < 15) {
                                 int costAfterAdjustments = (int) Math.ceil(costFromResult * .7);
-                                return "{ \"cost\": " + costAfterAdjustments + "}";
+                                return costAsJsonString(costAfterAdjustments);
                             } else {
                                 if (age == null) {
                                     int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
-                                    return "{ \"cost\": " + costAfterAdjustments + "}";
+                                    return costAsJsonString(costAfterAdjustments);
                                 } else {
                                     if (age > 64) {
                                         int costAfterAdjustments = (int) Math.ceil(costFromResult * .75 * (1 - reduction / 100.0));
-                                        return "{ \"cost\": " + costAfterAdjustments + "}";
+                                        return costAsJsonString(costAfterAdjustments);
                                     } else {
                                         int costAfterAdjustments = (int) Math.ceil(costFromResult * (1 - reduction / 100.0));
-                                        return "{ \"cost\": " + costAfterAdjustments + "}";
+                                        return costAsJsonString(costAfterAdjustments);
                                     }
                                 }
                             }
@@ -83,14 +83,14 @@ public class Prices {
                             if (age != null && age >= 6) {
                                 if (age > 64) {
                                     int costAfterAdjustments = (int) Math.ceil(costFromResult * .4);
-                                    return "{ \"cost\": " + costAfterAdjustments + "}";
+                                    return costAsJsonString(costAfterAdjustments);
                                 } else {
                                     int costAfterAdjustments = costFromResult;
-                                    return "{ \"cost\": " + costAfterAdjustments + "}";
+                                    return costAsJsonString(costAfterAdjustments);
                                 }
                             } else {
                                 int costAfterAdjustments = 0;
-                                return "{ \"cost\": " + costAfterAdjustments + "}";
+                                return costAsJsonString(costAfterAdjustments);
                             }
                         }
                     }
@@ -102,6 +102,10 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
+    }
+
+    private String costAsJsonString(int costAfterAdjustments) {
+        return "{ \"cost\": " + costAfterAdjustments + "}";
     }
 
     private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
