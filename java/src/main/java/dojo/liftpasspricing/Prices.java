@@ -12,8 +12,8 @@ import static spark.Spark.*;
 
 public class Prices {
 
-    public DatabaseUtilities createApp() {
-        DatabaseUtilities dbu = new DatabaseUtilities();
+    public HolidaysProvider createApp() {
+        HolidaysProvider dbu = new HolidaysProvider();
 
         port(4567);
 
