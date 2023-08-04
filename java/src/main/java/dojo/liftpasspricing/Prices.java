@@ -14,7 +14,7 @@ public class Prices {
 
     public DatabaseUtilities createApp() {
         DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        DatabaseUtilities costForTypeProvider = databaseUtilities;
+        CostForTypeProvider costForTypeProvider = databaseUtilities;
         HolidaysProvider holidaysProvider = databaseUtilities;
 
         port(4567);

@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DatabaseUtilities implements HolidaysProvider {
+public class DatabaseUtilities implements HolidaysProvider, CostForTypeProvider {
     Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/lift_pass", "root", "mysql");
     }
 
+    @Override
     public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) throws SQLException {
         try (PreparedStatement stmt = getConnection().prepareStatement( //
                 "INSERT INTO base_price (type, cost) VALUES (?, ?) " + //
@@ -40,6 +41,7 @@ public class DatabaseUtilities implements HolidaysProvider {
         return holidays;
     }
 
+     @Override
      public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
         int costForLiftTicketTypeFromDatabase;
         try (PreparedStatement costStmt = getConnection().prepareStatement( //
