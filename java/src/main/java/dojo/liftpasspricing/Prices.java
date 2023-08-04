@@ -17,6 +17,11 @@ public class Prices {
         CostForTypeProvider costForTypeProvider = databaseUtilities;
         HolidaysProvider holidaysProvider = databaseUtilities;
 
+        createApplication(costForTypeProvider, holidaysProvider);
+        return databaseUtilities;
+    }
+
+    private void createApplication(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider) {
         port(4567);
 
         put("/prices", (req, res) -> {
@@ -87,7 +92,6 @@ public class Prices {
         after((req, res) -> {
             res.type("application/json");
         });
-        return databaseUtilities;
     }
 
     private boolean isDateFromRequestAHoliday(HolidaysProvider holidaysProvider, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
