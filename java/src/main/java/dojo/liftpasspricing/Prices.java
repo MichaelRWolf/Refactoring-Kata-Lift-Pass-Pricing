@@ -45,6 +45,7 @@ public class Prices {
                     } else {
                         reduction = 0;
 
+                        int costForLiftTicketTypeFromDatabase = result.getInt("cost");
                         if (!req.queryParams("type").equals("night")) {
                             String dateFromRequest = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,20 +59,19 @@ public class Prices {
                                     reduction = 35;
                                 }
                             }
-
                             // TODO apply reduction for others
                             if (age != null && age < 15) {
-                                return "{ \"cost\": " + (int) Math.ceil(result.getInt("cost") * .7) + "}";
+                                return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .7) + "}";
                             } else {
                                 if (age == null) {
-                                    double cost = result.getInt("cost") * (1 - reduction / 100.0);
+                                    double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
                                     return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                                 } else {
                                     if (age > 64) {
-                                        double cost = result.getInt("cost") * .75 * (1 - reduction / 100.0);
+                                        double cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
                                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                                     } else {
-                                        double cost = result.getInt("cost") * (1 - reduction / 100.0);
+                                        double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
                                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                                     }
                                 }
@@ -79,9 +79,9 @@ public class Prices {
                         } else {
                             if (age != null && age >= 6) {
                                 if (age > 64) {
-                                    return "{ \"cost\": " + (int) Math.ceil(result.getInt("cost") * .4) + "}";
+                                    return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .4) + "}";
                                 } else {
-                                    return "{ \"cost\": " + result.getInt("cost") + "}";
+                                    return "{ \"cost\": " + costForLiftTicketTypeFromDatabase + "}";
                                 }
                             } else {
                                 return "{ \"cost\": 0}";
