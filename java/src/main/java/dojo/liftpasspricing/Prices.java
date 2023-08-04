@@ -34,16 +34,7 @@ public class Prices {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
             int costForLiftTicketTypeFromDatabase;
 
-            try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
-                    "SELECT cost FROM base_price " + //
-                    "WHERE type = ?")) {
-                costStmt.setString(1, req.queryParams("type"));
-                try (ResultSet result = costStmt.executeQuery()) {
-                    result.next();
-                    costForLiftTicketTypeFromDatabase = result.getInt("cost");
-
-                }
-            }
+            costForLiftTicketTypeFromDatabase = getCostForLiftTicketType(dbu, req);
             return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
         });
 
@@ -51,6 +42,20 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
+    }
+
+    private int getCostForLiftTicketType(DatabaseUtilities dbu, Request req) throws SQLException {
+        int costForLiftTicketTypeFromDatabase;
+        try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
+                "SELECT cost FROM base_price " + //
+                "WHERE type = ?")) {
+            costStmt.setString(1, req.queryParams("type"));
+            try (ResultSet result = costStmt.executeQuery()) {
+                result.next();
+                costForLiftTicketTypeFromDatabase = result.getInt("cost");
+            }
+        }
+        return costForLiftTicketTypeFromDatabase;
     }
 
     private String applesauce(DatabaseUtilities dbu, Request req, Integer age, int costForLiftTicketTypeFromDatabase) throws SQLException, ParseException {
