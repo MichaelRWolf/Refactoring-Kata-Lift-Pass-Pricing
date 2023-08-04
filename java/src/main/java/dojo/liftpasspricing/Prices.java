@@ -12,8 +12,8 @@ import static spark.Spark.*;
 
 public class Prices {
 
-    public HolidaysProvider createApp() {
-        HolidaysProvider dbu = new HolidaysProvider();
+    public DatabaseUtilities createApp() {
+        DatabaseUtilities dbu = new DatabaseUtilities();
 
         port(4567);
 
@@ -88,7 +88,7 @@ public class Prices {
         return dbu;
     }
 
-    private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
+    private boolean isDateFromRequestAHoliday(HolidaysProvider dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
         List<Date> holidays = dbu.getHolidays();
         // Business logic
         boolean isHoliday = false;

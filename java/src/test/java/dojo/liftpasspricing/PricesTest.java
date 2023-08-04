@@ -17,7 +17,7 @@ public class PricesTest {
 
     @BeforeAll
     public static void createPrices() throws SQLException {
-        HolidaysProvider dbu = new Prices().createApp();
+        DatabaseUtilities dbu = new Prices().createApp();
 
         connection = dbu.getConnection();
     }

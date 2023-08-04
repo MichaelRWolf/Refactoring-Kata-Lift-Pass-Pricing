@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        HolidaysProvider dbu = new Prices().createApp();
+        DatabaseUtilities dbu = new Prices().createApp();
 
         @SuppressWarnings("resource")
         Connection connection = dbu.getConnection();
