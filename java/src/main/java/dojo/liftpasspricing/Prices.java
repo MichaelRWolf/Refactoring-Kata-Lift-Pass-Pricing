@@ -14,8 +14,8 @@ public class Prices {
 
     public DatabaseUtilities createApp() {
         DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        DatabaseUtilities dbu = databaseUtilities;
-        HolidaysProvider holidaysProvider = dbu;
+        DatabaseUtilities costForTypeProvider = databaseUtilities;
+        HolidaysProvider holidaysProvider = databaseUtilities;
 
         port(4567);
 
@@ -23,7 +23,7 @@ public class Prices {
             int liftPassCost = Integer.parseInt(req.queryParams("cost"));
             String liftPassType = req.queryParams("type");
 
-            dbu.setLiftPassCostForLiftPassType(liftPassCost, liftPassType);
+            costForTypeProvider.setLiftPassCostForLiftPassType(liftPassCost, liftPassType);
 
             return "";
         });
@@ -32,7 +32,7 @@ public class Prices {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
             int costForLiftTicketTypeFromDatabase;
 
-            costForLiftTicketTypeFromDatabase = dbu.getCostForLiftTicketType(req.queryParams("type"));
+            costForLiftTicketTypeFromDatabase = costForTypeProvider.getCostForLiftTicketType(req.queryParams("type"));
             int reduction;
 
             if (age != null && age < 6) {

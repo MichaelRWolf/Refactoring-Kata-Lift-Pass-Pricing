@@ -40,7 +40,7 @@ public class DatabaseUtilities implements HolidaysProvider {
         return holidays;
     }
 
-    int getCostForLiftTicketType(String liftTicketType) throws SQLException {
+     public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
         int costForLiftTicketTypeFromDatabase;
         try (PreparedStatement costStmt = getConnection().prepareStatement( //
                 "SELECT cost FROM base_price " + //
