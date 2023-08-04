@@ -13,7 +13,9 @@ import static spark.Spark.*;
 public class Prices {
 
     public DatabaseUtilities createApp() {
-        DatabaseUtilities dbu = new DatabaseUtilities();
+        DatabaseUtilities databaseUtilities = new DatabaseUtilities();
+        DatabaseUtilities dbu = databaseUtilities;
+        HolidaysProvider holidaysProvider = dbu;
 
         port(4567);
 
@@ -42,7 +44,7 @@ public class Prices {
                     String dateFromRequest = req.queryParams("date");
                     DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                    boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromRequest, isoFormat);
+                    boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateFromRequest, isoFormat);
 
                     if (dateFromRequest != null) {
                         Calendar calendar = Calendar.getInstance();
@@ -85,11 +87,11 @@ public class Prices {
         after((req, res) -> {
             res.type("application/json");
         });
-        return dbu;
+        return databaseUtilities;
     }
 
-    private boolean isDateFromRequestAHoliday(HolidaysProvider dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
-        List<Date> holidays = dbu.getHolidays();
+    private boolean isDateFromRequestAHoliday(HolidaysProvider holidaysProvider, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
+        List<Date> holidays = holidaysProvider.getHolidays();
         // Business logic
         boolean isHoliday = false;
         for (Date holiday : holidays) {
