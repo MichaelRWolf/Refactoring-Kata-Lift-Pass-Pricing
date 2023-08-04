@@ -2,8 +2,6 @@ package dojo.liftpasspricing;
 
 import spark.Request;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -34,7 +32,7 @@ public class Prices {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
             int costForLiftTicketTypeFromDatabase;
 
-            costForLiftTicketTypeFromDatabase = getCostForLiftTicketType(dbu, req.queryParams("type"));
+            costForLiftTicketTypeFromDatabase = dbu.getCostForLiftTicketType(req.queryParams("type"));
             return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
         });
 
@@ -42,20 +40,6 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
-    }
-
-    private int getCostForLiftTicketType(DatabaseUtilities dbu, String liftTicketType) throws SQLException {
-        int costForLiftTicketTypeFromDatabase;
-        try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
-                "SELECT cost FROM base_price " + //
-                "WHERE type = ?")) {
-            costStmt.setString(1, liftTicketType);
-            try (ResultSet result = costStmt.executeQuery()) {
-                result.next();
-                costForLiftTicketTypeFromDatabase = result.getInt("cost");
-            }
-        }
-        return costForLiftTicketTypeFromDatabase;
     }
 
     private String applesauce(DatabaseUtilities dbu, Request req, Integer age, int costForLiftTicketTypeFromDatabase) throws SQLException, ParseException {
