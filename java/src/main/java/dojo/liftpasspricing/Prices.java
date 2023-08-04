@@ -37,6 +37,7 @@ public class Prices {
                 costStmt.setString(1, req.queryParams("type"));
                 try (ResultSet result = costStmt.executeQuery()) {
                     result.next();
+                    int costForLiftTicketTypeFromDatabase = result.getInt("cost");
 
                     int reduction;
 
@@ -45,7 +46,6 @@ public class Prices {
                     } else {
                         reduction = 0;
 
-                        int costForLiftTicketTypeFromDatabase = result.getInt("cost");
                         if (!req.queryParams("type").equals("night")) {
                             String dateFromRequest = req.queryParams("date");
                             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
