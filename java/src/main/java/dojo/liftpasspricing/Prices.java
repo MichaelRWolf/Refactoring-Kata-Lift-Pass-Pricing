@@ -42,9 +42,9 @@ public class Prices {
                     result.next();
                     costForLiftTicketTypeFromDatabase = result.getInt("cost");
 
-                    return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
                 }
             }
+            return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
         });
 
         after((req, res) -> {
