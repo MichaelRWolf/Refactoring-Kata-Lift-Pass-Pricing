@@ -12,16 +12,7 @@ import static spark.Spark.*;
 
 public class Prices {
 
-    public DatabaseUtilities createApp() {
-        DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        CostForTypeProvider costForTypeProvider = databaseUtilities;
-        HolidaysProvider holidaysProvider = databaseUtilities;
-
-        createApplication(costForTypeProvider, holidaysProvider);
-        return databaseUtilities;
-    }
-
-    private void createApplication(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider) {
+    public void createApplication(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider) {
         port(4567);
 
         put("/prices", (req, res) -> {
