@@ -34,7 +34,7 @@ public class Prices {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
             int costForLiftTicketTypeFromDatabase;
 
-            costForLiftTicketTypeFromDatabase = getCostForLiftTicketType(dbu, req);
+            costForLiftTicketTypeFromDatabase = getCostForLiftTicketType(dbu, req.queryParams("type"));
             return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
         });
 
@@ -44,12 +44,12 @@ public class Prices {
         return dbu;
     }
 
-    private int getCostForLiftTicketType(DatabaseUtilities dbu, Request req) throws SQLException {
+    private int getCostForLiftTicketType(DatabaseUtilities dbu, String liftTicketType) throws SQLException {
         int costForLiftTicketTypeFromDatabase;
         try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
                 "SELECT cost FROM base_price " + //
                 "WHERE type = ?")) {
-            costStmt.setString(1, req.queryParams("type"));
+            costStmt.setString(1, liftTicketType);
             try (ResultSet result = costStmt.executeQuery()) {
                 result.next();
                 costForLiftTicketTypeFromDatabase = result.getInt("cost");
