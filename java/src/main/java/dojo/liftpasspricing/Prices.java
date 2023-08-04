@@ -1,5 +1,7 @@
 package dojo.liftpasspricing;
 
+import spark.Request;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +32,7 @@ public class Prices {
 
         get("/prices", (req, res) -> {
             final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
+            int costForLiftTicketTypeFromDatabase;
 
             try (PreparedStatement costStmt = dbu.getConnection().prepareStatement( //
                     "SELECT cost FROM base_price " + //
@@ -37,57 +40,9 @@ public class Prices {
                 costStmt.setString(1, req.queryParams("type"));
                 try (ResultSet result = costStmt.executeQuery()) {
                     result.next();
-                    int costForLiftTicketTypeFromDatabase = result.getInt("cost");
+                    costForLiftTicketTypeFromDatabase = result.getInt("cost");
 
-                    int reduction;
-
-                    if (age != null && age < 6) {
-                        return "{ \"cost\": 0}";
-                    } else {
-                        reduction = 0;
-
-                        if (!req.queryParams("type").equals("night")) {
-                            String dateFromRequest = req.queryParams("date");
-                            DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                            boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromRequest, isoFormat);
-
-                            if (dateFromRequest != null) {
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(isoFormat.parse(dateFromRequest));
-                                if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
-                                    reduction = 35;
-                                }
-                            }
-                            // TODO apply reduction for others
-                            if (age != null && age < 15) {
-                                return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .7) + "}";
-                            } else {
-                                if (age == null) {
-                                    double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
-                                    return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                } else {
-                                    if (age > 64) {
-                                        double cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                    } else {
-                                        double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
-                                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
-                                    }
-                                }
-                            }
-                        } else {
-                            if (age != null && age >= 6) {
-                                if (age > 64) {
-                                    return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .4) + "}";
-                                } else {
-                                    return "{ \"cost\": " + costForLiftTicketTypeFromDatabase + "}";
-                                }
-                            } else {
-                                return "{ \"cost\": 0}";
-                            }
-                        }
-                    }
+                    return applesauce(dbu, req, age, costForLiftTicketTypeFromDatabase);
                 }
             }
         });
@@ -96,6 +51,58 @@ public class Prices {
             res.type("application/json");
         });
         return dbu;
+    }
+
+    private String applesauce(DatabaseUtilities dbu, Request req, Integer age, int costForLiftTicketTypeFromDatabase) throws SQLException, ParseException {
+        int reduction;
+
+        if (age != null && age < 6) {
+            return "{ \"cost\": 0}";
+        } else {
+            reduction = 0;
+
+            if (!req.queryParams("type").equals("night")) {
+                String dateFromRequest = req.queryParams("date");
+                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                boolean isHoliday = isDateFromRequestAHoliday(dbu, dateFromRequest, isoFormat);
+
+                if (dateFromRequest != null) {
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(isoFormat.parse(dateFromRequest));
+                    if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
+                        reduction = 35;
+                    }
+                }
+                // TODO apply reduction for others
+                if (age != null && age < 15) {
+                    return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .7) + "}";
+                } else {
+                    if (age == null) {
+                        double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
+                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                    } else {
+                        if (age > 64) {
+                            double cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
+                            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                        } else {
+                            double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
+                            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                        }
+                    }
+                }
+            } else {
+                if (age != null && age >= 6) {
+                    if (age > 64) {
+                        return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .4) + "}";
+                    } else {
+                        return "{ \"cost\": " + costForLiftTicketTypeFromDatabase + "}";
+                    }
+                } else {
+                    return "{ \"cost\": 0}";
+                }
+            }
+        }
     }
 
     private boolean isDateFromRequestAHoliday(DatabaseUtilities dbu, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
