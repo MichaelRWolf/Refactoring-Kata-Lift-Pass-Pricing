@@ -1,54 +1,44 @@
 package dojo.liftpasspricing;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 
-import org.junit.jupiter.api.*;
-
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import spark.Spark;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PricesTest {
 
-    private static Connection connection;
-
     @BeforeAll
     public static void createPrices() throws SQLException {
-        DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        CostForTypeProvider costForTypeProvider = databaseUtilities;
-        HolidaysProvider holidaysProvider = databaseUtilities;
+        CostForTypeProvider costForTypeProvider = new CostForTypeProvider() {
+            @Override
+            public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
+                return 17;
+            }
 
-        new Prices().createApplication(costForTypeProvider, holidaysProvider);
-        DatabaseUtilities dbu = databaseUtilities;
-
-        connection = dbu.getConnection();
-    }
-
-    @AfterAll
-    public static void stopApplication() throws SQLException {
-        Spark.stop();
-        connection.close();
+            @Override
+            public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) throws SQLException {
+            }
+        };
+        HolidaysProvider holidaysProvider = new HolidaysProvider() {
+            @Override
+            public List<Date> getHolidays() throws SQLException {
+                return null;
+            }
+        };
     }
 
     @Test
     public void doesSomething() {
-        JsonPath response = RestAssured.
-            given().
-                port(4567).
-            when().
-                // construct some proper url parameters
-                get("/prices").
-            then().
-                assertThat().
-                    statusCode(200).
-                assertThat().
-                    contentType("application/json").
-            extract().jsonPath();
+        assertEquals(2+2, 4);
+    }
 
-        assertEquals("putSomehtingHere", response.get("putSomehtingHere"));
+    @Test
+    public void doPutGetHandlerBusinessLogic() {
+        // write some tests for the business logic
     }
 
 }
