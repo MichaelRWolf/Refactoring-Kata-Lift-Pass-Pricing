@@ -21,25 +21,25 @@ public class PricesTest {
     void setUp() {
         holidaysProvider = new HolidaysProvider() {
             @Override
-            public List<Date> getHolidays() throws SQLException {
+            public List<Date> getHolidays() {
                 return null;
             }
         };
         costForTypeProvider = new CostForTypeProvider() {
             @Override
-            public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
+            public int getCostForLiftTicketType(String liftTicketType) {
                 return 17;
             }
 
             @Override
-            public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) throws SQLException {
+            public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) {
             }
         };
         prices = new Prices();
     }
 
     @Test
-    public void threeYearOldPeopleShouldBeFree() throws SQLException, ParseException {
+    public void threeYearOldPeopleShouldBeFree() throws Exception {
         assertEquals("{ \"cost\": 0}",
                 prices.getPricesHandler(costForTypeProvider,
                         holidaysProvider,
