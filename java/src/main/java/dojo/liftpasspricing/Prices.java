@@ -22,7 +22,7 @@ public class Prices {
         });
 
         get("/prices", (req, res) -> {
-            return getPricesHandler(costForTypeProvider, holidaysProvider, req);
+            return getPricesHandler(costForTypeProvider, holidaysProvider, req.queryParams("age"), req.queryParams("type"), req.queryParams("date"));
         });
 
         after((req, res) -> {
@@ -39,11 +39,16 @@ public class Prices {
         return "";
     }
 
-    private String getPricesHandler(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider, Request req) throws SQLException, ParseException {
-        final Integer age = req.queryParams("age") != null ? Integer.valueOf(req.queryParams("age")) : null;
+    String getPricesHandler(CostForTypeProvider costForTypeProvider,
+                            HolidaysProvider holidaysProvider,
+                            String ageString,
+                            String liftTicketTypeString,
+                            String dateString) throws SQLException,
+            ParseException {
+        final Integer age = ageString != null ? Integer.valueOf(ageString) : null;
         int costForLiftTicketTypeFromDatabase;
 
-        costForLiftTicketTypeFromDatabase = costForTypeProvider.getCostForLiftTicketType(req.queryParams("type"));
+        costForLiftTicketTypeFromDatabase = costForTypeProvider.getCostForLiftTicketType(liftTicketTypeString);
         int reduction;
 
         if (age != null && age < 6) {
@@ -51,8 +56,8 @@ public class Prices {
         } else {
             reduction = 0;
 
-            if (!req.queryParams("type").equals("night")) {
-                String dateFromRequest = req.queryParams("date");
+            if (!liftTicketTypeString.equals("night")) {
+                String dateFromRequest = dateString;
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateFromRequest, isoFormat);
