@@ -33,8 +33,6 @@ public class PricesTest {
             }
         };
         Prices prices = new Prices();
-        // when
-        // then
         assertEquals("{ \"cost\": 17}",
                 prices.getPricesHandler(costForTypeProvider,
                         holidaysProvider,
@@ -42,26 +40,4 @@ public class PricesTest {
                         "night",
                         "2023-08-10"));
     }
-
-
-    @BeforeAll
-    public static void createPrices() throws SQLException {
-        CostForTypeProvider costForTypeProvider = new CostForTypeProvider() {
-            @Override
-            public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
-                return 17;
-            }
-
-            @Override
-            public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) throws SQLException {
-            }
-        };
-        HolidaysProvider holidaysProvider = new HolidaysProvider() {
-            @Override
-            public List<Date> getHolidays() throws SQLException {
-                return null;
-            }
-        };
-    }
-
 }
