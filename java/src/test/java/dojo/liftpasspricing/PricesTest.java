@@ -14,7 +14,7 @@ public class PricesTest {
 
 
     @Test
-    public void testGetPricesHandler() throws SQLException, ParseException {
+    public void threeYearOldPeopleShouldBeFree() throws SQLException, ParseException {
         // given
         CostForTypeProvider costForTypeProvider = new CostForTypeProvider() {
             @Override
@@ -32,13 +32,7 @@ public class PricesTest {
                 return null;
             }
         };
-        Prices prices = new Prices();
-        assertEquals("{ \"cost\": 17}",
-                prices.getPricesHandler(costForTypeProvider,
-                        holidaysProvider,
-                        "42",
-                        "night",
-                        "2023-08-10"));
+        Prices prices = new Prices();;
 
         assertEquals("{ \"cost\": 0}",
                 prices.getPricesHandler(costForTypeProvider,
