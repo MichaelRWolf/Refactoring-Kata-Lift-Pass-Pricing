@@ -11,14 +11,10 @@ public class Main {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        CostForTypeProvider costForTypeProvider = databaseUtilities;
-        HolidaysProvider holidaysProvider = databaseUtilities;
-
         new Prices().createApplication(costForTypeProvider, holidaysProvider);
-        DatabaseUtilities dbu = databaseUtilities;
 
         @SuppressWarnings("resource")
-        Connection connection = dbu.getConnection();
+        Connection connection = databaseUtilities.getConnection();
 
         System.out.println("LiftPassPricing Api started on 4567,\n"
                 + "you can open http://localhost:4567/prices?type=night&age=23&date=2019-02-18 in a navigator\n"
