@@ -1,6 +1,7 @@
 package dojo.liftpasspricing;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -13,10 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PricesTest {
 
 
-    @Test
-    public void threeYearOldPeopleShouldBeFree() throws SQLException, ParseException {
-        // given
-        CostForTypeProvider costForTypeProvider = new CostForTypeProvider() {
+    private HolidaysProvider holidaysProvider;
+    private CostForTypeProvider costForTypeProvider;
+    private Prices prices;
+
+    @BeforeEach
+    void setUp() {
+        holidaysProvider = new HolidaysProvider() {
+            @Override
+            public List<Date> getHolidays() throws SQLException {
+                return null;
+            }
+        };
+        costForTypeProvider = new CostForTypeProvider() {
             @Override
             public int getCostForLiftTicketType(String liftTicketType) throws SQLException {
                 return 17;
@@ -26,14 +36,11 @@ public class PricesTest {
             public void setLiftPassCostForLiftPassType(int liftPassCost, String liftPassType) throws SQLException {
             }
         };
-        HolidaysProvider holidaysProvider = new HolidaysProvider() {
-            @Override
-            public List<Date> getHolidays() throws SQLException {
-                return null;
-            }
-        };
-        Prices prices = new Prices();;
+        prices = new Prices();
+    }
 
+    @Test
+    public void threeYearOldPeopleShouldBeFree() throws SQLException, ParseException {
         assertEquals("{ \"cost\": 0}",
                 prices.getPricesHandler(costForTypeProvider,
                         holidaysProvider,
