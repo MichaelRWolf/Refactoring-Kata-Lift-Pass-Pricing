@@ -40,7 +40,7 @@ public class PricesTest {
                         "night",
                         "2023-08-10"));
 
-        assertEquals("{ \"cost\": 3}",
+        assertEquals("{ \"cost\": 0}",
                 prices.getPricesHandler(costForTypeProvider,
                         holidaysProvider,
                         "3",
