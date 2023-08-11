@@ -17,12 +17,7 @@ public class PricesTest {
 
     @BeforeEach
     void setUp() {
-        holidaysProvider = new HolidaysProvider() {
-            @Override
-            public List<Date> getHolidays() {
-                return null;
-            }
-        };
+        holidaysProvider = () -> null;
         costForTypeProvider = new CostForTypeProvider() {
             @Override
             public int getCostForLiftTicketType(String liftTicketType) {
