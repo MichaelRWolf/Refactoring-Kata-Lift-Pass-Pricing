@@ -1,5 +1,6 @@
 package dojo.liftpasspricing;
 
+import org.approvaltests.Approvals;
 import org.approvaltests.core.Options;
 import org.approvaltests.reporters.ClipboardReporter;
 import org.approvaltests.reporters.MultiReporter;
@@ -7,16 +8,10 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
-import org.approvaltests.Approvals;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class PricesTest {
@@ -43,7 +38,7 @@ public class PricesTest {
     }
 
     @Test
-    public void testApprovalTestFrameworkWorks() throws SQLException, ParseException {
+    public void testApprovalTestFrameworkWorks() {
         String result = "FortyTwo";
      /*
         // Provide input parameters for the getPricesHandler method
@@ -55,6 +50,7 @@ public class PricesTest {
         result = prices.getPricesHandler(costForTypeProvider, holidaysProvider, age, liftTicketType, dateString);
 */
         // TODO: Move this file from /java to /java-simple (where we did other work)
+        // TODO: Move reporters to top of file
         Approvals.verify(result,
                 new Options().
                         withReporter(new MultiReporter(
