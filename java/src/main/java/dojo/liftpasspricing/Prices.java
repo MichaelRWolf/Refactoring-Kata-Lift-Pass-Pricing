@@ -43,8 +43,11 @@ public class Prices {
                             HolidaysProvider holidaysProvider,
                             String ageString,
                             String liftTicketTypeString,
-                            String dateString) throws SQLException,
-            ParseException {
+                            String dateString)
+            throws
+            SQLException,
+            ParseException
+    {
         final Integer age = ageString != null ? Integer.valueOf(ageString) : null;
         int costForLiftTicketTypeFromDatabase;
 
