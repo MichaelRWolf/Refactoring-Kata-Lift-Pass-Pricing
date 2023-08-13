@@ -50,14 +50,14 @@ public class PricesTest {
         String liftTicketType = "night";
 
         for (int age = 1; age <= 70; age++) {
-            LiftTicket ticket = getLiftTicket(liftTicketType, age, usageDateString);
+            LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
             result.append(ticket).append("\n");
         }
 
         Approvals.verify(result.toString(), verifyOptions);
     }
 
-    private LiftTicket getLiftTicket(String liftTicketType, int skierAge, String usageDateString) throws ParseException {
+    private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {
         return new LiftTicket(liftTicketType, new SimpleDateFormat("yyyy-MM-dd").parse(usageDateString), skierAge);
     }
 
