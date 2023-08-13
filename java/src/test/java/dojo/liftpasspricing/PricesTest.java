@@ -8,8 +8,9 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -38,29 +39,19 @@ public class PricesTest {
     }
 
     @Test
-    public void testApprovalTestFrameworkWorks() {
-        String result = "FortyTwo";
-     /*
-        // Provide input parameters for the getPricesHandler method
-        String age = "25";  // Age as a string
-        String liftTicketType = "regular";
-        String dateString = "2023-08-15"; // A sample date
+    public void testApprovalTestFrameworkWorks() throws ParseException {
+        String result;
+        Options verifyOptions = new Options().
+                withReporter(new MultiReporter(
+                        new MeldMergeReporter(),
+                        new ClipboardReporter()
+                ));
 
-        // Call the method and get the result
-        result = prices.getPricesHandler(costForTypeProvider, holidaysProvider, age, liftTicketType, dateString);
-*/
-        // TODO: Move this file from /java to /java-simple (where we did other work)
-        // TODO: Move reporters to top of file
-        Approvals.verify(result,
-                new Options().
-                        withReporter(new MultiReporter(
-                                new MeldMergeReporter(),
-                                new ClipboardReporter()
-                        )));
-//        Approvals.verify(result, new Options()
-//                .withReporter(new MeldMergeReporter())
-//                .withReporter(new ClipboardReporter())
-//        );
+        Date usageDate = new SimpleDateFormat("yyyy-MM-dd").parse("2023-08-15");
+        int skierAge = 25;
+        LiftTicket ticket = new LiftTicket("night", usageDate, skierAge);
+        result = ticket.toString();
+        Approvals.verify(result, verifyOptions);
     }
 
 
