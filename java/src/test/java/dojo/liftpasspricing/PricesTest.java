@@ -47,11 +47,17 @@ public class PricesTest {
                         new ClipboardReporter()
                 ));
 
-        Date usageDate = new SimpleDateFormat("yyyy-MM-dd").parse("2023-08-15");
+        String liftTicketType = "night";
         int skierAge = 25;
-        LiftTicket ticket = new LiftTicket("night", usageDate, skierAge);
+        String usageDateString = "2023-08-15";
+        LiftTicket ticket = getLiftTicket(liftTicketType, skierAge, usageDateString);
         result = ticket.toString();
+
         Approvals.verify(result, verifyOptions);
+    }
+
+    private LiftTicket getLiftTicket(String liftTicketType, int skierAge, String usageDateString) throws ParseException {
+        return new LiftTicket(liftTicketType, new SimpleDateFormat("yyyy-MM-dd").parse(usageDateString), skierAge);
     }
 
 
