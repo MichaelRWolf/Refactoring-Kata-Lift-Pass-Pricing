@@ -12,3 +12,6 @@ build
 .classpath
 .settings
 .pmd
+
+# ApprovalTests
+*.received.txt
