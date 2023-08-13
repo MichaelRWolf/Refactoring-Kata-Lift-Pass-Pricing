@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,7 +39,7 @@ public class PricesTest {
 
     @Test
     public void testApprovalTestFrameworkWorks() throws ParseException {
-        String result;
+        String result = "";
         Options verifyOptions = new Options().
                 withReporter(new MultiReporter(
                         new MeldMergeReporter(),
@@ -50,8 +49,10 @@ public class PricesTest {
         String liftTicketType = "night";
         int skierAge = 25;
         String usageDateString = "2023-08-15";
+
         LiftTicket ticket = getLiftTicket(liftTicketType, skierAge, usageDateString);
-        result = ticket.toString();
+        String ticketString = ticket.toString();
+        result += ticketString + "\n";
 
         Approvals.verify(result, verifyOptions);
     }
