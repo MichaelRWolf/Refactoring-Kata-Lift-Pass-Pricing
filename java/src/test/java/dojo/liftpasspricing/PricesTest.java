@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,12 +48,13 @@ public class PricesTest {
                 ));
 
         String liftTicketType = "night";
-        int skierAge = 25;
         String usageDateString = "2023-08-15";
 
-        LiftTicket ticket = getLiftTicket(liftTicketType, skierAge, usageDateString);
-        String ticketString = ticket.toString();
-        result += ticketString + "\n";
+        for (int age = 1; age <= 70; age++) {
+            LiftTicket ticket = getLiftTicket(liftTicketType, age, usageDateString);
+            String ticketString = ticket.toString();
+            result += ticketString + "\n";
+        }
 
         Approvals.verify(result, verifyOptions);
     }
