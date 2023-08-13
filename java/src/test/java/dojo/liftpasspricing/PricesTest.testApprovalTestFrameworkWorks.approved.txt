@@ -1,1 +1,1 @@
-LiftTicket{}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 25}

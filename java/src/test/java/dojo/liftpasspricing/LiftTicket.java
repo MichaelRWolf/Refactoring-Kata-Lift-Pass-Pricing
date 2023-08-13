@@ -9,7 +9,9 @@ public class LiftTicket {
 
     @Override
     public String toString() {
-        return "LiftTicket{}";
+        return "{liftTicketType: " + liftTicketType + ", " +
+                "usageDate: " + usageDate + ", " +
+                "skierAge: " + skierAge + "}";
     }
 
     public LiftTicket(String liftTicketType, Date usageDate, int skierAge) {
