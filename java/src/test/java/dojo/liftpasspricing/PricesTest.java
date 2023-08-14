@@ -12,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -59,9 +61,15 @@ public class PricesTest {
         // TODO:
         // liftTicketTypes.add(null);
 
+
+        List<Integer> ages = IntStream.rangeClosed(1, 70)
+                .boxed()
+                .collect(Collectors.toList());
+
+
         for (String usageDateString : usageDateStrings) {
             for (String liftTicketType : liftTicketTypes) {
-                for (int age = 1; age <= 70; age++) {
+                for (int age : ages) {
                     LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
                     result.append(ticket).append("\n");
                 }
