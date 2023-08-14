@@ -48,7 +48,10 @@ public class PricesTest {
                         new ClipboardReporter()
                 ));
 
-        String usageDateString = "2023-08-15";
+        ArrayList<String> usageDateStrings = new ArrayList<>();
+        usageDateStrings.add("2023-08-15");
+        usageDateStrings.add("2023-12-25");
+
 
         List<String> liftTicketTypes = new ArrayList<>();
         liftTicketTypes.add("regular");
@@ -56,13 +59,15 @@ public class PricesTest {
         // TODO:
         // liftTicketTypes.add(null);
 
-
-        for (String liftTicketType : liftTicketTypes) {
-            for (int age = 1; age <= 70; age++) {
-                LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
-                result.append(ticket).append("\n");
+        for (String usageDateString1 : usageDateStrings) {
+            for (String liftTicketType : liftTicketTypes) {
+                for (int age = 1; age <= 70; age++) {
+                    LiftTicket ticket = getLiftTicket(usageDateString1, liftTicketType, age);
+                    result.append(ticket).append("\n");
+                }
             }
         }
+
 
         Approvals.verify(result.toString(), verifyOptions);
     }
