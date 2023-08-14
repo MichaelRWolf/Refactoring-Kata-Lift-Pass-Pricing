@@ -59,10 +59,10 @@ public class PricesTest {
         // TODO:
         // liftTicketTypes.add(null);
 
-        for (String usageDateString1 : usageDateStrings) {
+        for (String usageDateString : usageDateStrings) {
             for (String liftTicketType : liftTicketTypes) {
                 for (int age = 1; age <= 70; age++) {
-                    LiftTicket ticket = getLiftTicket(usageDateString1, liftTicketType, age);
+                    LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
                     result.append(ticket).append("\n");
                 }
             }
