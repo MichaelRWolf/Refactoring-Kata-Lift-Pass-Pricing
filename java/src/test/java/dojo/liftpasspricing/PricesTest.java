@@ -82,8 +82,7 @@ public class PricesTest {
     }
 
     private String costAsJson(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider, LiftTicket ticket) {
-        String s = "{ \"cost\": 17}";
-        return s;
+        return "{ \"cost\": 17}";
     }
 
     private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {
