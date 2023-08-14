@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,11 +49,19 @@ public class PricesTest {
                 ));
 
         String usageDateString = "2023-08-15";
-        String liftTicketType = "night";
 
-        for (int age = 1; age <= 70; age++) {
-            LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
-            result.append(ticket).append("\n");
+        List<String> liftTicketTypes = new ArrayList<>();
+        liftTicketTypes.add("regular");
+        liftTicketTypes.add("night");
+        // TODO:
+        // liftTicketTypes.add(null);
+
+
+        for (String liftTicketType : liftTicketTypes) {
+            for (int age = 1; age <= 70; age++) {
+                LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
+                result.append(ticket).append("\n");
+            }
         }
 
         Approvals.verify(result.toString(), verifyOptions);
