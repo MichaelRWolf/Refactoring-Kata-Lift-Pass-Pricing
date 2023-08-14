@@ -71,13 +71,19 @@ public class PricesTest {
             for (String liftTicketType : liftTicketTypes) {
                 for (int age : ages) {
                     LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
-                    result.append(ticket).append("\n");
+                    String costAsJson = costAsJson(costForTypeProvider, holidaysProvider, ticket);
+                    result.append(ticket).append(" => ").append(costAsJson).append("\n");
                 }
             }
         }
 
 
         Approvals.verify(result.toString(), verifyOptions);
+    }
+
+    private String costAsJson(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider, LiftTicket ticket) {
+        String s = "{ \"cost\": 17}";
+        return s;
     }
 
     private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {
