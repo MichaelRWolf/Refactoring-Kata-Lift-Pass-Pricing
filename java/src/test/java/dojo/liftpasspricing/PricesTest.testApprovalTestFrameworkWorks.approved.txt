@@ -1,280 +1,280 @@
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 1}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 2}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 3}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 4}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 5}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 6}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 7}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 8}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 9}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 10}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 11}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 12}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 13}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 14}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 15}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 16}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 17}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 18}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 19}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 20}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 21}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 22}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 23}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 24}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 25}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 26}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 27}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 28}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 29}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 30}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 31}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 32}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 33}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 34}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 35}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 36}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 37}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 38}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 39}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 40}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 41}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 42}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 43}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 44}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 45}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 46}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 47}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 48}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 49}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 50}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 51}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 52}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 53}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 54}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 55}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 56}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 57}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 58}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 59}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 60}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 61}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 62}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 63}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 64}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 65}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 66}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 67}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 68}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 69}
-{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 70}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 1}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 2}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 3}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 4}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 5}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 6}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 7}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 8}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 9}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 10}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 11}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 12}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 13}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 14}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 15}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 16}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 17}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 18}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 19}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 20}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 21}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 22}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 23}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 24}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 25}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 26}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 27}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 28}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 29}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 30}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 31}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 32}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 33}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 34}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 35}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 36}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 37}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 38}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 39}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 40}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 41}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 42}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 43}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 44}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 45}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 46}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 47}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 48}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 49}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 50}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 51}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 52}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 53}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 54}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 55}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 56}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 57}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 58}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 59}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 60}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 61}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 62}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 63}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 64}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 65}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 66}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 67}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 68}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 69}
-{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 70}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 1}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 2}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 3}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 4}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 5}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 6}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 7}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 8}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 9}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 10}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 11}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 12}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 13}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 14}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 15}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 16}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 17}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 18}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 19}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 20}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 21}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 22}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 23}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 24}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 25}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 26}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 27}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 28}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 29}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 30}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 31}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 32}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 33}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 34}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 35}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 36}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 37}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 38}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 39}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 40}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 41}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 42}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 43}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 44}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 45}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 46}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 47}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 48}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 49}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 50}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 51}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 52}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 53}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 54}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 55}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 56}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 57}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 58}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 59}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 60}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 61}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 62}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 63}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 64}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 65}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 66}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 67}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 68}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 69}
-{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 70}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 1}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 2}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 3}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 4}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 5}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 6}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 7}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 8}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 9}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 10}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 11}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 12}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 13}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 14}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 15}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 16}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 17}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 18}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 19}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 20}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 21}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 22}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 23}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 24}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 25}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 26}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 27}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 28}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 29}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 30}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 31}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 32}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 33}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 34}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 35}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 36}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 37}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 38}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 39}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 40}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 41}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 42}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 43}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 44}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 45}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 46}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 47}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 48}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 49}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 50}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 51}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 52}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 53}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 54}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 55}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 56}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 57}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 58}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 59}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 60}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 61}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 62}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 63}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 64}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 65}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 66}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 67}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 68}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 69}
-{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 70}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 1} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 2} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 3} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 4} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 5} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 6} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 7} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 8} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 9} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 10} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 11} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 12} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 13} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 14} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 15} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 16} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 17} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 18} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 19} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 20} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 21} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 22} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 23} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 24} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 25} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 26} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 27} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 28} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 29} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 30} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 31} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 32} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 33} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 34} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 35} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 36} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 37} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 38} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 39} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 40} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 41} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 42} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 43} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 44} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 45} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 46} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 47} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 48} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 49} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 50} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 51} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 52} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 53} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 54} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 55} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 56} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 57} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 58} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 59} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 60} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 61} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 62} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 63} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 64} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 65} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 66} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 67} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 68} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 69} => { "cost": 17}
+{liftTicketType: regular, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 70} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 1} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 2} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 3} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 4} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 5} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 6} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 7} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 8} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 9} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 10} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 11} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 12} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 13} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 14} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 15} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 16} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 17} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 18} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 19} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 20} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 21} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 22} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 23} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 24} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 25} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 26} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 27} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 28} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 29} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 30} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 31} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 32} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 33} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 34} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 35} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 36} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 37} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 38} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 39} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 40} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 41} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 42} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 43} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 44} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 45} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 46} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 47} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 48} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 49} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 50} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 51} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 52} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 53} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 54} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 55} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 56} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 57} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 58} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 59} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 60} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 61} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 62} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 63} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 64} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 65} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 66} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 67} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 68} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 69} => { "cost": 17}
+{liftTicketType: night, usageDate: Tue Aug 15 00:00:00 EDT 2023, skierAge: 70} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 1} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 2} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 3} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 4} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 5} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 6} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 7} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 8} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 9} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 10} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 11} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 12} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 13} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 14} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 15} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 16} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 17} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 18} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 19} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 20} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 21} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 22} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 23} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 24} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 25} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 26} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 27} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 28} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 29} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 30} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 31} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 32} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 33} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 34} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 35} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 36} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 37} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 38} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 39} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 40} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 41} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 42} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 43} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 44} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 45} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 46} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 47} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 48} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 49} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 50} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 51} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 52} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 53} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 54} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 55} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 56} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 57} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 58} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 59} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 60} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 61} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 62} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 63} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 64} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 65} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 66} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 67} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 68} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 69} => { "cost": 17}
+{liftTicketType: regular, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 70} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 1} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 2} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 3} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 4} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 5} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 6} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 7} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 8} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 9} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 10} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 11} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 12} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 13} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 14} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 15} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 16} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 17} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 18} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 19} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 20} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 21} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 22} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 23} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 24} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 25} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 26} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 27} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 28} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 29} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 30} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 31} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 32} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 33} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 34} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 35} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 36} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 37} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 38} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 39} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 40} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 41} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 42} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 43} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 44} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 45} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 46} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 47} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 48} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 49} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 50} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 51} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 52} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 53} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 54} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 55} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 56} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 57} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 58} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 59} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 60} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 61} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 62} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 63} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 64} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 65} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 66} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 67} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 68} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 69} => { "cost": 17}
+{liftTicketType: night, usageDate: Mon Dec 25 00:00:00 EST 2023, skierAge: 70} => { "cost": 17}
