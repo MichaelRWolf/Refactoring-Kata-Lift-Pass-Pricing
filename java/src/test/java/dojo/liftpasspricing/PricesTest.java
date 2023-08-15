@@ -50,7 +50,7 @@ public class PricesTest {
     }
 
     @Test
-    public void testApprovalTestFrameworkWorks() throws ParseException {
+    public void allPermutationsOfDateAndTicketTypeAndAgeReturnCostAsJson() throws ParseException {
         StringBuilder result = new StringBuilder();
         Options verifyOptions = new Options().
                 withReporter(new MultiReporter(
