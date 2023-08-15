@@ -64,10 +64,8 @@ public class PricesTest {
 
 
         List<String> liftTicketTypes = new ArrayList<>();
-        liftTicketTypes.add("regular");
+        liftTicketTypes.add("1jour");
         liftTicketTypes.add("night");
-        // TODO:
-        // liftTicketTypes.add(null);
 
 
         List<Integer> ages = IntStream.rangeClosed(1, 70)
