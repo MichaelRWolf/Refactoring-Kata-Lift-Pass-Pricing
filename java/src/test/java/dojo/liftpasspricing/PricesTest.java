@@ -91,14 +91,14 @@ public class PricesTest {
                               HolidaysProvider holidaysProvider,
                               LiftTicket ticket) {
 
-        String s;
+        String json;
         try {
             int baseCost = costForTypeProvider.getCostForLiftTicketType(ticket.getLiftTicketType());
-            s = "{ \"cost\": " + baseCost + "}";
+            json = "{ \"cost\": " + baseCost + "}";
         } catch (Exception e) {
-            s = "{ \"cost\": NaN}";
+            json = "{ \"cost\": NaN}";
         }
-        return s;
+        return json;
     }
 
     private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {
