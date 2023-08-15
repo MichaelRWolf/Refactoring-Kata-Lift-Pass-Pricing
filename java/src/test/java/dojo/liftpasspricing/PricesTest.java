@@ -8,6 +8,7 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +32,15 @@ public class PricesTest {
         costForTypeProvider = new CostForTypeProvider() {
             @Override
             public int getCostForLiftTicketType(String liftTicketType) {
-                return 17;
+                // INSERT INTO lift_pass.base_price (type, cost) VALUES ('1jour', 35);
+                // INSERT INTO lift_pass.base_price (type, cost) VALUES ('night', 19);
+                if (liftTicketType.equals("1jour")) {
+                    return 35;
+                } else if (liftTicketType.equals("night")) {
+                    return 19;
+                } else {
+                    throw new RuntimeException("Unknown lift ticket type: " + liftTicketType);
+                }
             }
 
             @Override
@@ -81,8 +90,18 @@ public class PricesTest {
         Approvals.verify(result.toString(), verifyOptions);
     }
 
-    private String costAsJson(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider, LiftTicket ticket) {
-        return "{ \"cost\": 17}";
+    private String costAsJson(CostForTypeProvider costForTypeProvider,
+                              HolidaysProvider holidaysProvider,
+                              LiftTicket ticket) {
+
+        String s;
+        try {
+            int baseCost = costForTypeProvider.getCostForLiftTicketType(ticket.getLiftTicketType());
+            s = "{ \"cost\": " + baseCost + "}";
+        } catch (Exception e) {
+            s = "{ \"cost\": NaN}";
+        }
+        return s;
     }
 
     private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {

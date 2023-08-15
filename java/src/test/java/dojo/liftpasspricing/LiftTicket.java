@@ -19,4 +19,8 @@ public class LiftTicket {
         this.usageDate = usageDate;
         this.skierAge = skierAge;
     }
+
+    public String getLiftTicketType() {
+        return liftTicketType;
+    }
 }
