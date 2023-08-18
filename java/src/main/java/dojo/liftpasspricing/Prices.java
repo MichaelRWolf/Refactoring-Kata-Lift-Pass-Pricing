@@ -48,6 +48,10 @@ public class Prices {
             SQLException,
             ParseException
     {
+        return getCostAsJson(costForTypeProvider, holidaysProvider, ageString, liftTicketTypeString, dateString);
+    }
+
+    private String getCostAsJson(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider, String ageString, String liftTicketTypeString, String dateString) throws SQLException, ParseException {
         final Integer age = ageString != null ? Integer.valueOf(ageString) : null;
         int costForLiftTicketTypeFromDatabase;
 
