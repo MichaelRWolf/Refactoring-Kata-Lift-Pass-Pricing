@@ -100,7 +100,7 @@ public class PricesTest {
             int baseCost = costForTypeProvider.getCostForLiftTicketType(ticket.getLiftTicketType());
             json = "{ \"cost\": " + baseCost + "}";
         } catch (Exception e) {
-            json = "{ \"cost\": NaN}";
+            json = "{ \"cost\": " + "NaN" + "}";
         }
         return json;
     }

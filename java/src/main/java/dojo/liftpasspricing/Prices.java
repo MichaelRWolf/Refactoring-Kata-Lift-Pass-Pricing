@@ -59,7 +59,7 @@ public class Prices {
         int reduction;
 
         if (age != null && age < 6) {
-            return "{ \"cost\": 0}";
+            return "{ \"cost\": " + "0" + "}";
         } else {
             reduction = 0;
 
@@ -101,7 +101,7 @@ public class Prices {
                         return "{ \"cost\": " + costForLiftTicketTypeFromDatabase + "}";
                     }
                 } else {
-                    return "{ \"cost\": 0}";
+                    return "{ \"cost\": " + "0" + "}";
                 }
             }
         }
