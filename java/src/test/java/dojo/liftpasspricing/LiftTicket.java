@@ -19,7 +19,7 @@ public class LiftTicket {
     }
 
     private String decorated(Date usageDate) {
-        SimpleDateFormat iso8601DateFormater = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat iso8601DateFormater = new SimpleDateFormat("(EEE) yyyy-MM-dd");
         return iso8601DateFormater.format(this.usageDate)
                 + (isSpecialDay() ? "/special" : "")
                 + (isHoliday() ? "/holiday" : "");
@@ -28,11 +28,14 @@ public class LiftTicket {
     private boolean isSpecialDay() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(usageDate);
-        boolean isSpecial = calendar.get(Calendar.DAY_OF_WEEK) == 2;
-        return isSpecial;
+        return calendar.get(Calendar.DAY_OF_WEEK) == 2;
     }
 
     private boolean isHoliday() {
+        return isChristmas();
+    }
+
+    private boolean isChristmas() {
         Calendar usageDateCalendar = Calendar.getInstance();
         usageDateCalendar.setTime(usageDate);
         boolean isChristmas = usageDateCalendar.get(Calendar.MONTH) == Calendar.DECEMBER
