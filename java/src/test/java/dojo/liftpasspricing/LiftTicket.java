@@ -13,12 +13,12 @@ public class LiftTicket {
     public String toString() {
         return "{liftTicketType: " + liftTicketType + ", " +
                 // Decorate date with /holiday if it's a holiday
-                "usageDate: " + decorated(usageDate) +
+                "usageDate: " + decoratedUsageDate() +
                 ", " +
                 "skierAge: " + skierAge + "}";
     }
 
-    private String decorated(Date usageDate) {
+    private String decoratedUsageDate() {
         SimpleDateFormat iso8601DateFormater = new SimpleDateFormat("(EEE) yyyy-MM-dd");
         return iso8601DateFormater.format(this.usageDate)
                 + (isSpecialDay() ? "/special" : "")
@@ -38,9 +38,8 @@ public class LiftTicket {
     private boolean isChristmas() {
         Calendar usageDateCalendar = Calendar.getInstance();
         usageDateCalendar.setTime(usageDate);
-        boolean isChristmas = usageDateCalendar.get(Calendar.MONTH) == Calendar.DECEMBER
+        return usageDateCalendar.get(Calendar.MONTH) == Calendar.DECEMBER
                 && usageDateCalendar.get(Calendar.DAY_OF_MONTH) == 25;
-        return isChristmas;
     }
 
     public LiftTicket(String liftTicketType, Date usageDate, int skierAge) {
