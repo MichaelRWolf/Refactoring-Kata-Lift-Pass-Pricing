@@ -19,6 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class PricesTest {
+    // I like whitespace...
+
+
+
     private HolidaysProvider holidaysProvider;
     private CostForTypeProvider costForTypeProvider;
     private Prices prices;
