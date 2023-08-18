@@ -35,8 +35,9 @@ public class LiftTicket {
     private boolean isHoliday() {
         Calendar usageDateCalendar = Calendar.getInstance();
         usageDateCalendar.setTime(usageDate);
-        return usageDateCalendar.get(Calendar.MONTH) == Calendar.DECEMBER
+        boolean isChristmas = usageDateCalendar.get(Calendar.MONTH) == Calendar.DECEMBER
                 && usageDateCalendar.get(Calendar.DAY_OF_MONTH) == 25;
+        return isChristmas;
     }
 
     public LiftTicket(String liftTicketType, Date usageDate, int skierAge) {
