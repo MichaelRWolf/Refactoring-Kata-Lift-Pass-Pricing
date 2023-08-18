@@ -1,5 +1,6 @@
 package dojo.liftpasspricing;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,8 +19,17 @@ public class LiftTicket {
     }
 
     private String decorated(Date usageDate) {
-        return this.usageDate.toString()
-                + (isHoliday() ?  "/holiday" : "");
+        SimpleDateFormat iso8601DateFormater = new SimpleDateFormat("yyyy-MM-dd");
+        return iso8601DateFormater.format(this.usageDate)
+                + (isSpecialDay() ? "/special" : "")
+                + (isHoliday() ? "/holiday" : "");
+    }
+
+    private boolean isSpecialDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(usageDate);
+        boolean isSpecial = calendar.get(Calendar.DAY_OF_WEEK) == 2;
+        return isSpecial;
     }
 
     private boolean isHoliday() {

@@ -61,8 +61,8 @@ public class PricesTest {
                 ));
 
         ArrayList<String> usageDateStrings = new ArrayList<>();
-        usageDateStrings.add("2023-08-15");
-        usageDateStrings.add("2023-12-25");
+        usageDateStrings.add("2023-08-15"); // Tuesday
+        usageDateStrings.add("2023-12-25"); // Monday
 
 
         List<String> liftTicketTypes = new ArrayList<>();
