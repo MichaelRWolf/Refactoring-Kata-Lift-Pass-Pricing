@@ -28,7 +28,7 @@ public class LiftTicket {
     private boolean isSpecialDay() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(usageDate);
-        return calendar.get(Calendar.DAY_OF_WEEK) == 2;
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
     }
 
     private boolean isHoliday() {
