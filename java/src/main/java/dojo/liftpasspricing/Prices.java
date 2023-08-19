@@ -81,13 +81,13 @@ public class Prices {
                         double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     } else {
+                        double cost;
                         if (age > 64) {
-                            double cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
-                            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                            cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
                         } else {
-                            double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
-                            return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
+                            cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
                         }
+                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     }
                 }
             } else {
