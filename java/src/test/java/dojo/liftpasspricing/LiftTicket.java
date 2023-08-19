@@ -9,7 +9,7 @@ import static java.lang.Integer.*;
 public class LiftTicket {
     private final String liftTicketType;
     private final Date usageDate;
-    private final int skierAge;
+    private final Integer skierAge;
 
     @Override
     public String toString() {
@@ -47,7 +47,14 @@ public class LiftTicket {
     public LiftTicket(String liftTicketType, Date usageDate, String skierAge) {
         this.liftTicketType = liftTicketType;
         this.usageDate = usageDate;
-        this.skierAge = parseInt(skierAge);
+
+        Integer ageMaybe;
+        try {
+            ageMaybe = parseInt(skierAge);
+        } catch(NumberFormatException e) {
+            ageMaybe = null;
+        }
+        this.skierAge = ageMaybe;
     }
 
     public String getLiftTicketType() {

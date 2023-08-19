@@ -87,9 +87,10 @@ public class PricesTest {
                 .mapToObj(String::valueOf)
                 .collect(Collectors.toList());
 
+        agesAsString.add(null);
+
         // TODO:
         //        banana.add("forty two");
-        //        banana.add(null);
 
         for (String usageDateString : usageDateStrings) {
             for (String liftTicketType : liftTicketTypes) {
