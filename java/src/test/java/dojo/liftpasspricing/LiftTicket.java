@@ -11,11 +11,11 @@ public class LiftTicket {
 
     @Override
     public String toString() {
-        return "{liftTicketType: " + liftTicketType + ", " +
-                // Decorate date with /holiday if it's a holiday
-                "usageDate: " + decoratedUsageDate() +
-                ", " +
-                "skierAge: " + skierAge + "}";
+        return "{"
+                + liftTicketType + ", "
+                + decoratedUsageDate() + ", "
+                + skierAge
+                + "}";
     }
 
     private String decoratedUsageDate() {
