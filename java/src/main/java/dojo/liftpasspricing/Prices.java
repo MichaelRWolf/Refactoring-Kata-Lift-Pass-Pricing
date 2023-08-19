@@ -17,17 +17,11 @@ public class Prices {
     public void createApplication(CostForTypeProvider costForTypeProvider, HolidaysProvider holidaysProvider) {
         port(4567);
 
-        put("/prices", (req, res) -> {
-            return putPricesHandler(costForTypeProvider, req);
-        });
+        put("/prices", (req, res) -> putPricesHandler(costForTypeProvider, req));
 
-        get("/prices", (req, res) -> {
-            return getPricesHandler(costForTypeProvider, holidaysProvider, req.queryParams("age"), req.queryParams("type"), req.queryParams("date"));
-        });
+        get("/prices", (req, res) -> getPricesHandler(costForTypeProvider, holidaysProvider, req.queryParams("age"), req.queryParams("type"), req.queryParams("date")));
 
-        after((req, res) -> {
-            res.type("application/json");
-        });
+        after((req, res) -> res.type("application/json"));
     }
 
     private String putPricesHandler(CostForTypeProvider costForTypeProvider, Request req) throws SQLException {
@@ -68,14 +62,13 @@ public class Prices {
             reduction = 0;
 
             if (!liftTicketTypeString.equals("night")) {
-                String dateFromRequest = dateString;
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateFromRequest, isoFormat);
+                boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
 
-                if (dateFromRequest != null) {
+                if (dateString != null) {
                     Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(isoFormat.parse(dateFromRequest));
+                    calendar.setTime(isoFormat.parse(dateString));
                     if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
                         reduction = 35;
                     }
