@@ -19,8 +19,8 @@ public class LiftTicket {
     }
 
     private String decoratedUsageDate() {
-        SimpleDateFormat iso8601DateFormater = new SimpleDateFormat("(EEE) yyyy-MM-dd");
-        return iso8601DateFormater.format(this.usageDate)
+        SimpleDateFormat iso8601DateFormatter = new SimpleDateFormat("(EEE) yyyy-MM-dd");
+        return iso8601DateFormatter.format(this.usageDate)
                 + (isSpecialDay() ? "/special" : "")
                 + (isHoliday() ? "/holiday" : "");
     }
