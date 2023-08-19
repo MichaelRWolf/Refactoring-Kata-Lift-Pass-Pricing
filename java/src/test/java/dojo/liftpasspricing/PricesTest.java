@@ -83,10 +83,6 @@ public class PricesTest {
         liftTicketTypes.add("night");
 
 
-        List<Integer> ages = IntStream.rangeClosed(1, 70)
-                .boxed()
-                .collect(Collectors.toList());
-
         List<String> agesAsString = IntStream.rangeClosed(1, 70)
                 .mapToObj(String::valueOf)
                 .collect(Collectors.toList());
