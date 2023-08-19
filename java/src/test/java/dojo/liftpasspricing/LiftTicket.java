@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static java.lang.Integer.*;
+
 public class LiftTicket {
     private final String liftTicketType;
     private final Date usageDate;
@@ -42,10 +44,10 @@ public class LiftTicket {
                 && usageDateCalendar.get(Calendar.DAY_OF_MONTH) == 25;
     }
 
-    public LiftTicket(String liftTicketType, Date usageDate, int skierAge) {
+    public LiftTicket(String liftTicketType, Date usageDate, String skierAge) {
         this.liftTicketType = liftTicketType;
         this.usageDate = usageDate;
-        this.skierAge = skierAge;
+        this.skierAge = parseInt(skierAge);
     }
 
     public String getLiftTicketType() {

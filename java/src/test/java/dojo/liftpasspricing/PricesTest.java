@@ -87,17 +87,23 @@ public class PricesTest {
                 .boxed()
                 .collect(Collectors.toList());
 
+        List<String> agesAsString = IntStream.rangeClosed(1, 70)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.toList());
+
+        // TODO:
+        //        banana.add("forty two");
+        //        banana.add(null);
 
         for (String usageDateString : usageDateStrings) {
             for (String liftTicketType : liftTicketTypes) {
-                for (int age : ages) {
+                for (String age : agesAsString) {
                     LiftTicket ticket = getLiftTicket(usageDateString, liftTicketType, age);
                     String costAsJson = costAsJson(costForTypeProvider, holidaysProvider, ticket);
                     result.append(ticket).append(" => ").append(costAsJson).append("\n");
                 }
             }
         }
-
 
         Approvals.verify(result.toString(), verifyOptions);
     }
@@ -118,7 +124,7 @@ public class PricesTest {
         return json;
     }
 
-    private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, int skierAge) throws ParseException {
+    private LiftTicket getLiftTicket(String usageDateString, String liftTicketType, String skierAge) throws ParseException {
         return new LiftTicket(liftTicketType, new SimpleDateFormat("yyyy-MM-dd").parse(usageDateString), skierAge);
     }
 
