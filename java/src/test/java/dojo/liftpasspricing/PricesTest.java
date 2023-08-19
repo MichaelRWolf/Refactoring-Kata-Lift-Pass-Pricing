@@ -8,7 +8,6 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,19 +30,16 @@ public class PricesTest {
 
     @BeforeEach
     void setUp() {
-        holidaysProvider = new HolidaysProvider() {
-            @Override
-            public List<Date> getHolidays() throws SQLException {
-                List<Date> holidays = new ArrayList<Date>();
-                Date holiday = null;
-                try {
-                    holiday = new SimpleDateFormat("yyy-MM-dd").parse("2023-12-25");
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                holidays.add(holiday);
-                return holidays;
+        holidaysProvider = () -> {
+            List<Date> holidays = new ArrayList<>();
+            Date holiday;
+            try {
+                holiday = new SimpleDateFormat("yyy-MM-dd").parse("2023-12-25");
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
+            holidays.add(holiday);
+            return holidays;
         };
         costForTypeProvider = new CostForTypeProvider() {
             @Override
