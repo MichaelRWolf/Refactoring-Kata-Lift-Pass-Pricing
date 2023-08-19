@@ -91,7 +91,7 @@ public class Prices {
                     }
                 }
             } else {
-                if (age != null && age >= 6) {
+                if (age != null) {
                     if (age > 64) {
                         return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .4) + "}";
                     } else {
