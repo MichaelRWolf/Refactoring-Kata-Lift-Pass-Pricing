@@ -119,6 +119,7 @@ public class Prices {
         return isHoliday;
     }
 
+    @SuppressWarnings("deprecation")
     private boolean areDatesEqual(Date holiday, Date d) {
         return d.getYear() == holiday.getYear() && //
                 d.getMonth() == holiday.getMonth() && //
