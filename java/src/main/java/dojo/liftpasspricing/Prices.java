@@ -69,7 +69,7 @@ public class Prices {
                 if (dateString != null) {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(isoFormat.parse(dateString));
-                    if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == 2) {
+                    if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
                         reduction = 35;
                     }
                 }
