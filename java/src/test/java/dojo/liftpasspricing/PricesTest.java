@@ -8,9 +8,11 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -29,7 +31,20 @@ public class PricesTest {
 
     @BeforeEach
     void setUp() {
-        holidaysProvider = () -> null;
+        holidaysProvider = new HolidaysProvider() {
+            @Override
+            public List<Date> getHolidays() throws SQLException {
+                List<Date> holidays = new ArrayList<Date>();
+                Date holiday = null;
+                try {
+                    holiday = new SimpleDateFormat("yyy-MM-dd").parse("2023-12-25");
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                holidays.add(holiday);
+                return holidays;
+            }
+        };
         costForTypeProvider = new CostForTypeProvider() {
             @Override
             public int getCostForLiftTicketType(String liftTicketType) {
@@ -96,12 +111,14 @@ public class PricesTest {
                               LiftTicket ticket) {
 
         String json;
+
+        prices = new Prices();
         try {
-            int baseCost = costForTypeProvider.getCostForLiftTicketType(ticket.getLiftTicketType());
-            json = "{ \"cost\": " + baseCost + "}";
+            json = prices.getCostAsJson(costForTypeProvider, holidaysProvider, String.valueOf(ticket.getSkierAge()), ticket.getLiftTicketType(), new SimpleDateFormat("yyyy-MM-dd").format(ticket.getUsageDate()));
         } catch (Exception e) {
             json = "{ \"cost\": " + "NaN" + "}";
         }
+
         return json;
     }
 

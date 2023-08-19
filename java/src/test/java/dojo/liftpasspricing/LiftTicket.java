@@ -51,4 +51,12 @@ public class LiftTicket {
     public String getLiftTicketType() {
         return liftTicketType;
     }
+
+    public int getSkierAge() {
+        return skierAge;
+    }
+
+    public Object getUsageDate() {
+        return usageDate;
+    }
 }
