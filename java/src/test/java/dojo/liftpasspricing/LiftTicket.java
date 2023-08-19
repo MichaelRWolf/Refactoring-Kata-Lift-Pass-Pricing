@@ -10,6 +10,7 @@ public class LiftTicket {
     private final String liftTicketType;
     private final Date usageDate;
     private final Integer skierAge;
+    private final String _skierAgeString;
 
     @Override
     public String toString() {
@@ -17,6 +18,7 @@ public class LiftTicket {
                 + liftTicketType + ", "
                 + decoratedUsageDate() + ", "
                 + skierAge
+                + (skierAge == null ? " <- " + _skierAgeString : "")
                 + "}";
     }
 
@@ -44,17 +46,18 @@ public class LiftTicket {
                 && usageDateCalendar.get(Calendar.DAY_OF_MONTH) == 25;
     }
 
-    public LiftTicket(String liftTicketType, Date usageDate, String skierAge) {
+    public LiftTicket(String liftTicketType, Date usageDate, String _skierAgeString) {
         this.liftTicketType = liftTicketType;
         this.usageDate = usageDate;
+        this._skierAgeString = _skierAgeString;
 
-        Integer ageMaybe;
+        Integer SkierAgeMaybe;
         try {
-            ageMaybe = parseInt(skierAge);
+            SkierAgeMaybe = parseInt(_skierAgeString);
         } catch(NumberFormatException e) {
-            ageMaybe = null;
+            SkierAgeMaybe = null;
         }
-        this.skierAge = ageMaybe;
+        this.skierAge = SkierAgeMaybe;
     }
 
     public String getLiftTicketType() {

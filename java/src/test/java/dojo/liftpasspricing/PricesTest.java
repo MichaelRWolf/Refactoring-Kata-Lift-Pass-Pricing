@@ -88,9 +88,7 @@ public class PricesTest {
                 .collect(Collectors.toList());
 
         agesAsString.add(null);
-
-        // TODO:
-        //        banana.add("forty two");
+        agesAsString.add("forty two");
 
         for (String usageDateString : usageDateStrings) {
             for (String liftTicketType : liftTicketTypes) {

@@ -68,7 +68,8 @@
 {1jour, (Tue) 2023-08-15, 68} => { "cost": 27}
 {1jour, (Tue) 2023-08-15, 69} => { "cost": 27}
 {1jour, (Tue) 2023-08-15, 70} => { "cost": 27}
-{1jour, (Tue) 2023-08-15, null} => { "cost": NaN}
+{1jour, (Tue) 2023-08-15, null <- null} => { "cost": NaN}
+{1jour, (Tue) 2023-08-15, null <- forty two} => { "cost": NaN}
 {night, (Tue) 2023-08-15, 1} => { "cost": 0}
 {night, (Tue) 2023-08-15, 2} => { "cost": 0}
 {night, (Tue) 2023-08-15, 3} => { "cost": 0}
@@ -139,7 +140,8 @@
 {night, (Tue) 2023-08-15, 68} => { "cost": 8}
 {night, (Tue) 2023-08-15, 69} => { "cost": 8}
 {night, (Tue) 2023-08-15, 70} => { "cost": 8}
-{night, (Tue) 2023-08-15, null} => { "cost": NaN}
+{night, (Tue) 2023-08-15, null <- null} => { "cost": NaN}
+{night, (Tue) 2023-08-15, null <- forty two} => { "cost": NaN}
 {1jour, (Mon) 2023-12-25/special/holiday, 1} => { "cost": 0}
 {1jour, (Mon) 2023-12-25/special/holiday, 2} => { "cost": 0}
 {1jour, (Mon) 2023-12-25/special/holiday, 3} => { "cost": 0}
@@ -210,7 +212,8 @@
 {1jour, (Mon) 2023-12-25/special/holiday, 68} => { "cost": 27}
 {1jour, (Mon) 2023-12-25/special/holiday, 69} => { "cost": 27}
 {1jour, (Mon) 2023-12-25/special/holiday, 70} => { "cost": 27}
-{1jour, (Mon) 2023-12-25/special/holiday, null} => { "cost": NaN}
+{1jour, (Mon) 2023-12-25/special/holiday, null <- null} => { "cost": NaN}
+{1jour, (Mon) 2023-12-25/special/holiday, null <- forty two} => { "cost": NaN}
 {night, (Mon) 2023-12-25/special/holiday, 1} => { "cost": 0}
 {night, (Mon) 2023-12-25/special/holiday, 2} => { "cost": 0}
 {night, (Mon) 2023-12-25/special/holiday, 3} => { "cost": 0}
@@ -281,7 +284,8 @@
 {night, (Mon) 2023-12-25/special/holiday, 68} => { "cost": 8}
 {night, (Mon) 2023-12-25/special/holiday, 69} => { "cost": 8}
 {night, (Mon) 2023-12-25/special/holiday, 70} => { "cost": 8}
-{night, (Mon) 2023-12-25/special/holiday, null} => { "cost": NaN}
+{night, (Mon) 2023-12-25/special/holiday, null <- null} => { "cost": NaN}
+{night, (Mon) 2023-12-25/special/holiday, null <- forty two} => { "cost": NaN}
 {1jour, (Sun) 2022-12-25/holiday, 1} => { "cost": 0}
 {1jour, (Sun) 2022-12-25/holiday, 2} => { "cost": 0}
 {1jour, (Sun) 2022-12-25/holiday, 3} => { "cost": 0}
@@ -352,7 +356,8 @@
 {1jour, (Sun) 2022-12-25/holiday, 68} => { "cost": 27}
 {1jour, (Sun) 2022-12-25/holiday, 69} => { "cost": 27}
 {1jour, (Sun) 2022-12-25/holiday, 70} => { "cost": 27}
-{1jour, (Sun) 2022-12-25/holiday, null} => { "cost": NaN}
+{1jour, (Sun) 2022-12-25/holiday, null <- null} => { "cost": NaN}
+{1jour, (Sun) 2022-12-25/holiday, null <- forty two} => { "cost": NaN}
 {night, (Sun) 2022-12-25/holiday, 1} => { "cost": 0}
 {night, (Sun) 2022-12-25/holiday, 2} => { "cost": 0}
 {night, (Sun) 2022-12-25/holiday, 3} => { "cost": 0}
@@ -423,7 +428,8 @@
 {night, (Sun) 2022-12-25/holiday, 68} => { "cost": 8}
 {night, (Sun) 2022-12-25/holiday, 69} => { "cost": 8}
 {night, (Sun) 2022-12-25/holiday, 70} => { "cost": 8}
-{night, (Sun) 2022-12-25/holiday, null} => { "cost": NaN}
+{night, (Sun) 2022-12-25/holiday, null <- null} => { "cost": NaN}
+{night, (Sun) 2022-12-25/holiday, null <- forty two} => { "cost": NaN}
 {1jour, (Mon) 2023-08-14/special, 1} => { "cost": 0}
 {1jour, (Mon) 2023-08-14/special, 2} => { "cost": 0}
 {1jour, (Mon) 2023-08-14/special, 3} => { "cost": 0}
@@ -494,7 +500,8 @@
 {1jour, (Mon) 2023-08-14/special, 68} => { "cost": 18}
 {1jour, (Mon) 2023-08-14/special, 69} => { "cost": 18}
 {1jour, (Mon) 2023-08-14/special, 70} => { "cost": 18}
-{1jour, (Mon) 2023-08-14/special, null} => { "cost": NaN}
+{1jour, (Mon) 2023-08-14/special, null <- null} => { "cost": NaN}
+{1jour, (Mon) 2023-08-14/special, null <- forty two} => { "cost": NaN}
 {night, (Mon) 2023-08-14/special, 1} => { "cost": 0}
 {night, (Mon) 2023-08-14/special, 2} => { "cost": 0}
 {night, (Mon) 2023-08-14/special, 3} => { "cost": 0}
@@ -565,4 +572,5 @@
 {night, (Mon) 2023-08-14/special, 68} => { "cost": 8}
 {night, (Mon) 2023-08-14/special, 69} => { "cost": 8}
 {night, (Mon) 2023-08-14/special, 70} => { "cost": 8}
-{night, (Mon) 2023-08-14/special, null} => { "cost": NaN}
+{night, (Mon) 2023-08-14/special, null <- null} => { "cost": NaN}
+{night, (Mon) 2023-08-14/special, null <- forty two} => { "cost": NaN}
