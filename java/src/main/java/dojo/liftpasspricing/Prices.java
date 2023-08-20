@@ -75,15 +75,17 @@ public class Prices {
                 }
                 // TODO apply reduction for others
                 if (age != null && age < 15) {
-                    return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .7) + "}";
+                    double cost = costForLiftTicketTypeFromDatabase * .7;
+                    return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                 } else {
+                    double cost;
                     if (age == null) {
-                        double cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     } else {
-                        double cost;
                         if (age > 64) {
-                            cost = costForLiftTicketTypeFromDatabase * .75 * reductionOff_1to100_to_factorOn(reduction);
+                            double factorOn = .75;
+                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * factorOn;
                         } else {
                             cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         }
