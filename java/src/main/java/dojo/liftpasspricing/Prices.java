@@ -78,14 +78,14 @@ public class Prices {
                     return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .7) + "}";
                 } else {
                     if (age == null) {
-                        double cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
+                        double cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     } else {
                         double cost;
                         if (age > 64) {
-                            cost = costForLiftTicketTypeFromDatabase * .75 * (1 - reduction / 100.0);
+                            cost = costForLiftTicketTypeFromDatabase * .75 * reductionOff_1to100_to_factorOn(reduction);
                         } else {
-                            cost = costForLiftTicketTypeFromDatabase * (1 - reduction / 100.0);
+                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         }
                         return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     }
@@ -102,6 +102,10 @@ public class Prices {
                 }
             }
         }
+    }
+
+    private double reductionOff_1to100_to_factorOn(int reduction) {
+        return (100 - reduction) / 100.0;
     }
 
     private boolean isDateFromRequestAHoliday(HolidaysProvider holidaysProvider, String dateFromRequest, DateFormat isoFormat) throws SQLException, ParseException {
