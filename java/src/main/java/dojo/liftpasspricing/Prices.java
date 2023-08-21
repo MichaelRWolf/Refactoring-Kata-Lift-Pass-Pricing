@@ -58,48 +58,59 @@ public class Prices {
 
         double cost;
         int reduction = 0;
-        if (age != null && age < 6) {
-            reduction = 100;
-            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
-        } else if (liftTicketTypeString.equals("night")) {
-            if (age == null) {
-                reduction = 100;
-            } else {
-                if (age > 64) {
-                    reduction = 60;
-                }
-            }
+//        if (age != null && age < 6) {
+//            reduction = 100;
+//            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+//        } else
+        if (liftTicketTypeString.equals("night")) {
+            reduction = getNightReduction(age);
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
         } else {
-            if ((dateString != null) && isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
+            if (age != null) {
+                if (age < 6) {
+                    reduction = 100;
+                } else {
+                    if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
+                        reduction = 35;
+                    }
+                    if (age < 15) {
+                        reduction = 30;
+                    }
+                }
+            } else if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
                 reduction = 35;
-            }
-            if (age == null) {
-            } else if (age < 15) {
-                reduction = 30;
-            } else if (age > 64) {
-            } else {
             }
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
 
 
-            if (age == null) {
-            } else if (age < 15) {
-            } else if (age > 64) {
-                int reduction2 = 25;
-                cost *= reductionOff_1to100_to_factorOn(reduction2);
-            } else {
+            if (age != null) {
+                if (age > 64) {
+                    int reduction2 = 25;
+                    cost *= reductionOff_1to100_to_factorOn(reduction2);
+                }
             }
         }
         return getJsonForCost(cost);
+    }
+
+    private int getNightReduction(Integer age) {
+        if (age == null) {
+            return 100;
+        } else if (age < 6) {
+            return 100;
+        } else if (64 < age) {
+            return 60;
+        } else {
+            return 0;
+        }
     }
 
     private double calculateCostReduction(int costForLiftTicketTypeFromDatabase, int reduction) {
         return costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
     }
 
-    private boolean isHoliday(HolidaysProvider holidaysProvider, String dateString, DateFormat isoFormat) throws SQLException, ParseException {
-        return isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
+    private boolean isNotHoliday(HolidaysProvider holidaysProvider, String dateString, DateFormat isoFormat) throws SQLException, ParseException {
+        return !isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
     }
 
     private boolean isSpecialDay(String dateString, DateFormat isoFormat) throws ParseException {
