@@ -61,17 +61,15 @@ public class Prices {
         if (age != null && age < 6) {
             reduction = 100;
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
-
         } else if (liftTicketTypeString.equals("night")) {
             if (age == null) {
                 reduction = 100;
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             } else {
                 if (age > 64) {
                     reduction = 60;
                 }
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             }
+            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
         } else {
             if (dateString != null && isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
                 reduction = 35;
