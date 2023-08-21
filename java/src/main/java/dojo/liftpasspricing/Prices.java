@@ -71,20 +71,24 @@ public class Prices {
             }
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
         } else {
-            if (dateString != null && isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
+            if ((dateString != null) && isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
                 reduction = 35;
             }
             if (age == null) {
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             } else if (age < 15) {
                 reduction = 30;
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+            } else if (age > 64) {
+            } else {
+            }
+            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+
+
+            if (age == null) {
+            } else if (age < 15) {
             } else if (age > 64) {
                 int reduction2 = 25;
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
                 cost *= reductionOff_1to100_to_factorOn(reduction2);
             } else {
-                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             }
         }
         return getJsonForCost(cost);
