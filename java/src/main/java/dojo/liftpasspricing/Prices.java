@@ -59,10 +59,13 @@ public class Prices {
         double cost;
         int reduction = 0;
         if (age != null && age < 6) {
-            cost = 0;
+            reduction = 100;
+            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+
         } else if (liftTicketTypeString.equals("night")) {
             if (age == null) {
-                cost = 0;
+                reduction = 100;
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             } else {
                 if (age > 64) {
                     reduction = 60;
