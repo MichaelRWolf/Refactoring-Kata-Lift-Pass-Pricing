@@ -62,7 +62,7 @@ public class Prices {
             reduction = getNightReduction(age);
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
         } else {
-            reduction = getNonNightReduction(holidaysProvider, dateString, age, isoFormat, reduction);
+            reduction = getNonNightReduction(holidaysProvider, dateString, age, isoFormat);
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
 
 
@@ -76,7 +76,8 @@ public class Prices {
         return getJsonForCost(cost);
     }
 
-    private int getNonNightReduction(HolidaysProvider holidaysProvider, String dateString, Integer age, SimpleDateFormat isoFormat, int reduction) throws ParseException, SQLException {
+    private int getNonNightReduction(HolidaysProvider holidaysProvider, String dateString, Integer age, SimpleDateFormat isoFormat) throws ParseException, SQLException {
+        int reduction = 0;
         if (age != null) {
             if (age < 6) {
                 reduction = 100;
