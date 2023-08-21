@@ -64,10 +64,6 @@ public class LiftTicket {
         return liftTicketType;
     }
 
-    public int getSkierAge() {
-        return skierAge;
-    }
-
     public Object getUsageDate() {
         return usageDate;
     }
