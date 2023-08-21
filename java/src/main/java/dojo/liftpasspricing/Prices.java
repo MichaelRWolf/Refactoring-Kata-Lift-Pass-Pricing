@@ -55,9 +55,10 @@ public class Prices {
 
         costForLiftTicketTypeFromDatabase = costForTypeProvider.getCostForLiftTicketType(liftTicketTypeString);
         int reduction;
+        double cost;
 
         if (age != null && age < 6) {
-            return "{ \"cost\": " + "0" + "}";
+            cost = 0;
         } else {
             reduction = 0;
 
@@ -74,14 +75,11 @@ public class Prices {
                     }
                 }
                 // TODO apply reduction for others
-                double cost;
                 if (age != null && age < 15) {
                     cost = costForLiftTicketTypeFromDatabase * .7;
-                    return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                 } else {
                     if (age == null) {
                         cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     } else {
                         if (age > 64) {
                             double factorOn = .75;
@@ -89,21 +87,25 @@ public class Prices {
                         } else {
                             cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         }
-                        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
                     }
                 }
             } else {
                 if (age != null) {
                     if (age > 64) {
-                        return "{ \"cost\": " + (int) Math.ceil(costForLiftTicketTypeFromDatabase * .4) + "}";
+                        cost = costForLiftTicketTypeFromDatabase * .4;
                     } else {
-                        return "{ \"cost\": " + costForLiftTicketTypeFromDatabase + "}";
+                        cost = costForLiftTicketTypeFromDatabase;
                     }
                 } else {
-                    return "{ \"cost\": " + "0" + "}";
+                    cost = 0;
                 }
             }
         }
+        return getJsonForCost(cost);
+    }
+
+    private String getJsonForCost(double cost) {
+        return "{ \"cost\": " + (int) Math.ceil(cost) + "}";
     }
 
     private double reductionOff_1to100_to_factorOn(int reduction) {
