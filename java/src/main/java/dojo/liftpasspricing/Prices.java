@@ -62,7 +62,18 @@ public class Prices {
         } else {
             reduction = 0;
 
-            if (!liftTicketTypeString.equals("night")) {
+            if (liftTicketTypeString.equals("night")) {
+                if (age == null) {
+                    cost = 0;
+                } else {
+                    if (age > 64) {
+                        reduction = 60;
+                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                    } else {
+                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                    }
+                }
+            } else {
                 DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
@@ -76,28 +87,19 @@ public class Prices {
                 }
                 // TODO apply reduction for others
                 if (age != null && age < 15) {
-                    cost = costForLiftTicketTypeFromDatabase * .7;
+                    reduction = 30;
+                    cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                 } else {
                     if (age == null) {
                         cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                     } else {
                         if (age > 64) {
-                            double factorOn = .75;
-                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * factorOn;
+                            int reduction2 = 25;
+                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * reductionOff_1to100_to_factorOn(reduction2);
                         } else {
                             cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
                         }
                     }
-                }
-            } else {
-                if (age != null) {
-                    if (age > 64) {
-                        cost = costForLiftTicketTypeFromDatabase * .4;
-                    } else {
-                        cost = costForLiftTicketTypeFromDatabase;
-                    }
-                } else {
-                    cost = 0;
                 }
             }
         }
