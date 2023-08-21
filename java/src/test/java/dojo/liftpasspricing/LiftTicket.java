@@ -71,4 +71,8 @@ public class LiftTicket {
     public Object getUsageDate() {
         return usageDate;
     }
+
+    public String get_SkierAgeString() {
+        return _skierAgeString;
+    }
 }

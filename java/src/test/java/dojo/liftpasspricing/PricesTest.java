@@ -111,9 +111,9 @@ public class PricesTest {
 
         prices = new Prices();
         try {
-            json = prices.getCostAsJson(costForTypeProvider, holidaysProvider, String.valueOf(ticket.getSkierAge()), ticket.getLiftTicketType(), new SimpleDateFormat("yyyy-MM-dd").format(ticket.getUsageDate()));
+            json = prices.getCostAsJson(costForTypeProvider, holidaysProvider, ticket.get_SkierAgeString(), ticket.getLiftTicketType(), new SimpleDateFormat("yyyy-MM-dd").format(ticket.getUsageDate()));
         } catch (Exception e) {
-            json = "{ \"cost\": " + "NaN" + "}";
+            json = "{ \"cost\": " + "NaN" + "}" + "  " + e.getMessage();
         }
 
         return json;

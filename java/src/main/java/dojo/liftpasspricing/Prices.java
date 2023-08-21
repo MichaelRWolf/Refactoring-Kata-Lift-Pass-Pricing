@@ -75,7 +75,7 @@ public class Prices {
             }
             if (age == null) {
                 cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
-            } else if (age != null && age < 15) {
+            } else if (age < 15) {
                 reduction = 30;
                 cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             } else if (age > 64) {
