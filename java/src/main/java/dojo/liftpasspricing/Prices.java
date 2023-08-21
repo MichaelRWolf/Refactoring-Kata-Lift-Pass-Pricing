@@ -98,8 +98,7 @@ public class Prices {
     private boolean isSpecialDay(String dateString, DateFormat isoFormat) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(isoFormat.parse(dateString));
-        boolean isSpecialDay = calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
-        return isSpecialDay;
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
     }
 
     private String getJsonForCost(double cost) {
