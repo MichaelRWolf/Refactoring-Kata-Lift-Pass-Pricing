@@ -58,28 +58,11 @@ public class Prices {
 
         double cost;
         int reduction = 0;
-//        if (age != null && age < 6) {
-//            reduction = 100;
-//            cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
-//        } else
         if (liftTicketTypeString.equals("night")) {
             reduction = getNightReduction(age);
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
         } else {
-            if (age != null) {
-                if (age < 6) {
-                    reduction = 100;
-                } else {
-                    if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
-                        reduction = 35;
-                    }
-                    if (age < 15) {
-                        reduction = 30;
-                    }
-                }
-            } else if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
-                reduction = 35;
-            }
+            reduction = getNonNightReduction(holidaysProvider, dateString, age, isoFormat, reduction);
             cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
 
 
@@ -91,6 +74,24 @@ public class Prices {
             }
         }
         return getJsonForCost(cost);
+    }
+
+    private int getNonNightReduction(HolidaysProvider holidaysProvider, String dateString, Integer age, SimpleDateFormat isoFormat, int reduction) throws ParseException, SQLException {
+        if (age != null) {
+            if (age < 6) {
+                reduction = 100;
+            } else {
+                if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
+                    reduction = 35;
+                }
+                if (age < 15) {
+                    reduction = 30;
+                }
+            }
+        } else if ((dateString != null) && isSpecialDay(dateString, isoFormat) && isNotHoliday(holidaysProvider, dateString, isoFormat)) {
+            reduction = 35;
+        }
+        return reduction;
     }
 
     private int getNightReduction(Integer age) {
