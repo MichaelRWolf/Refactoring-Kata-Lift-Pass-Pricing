@@ -67,28 +67,30 @@ public class Prices {
                 if (age > 64) {
                     reduction = 60;
                 }
-                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             }
         } else {
-            if (dateString != null) {
-                if (isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
-                    reduction = 35;
-                }
+            if (dateString != null && isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
+                reduction = 35;
             }
-            // TODO apply reduction for others
-            if (age != null && age < 15) {
+            if (age == null) {
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+            } else if (age != null && age < 15) {
                 reduction = 30;
-                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-            } else if (age == null) {
-                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             } else if (age > 64) {
                 int reduction2 = 25;
-                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * reductionOff_1to100_to_factorOn(reduction2);
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
+                cost *= reductionOff_1to100_to_factorOn(reduction2);
             } else {
-                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+                cost = calculateCostReduction(costForLiftTicketTypeFromDatabase, reduction);
             }
         }
         return getJsonForCost(cost);
+    }
+
+    private double calculateCostReduction(int costForLiftTicketTypeFromDatabase, int reduction) {
+        return costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
     }
 
     private boolean isHoliday(HolidaysProvider holidaysProvider, String dateString, DateFormat isoFormat) throws SQLException, ParseException {
