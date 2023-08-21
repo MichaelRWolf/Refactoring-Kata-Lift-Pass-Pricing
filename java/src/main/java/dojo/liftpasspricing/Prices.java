@@ -54,56 +54,52 @@ public class Prices {
         int costForLiftTicketTypeFromDatabase;
 
         costForLiftTicketTypeFromDatabase = costForTypeProvider.getCostForLiftTicketType(liftTicketTypeString);
-        int reduction;
-        double cost;
+        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+        double cost;
+        int reduction = 0;
         if (age != null && age < 6) {
             cost = 0;
-        } else {
-            reduction = 0;
-
-            if (liftTicketTypeString.equals("night")) {
-                if (age == null) {
-                    cost = 0;
-                } else {
-                    if (age > 64) {
-                        reduction = 60;
-                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                    } else {
-                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                    }
-                }
+        } else if (liftTicketTypeString.equals("night")) {
+            if (age == null) {
+                cost = 0;
             } else {
-                DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-                boolean isHoliday = isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
-
-                if (dateString != null) {
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(isoFormat.parse(dateString));
-                    if (!isHoliday && calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-                        reduction = 35;
-                    }
+                if (age > 64) {
+                    reduction = 60;
                 }
-                // TODO apply reduction for others
-                if (age != null && age < 15) {
-                    reduction = 30;
-                    cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                } else {
-                    if (age == null) {
-                        cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                    } else {
-                        if (age > 64) {
-                            int reduction2 = 25;
-                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * reductionOff_1to100_to_factorOn(reduction2);
-                        } else {
-                            cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
-                        }
-                    }
+                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+            }
+        } else {
+            if (dateString != null) {
+                if (isSpecialDay(dateString, isoFormat) && !isHoliday(holidaysProvider, dateString, isoFormat)) {
+                    reduction = 35;
                 }
+            }
+            // TODO apply reduction for others
+            if (age != null && age < 15) {
+                reduction = 30;
+                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+            } else if (age == null) {
+                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
+            } else if (age > 64) {
+                int reduction2 = 25;
+                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction) * reductionOff_1to100_to_factorOn(reduction2);
+            } else {
+                cost = costForLiftTicketTypeFromDatabase * reductionOff_1to100_to_factorOn(reduction);
             }
         }
         return getJsonForCost(cost);
+    }
+
+    private boolean isHoliday(HolidaysProvider holidaysProvider, String dateString, DateFormat isoFormat) throws SQLException, ParseException {
+        return isDateFromRequestAHoliday(holidaysProvider, dateString, isoFormat);
+    }
+
+    private boolean isSpecialDay(String dateString, DateFormat isoFormat) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(isoFormat.parse(dateString));
+        boolean isSpecialDay = calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
+        return isSpecialDay;
     }
 
     private String getJsonForCost(double cost) {
