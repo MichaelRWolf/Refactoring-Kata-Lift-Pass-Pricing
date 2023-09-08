@@ -8,6 +8,7 @@ import org.approvaltests.reporters.linux.MeldMergeReporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +18,21 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.mock;
+
+
+//PLAN
+//
+//Goal - Use mockito
+//1 - Create mock
+//-->        HolidayProvider
+//        PricesProvider
+//        Prices
+//2 - Program mocks
+//
+
+
 
 
 public class PricesTest {
@@ -29,18 +45,17 @@ public class PricesTest {
     private Prices prices;
 
     @BeforeEach
-    void setUp() {
-        holidaysProvider = () -> {
-            List<Date> holidays = new ArrayList<>();
-            Date holiday;
-            try {
-                holiday = new SimpleDateFormat("yyy-MM-dd").parse("2023-12-25");
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-            holidays.add(holiday);
-            return holidays;
-        };
+    void setUp() throws ParseException, SQLException {
+        holidaysProvider = mock(HolidaysProvider.class);
+        ArrayList<Date> holidays
+                = new ArrayList<>();
+        holidays.add(new SimpleDateFormat("yyyy-MM-dd").parse("2023-12-25"));
+
+
+        given(holidaysProvider.getHolidays()).
+                willReturn(holidays);
+
+
         costForTypeProvider = new CostForTypeProvider() {
             @Override
             public int getCostForLiftTicketType(String liftTicketType) {
