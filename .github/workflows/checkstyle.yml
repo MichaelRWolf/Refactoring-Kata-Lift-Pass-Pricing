@@ -7,8 +7,11 @@ on:
       - mlk/approval_testing_stuff
 
 jobs:
-  build:
+  checkstyle-on-push:
     runs-on: ubuntu-latest
+    defaults:
+        run:
+            working-directory: java
 
     steps:
       - name: Checkout code
@@ -24,5 +27,4 @@ jobs:
         run: echo skipping this step   #        cd java && mvn -B clean install
 
       - name: Checkstyle
-        working-directory: java
         run: mvn checkstyle:check
