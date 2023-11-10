@@ -33,6 +33,9 @@ jobs:
       - name: checkstyle::checkstyle
         run: mvn checkstyle:checkstyle # This command runs the Checkstyle plugin
 
+      - name: ls
+        run: ls -Ra
+
       - name: Upload Checkstyle Report
         uses: actions/upload-artifact@v2
         with:
