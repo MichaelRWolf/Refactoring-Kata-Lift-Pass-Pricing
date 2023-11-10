@@ -24,7 +24,7 @@ jobs:
         run: cd java
 
       - name: Build with Maven
-        run: mvn -B clean install
+        run: cd java && mvn -B clean install
 
       - name: Checkstyle
-        run: mvn checkstyle:check
+        run: cd java && mvn checkstyle:check
