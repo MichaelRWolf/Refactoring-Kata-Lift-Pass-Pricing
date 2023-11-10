@@ -20,6 +20,9 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Change directory to project directory
+        run: cd java
+
       - name: Build with Maven
         run: mvn -B clean install
 
