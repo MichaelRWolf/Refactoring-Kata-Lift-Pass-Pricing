@@ -24,14 +24,13 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: echo skipping this step   #        cd java && mvn -B clean install
+        run: echo skip this step... # mvn -B clean install
 
-      - name: Checkstyle
-        run: echo skipping step   mvn checkstyle:check
+      - name: checkstyle::check
+        run: echo skip this step... # mvn checkstyle:check
 
 
-
-      - name: Run Checkstyle
+      - name: checkstyle::checkstyle
         run: mvn checkstyle:checkstyle # This command runs the Checkstyle plugin
 
       - name: Upload Checkstyle Report
